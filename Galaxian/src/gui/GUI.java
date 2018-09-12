@@ -19,7 +19,7 @@ public class GUI extends JFrame {
 	private JPanel contentPane;
 	
 	private JLabel dibujo;
-	private JLabel imagen;
+
 
 	/**
 	 * Launch the application.
