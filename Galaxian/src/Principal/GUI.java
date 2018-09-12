@@ -17,7 +17,8 @@ public class GUI extends JFrame {
 	private static final long serialVersionUID = 1L;
 
 	private JPanel panel;
-	private JLabel dibujo;
+	//private JLabel dibujo;
+
 	
 	private Juego j;
 
@@ -86,11 +87,11 @@ public class GUI extends JFrame {
 		this.repaint();
 	}
 	
-	private void agregarDibujo(){
+	/*private void agregarDibujo(){
 		ImageIcon imagen = new ImageIcon(this.getClass().getResource("/img/nave.png"));
 		dibujo = new JLabel(imagen);
 		dibujo.setBounds(165,490 , 50, 50);
 		
 		this.add(dibujo);
-	}
+	}*/
 }
