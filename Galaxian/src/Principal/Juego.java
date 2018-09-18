@@ -12,13 +12,15 @@ public class Juego {
 	private LinkedList<Entidad> entidades;
 	
 	public Juego(GUI gui) {
-		this.mapa=new Mapa();
+		//Pongo Mapa base para probar
+		this.mapa=new MapaBase();
 		this.jugador=new Jugador(165,490);
 		entidades = new LinkedList<Entidad>();
-		/**for (int i=0;i<mapa.enemigos.length;i++) {
-			entidades.add(mapa.enemigos[i]);
-		}
 		for (int i=0;i<mapa.enemigos.length;i++) {
+			//entidades.add(mapa.enemigos[i]);
+			gui.add(mapa.enemigos[i].getGrafico());
+		}
+		/*for (int i=0;i<mapa.enemigos.length;i++) {
 			entidades.add(mapa.obstaculos[i]);
 		}*/
 		gui.add(jugador.getGrafico());
