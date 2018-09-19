@@ -21,6 +21,7 @@ public class GUI extends JFrame {
 
 	
 	private Juego j;
+	private ContadorTiempo tiempo;
 
 	/**
 	 * Launch the application.
@@ -58,40 +59,15 @@ public class GUI extends JFrame {
         panel.setBackground(Color.BLACK);
         panel.setLayout(null);
         
-		/*contentPane = new JPanel();
-		contentPane.setBackground(Color.BLACK);
-		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
-		setContentPane(contentPane);
-		contentPane.setLayout(null);*/
-		
-		//this.agregarDibujo();
 		j=new Juego(this);
+		tiempo= new ContadorTiempo(j);
+		tiempo.start();
+		
 	}
 	
 	protected void mover(KeyEvent key){
-		/*Rectangle pos = dibujo.getBounds();
-		int newX=0;
-		int newY = (int) pos.getY();
-		int ancho = (int) pos.getWidth();
-		int alto = (int) pos.getHeight();
-		if (key.getKeyCode()==KeyEvent.VK_RIGHT&&pos.getX()<325) {
-			newX = (int) pos.getX() + 10;
-			dibujo.setBounds(newX, newY, ancho, alto);
-		}
-		if (key.getKeyCode()==KeyEvent.VK_LEFT&&pos.getX()>10) {
-			newX = (int) pos.getX() - 10;
-			dibujo.setBounds(newX, newY, ancho, alto);
-		}*/
-		
 		j.mover(key.getKeyCode());
 		this.repaint();
 	}
 	
-	/*private void agregarDibujo(){
-		ImageIcon imagen = new ImageIcon(this.getClass().getResource("/img/nave.png"));
-		dibujo = new JLabel(imagen);
-		dibujo.setBounds(165,490 , 50, 50);
-		
-		this.add(dibujo);
-	}*/
 }
