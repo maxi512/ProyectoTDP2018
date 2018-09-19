@@ -7,7 +7,9 @@ public class MapaBase extends Mapa {
 		int x= 20;
 		int y= 20;
 		for(int i =0;i<enemigos.length;i++) {
-			enemigos[i]=new EnemigoBase(100,x+30,y+30);
+			enemigos[i]=new EnemigoBase(100,x,y);
+			x+=30;
+			y+=30;
 		}
 	}
 }

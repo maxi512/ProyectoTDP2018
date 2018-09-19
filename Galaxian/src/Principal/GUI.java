@@ -46,6 +46,7 @@ public class GUI extends JFrame {
 			@Override
 			public void keyPressed(KeyEvent arg0) {
 				mover(arg0);
+				destruirEnemigo(arg0);
 			}
 		});
 		
@@ -84,7 +85,14 @@ public class GUI extends JFrame {
 		}*/
 		
 		j.mover(key.getKeyCode());
+		
 		this.repaint();
+	}
+	
+	protected void destruirEnemigo(KeyEvent key) {
+		if(key.getKeyCode()==KeyEvent.VK_SPACE) {
+			System.out.println("Destruir enemigo y sumar puntaje");
+		}
 	}
 	
 	/*private void agregarDibujo(){

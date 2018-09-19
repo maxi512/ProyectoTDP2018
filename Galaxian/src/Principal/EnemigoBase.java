@@ -8,6 +8,6 @@ public class EnemigoBase extends Enemigo{
 		inicializarArregloImg();
 	}
 	private void inicializarArregloImg() {
-		this.imagen[0]= new ImageIcon(this.getClass().getResource("/img/EnemigoBasico1.png"));
+		this.imagen[0]= new ImageIcon(this.getClass().getResource("/img/EnemigoBasico.png"));
 	}
 }
