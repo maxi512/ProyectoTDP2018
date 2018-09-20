@@ -14,5 +14,9 @@ public class MapaBase extends Mapa {
 			x+=30;
 			y+=30;
 		}
+		for (int i=0;i<3;i++) {
+			y+=40;
+			enemigos.add(new OtroEnemigo(5,x,y));
+		}
 	}
 }

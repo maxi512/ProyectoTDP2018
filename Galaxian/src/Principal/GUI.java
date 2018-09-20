@@ -66,8 +66,9 @@ public class GUI extends JFrame {
         panel.setBackground(Color.BLACK);
         panel.setLayout(null);
         //OYENTE MOUSE
-        panel.addMouseListener(OyenteMouse);
         OyenteMouse= new OyenteDisparo();
+        panel.addMouseListener(OyenteMouse);
+        
         
 		j=new Juego(this);
 		
