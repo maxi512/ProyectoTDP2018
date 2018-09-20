@@ -1,10 +1,12 @@
 package Principal;
 
+import java.util.LinkedList;
+
 public abstract class Mapa {
-	protected Enemigo []enemigos;
-	protected Obstaculo []obstaculos;
+	protected LinkedList<Enemigo> enemigos;
+	protected LinkedList<Obstaculo> obstaculos;
 	
-	public Enemigo[] getEnemigos() {
+	public LinkedList<Enemigo> getEnemigos() {
 		return enemigos;
 	}
 }

@@ -1,6 +1,7 @@
 package Principal;
 
 import java.util.LinkedList;
+import java.util.NoSuchElementException;
 import java.awt.event.KeyEvent;
 
 import Principal.GUI;
@@ -9,27 +10,28 @@ public class Juego {
 	private Mapa mapa;
 	private Jugador jugador;
  	private LinkedList<Entidad> entidades;
- 	private Enemigo enem[];
+ 	private LinkedList<Entidad> entidadesAEliminar;
+ 	//ATRIBUTO PROVISORIO
+ 	private LinkedList<Enemigo> enem;
 	
-	public Juego(GUI gui) {
-		//Pongo Mapa base para probar
-		this.mapa=new MapaBase();
+	public Juego(GUI gui) {	
+		this.mapa=new MapaBase();	//Pongo Mapa base para probar
 		entidades = new LinkedList<Entidad>();
+		entidadesAEliminar = new LinkedList<Entidad>();
 		
 		this.jugador=new Jugador(165,490);
 		gui.add(jugador.getGrafico());
 		
 		enem= mapa.getEnemigos();
-		for (int i=0;i<enem.length;i++) {
-			gui.add(enem[i].getGrafico());
-		}
 		
-		/*for (int i=0;i<mapa.enemigos.length;i++) {
-			entidades.add(mapa.obstaculos[i]);
-		}*/
+		for(Enemigo e: enem) {
+			entidades.add(e);
+		}
+		for (Enemigo e: enem) {
+			gui.add(e.getGrafico());
+		}
 	}
 	
-
 	public void mover(int dir) {
 		int direccion=-1;
 		switch(dir) {
@@ -47,27 +49,56 @@ public class Juego {
 		int dir=-1;
 		int movimientos;
 		
-		for(int i = 0; i < enem.length; i++){
-			movimientos=enem[i].getCantMovimientos();
+		for(Enemigo e: enem){
+			movimientos=e.getCantMovimientos();
 			
 			if(movimientos>=0 && movimientos<30) {
 				dir= 1;
 				movimientos++;
-				enem[i].ajustarMovimientos(movimientos);
+				e.ajustarMovimientos(movimientos);
 			}
 			else {
 				if(movimientos>=30 && movimientos< 60) {
 					dir=0;
 					movimientos++;
-					enem[i].ajustarMovimientos(movimientos);
+					e.ajustarMovimientos(movimientos);
 					if(movimientos==60) {
-						enem[i].ajustarMovimientos(0);
+						e.ajustarMovimientos(0);
 					}
 				}
 				
 			}
 			
-			enem[i].mover(dir);
+			e.mover(dir);
 		}
 	}
+	
+	public LinkedList<Entidad> getListaEntidades(){
+		return entidades;
 	}
+	
+	public LinkedList<Entidad> getListaEntidadesAEliminar(){
+		return entidadesAEliminar;
+	}
+	
+	public void eliminarEntidades() {
+		try {
+			if(!(entidades.isEmpty()&&entidadesAEliminar.isEmpty())) {
+				for(Entidad e: entidadesAEliminar) {
+					entidades.remove(e);
+					enem.remove(e); //PROVISORIO
+					e.destruir();
+					entidadesAEliminar.remove(e);
+				}
+			}
+		}
+		catch(NoSuchElementException e) {
+			
+		}
+	}
+	
+	//METODO PROVISORIO PARA TERCER SPRINT
+	public void eliminarEnemigo() {
+		if(!(enem.isEmpty()))entidadesAEliminar.add(enem.getLast());
+	}
+}

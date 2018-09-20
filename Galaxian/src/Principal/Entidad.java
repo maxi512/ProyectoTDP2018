@@ -29,18 +29,18 @@ public abstract class Entidad {
 	}
 	
 	public void mover(int dir){
-        if(dir!=-1) {//Si el movimiento que se quiere realizar es a la izquierda o derecha
-            switch (dir) {
-                case 0 : //Izquierda
-                    pos.setLocation(pos.x - velocidad, pos.y);
-                    break;
-                case 1 : //Derecha
-                    pos.setLocation(pos.x + velocidad, pos.y);
-                    break;
+        	if(dir!=-1) {//Si el movimiento que se quiere realizar es a la izquierda o derecha
+                switch (dir) {
+                    case 0 : //Izquierda
+                        if(pos.getX()>10)pos.setLocation(pos.x - velocidad, pos.y);
+                        break;
+                    case 1 : //Derecha
+                    	if(pos.getX()<340)pos.setLocation(pos.x + velocidad, pos.y);
+                        break;
+                }
+                cambiarGrafico(0);
             }
-            cambiarGrafico(0);
         }
-    }
 	
 	protected void cambiarGrafico(int dir){
         if(this.grafico != null){
@@ -49,6 +49,9 @@ public abstract class Entidad {
         }
     }
 	
-	
+	public void destruir() {
+		grafico.setIcon(null);
+		vida=0;
+	}
 	//public abstract void serColisionado(Colision col);
 }

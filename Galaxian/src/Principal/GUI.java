@@ -1,5 +1,6 @@
 package Principal;
 
+import java.awt.AWTException;
 import java.awt.Color;
 import java.awt.EventQueue;
 import java.awt.Rectangle;
@@ -10,19 +11,22 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.InputEvent;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 
 public class GUI extends JFrame {
 	private static final long serialVersionUID = 1L;
 
 	private JPanel panel;
-	//private JLabel dibujo;
-
-	
 	private Juego j;
 	private ContadorTiempo tiempo;
-
+	private OyenteDisparo OyenteMouse;
+	
 	/**
 	 * Launch the application.
 	 */
@@ -47,7 +51,9 @@ public class GUI extends JFrame {
 			@Override
 			public void keyPressed(KeyEvent arg0) {
 				mover(arg0);
-				destruirEnemigo(arg0);
+			}
+			public void keyReleased(KeyEvent arg) {
+				destruirEnemigo(arg);
 			}
 		});
 		
@@ -59,33 +65,62 @@ public class GUI extends JFrame {
         setContentPane(panel);
         panel.setBackground(Color.BLACK);
         panel.setLayout(null);
+        //OYENTE MOUSE
+        panel.addMouseListener(OyenteMouse);
+        OyenteMouse= new OyenteDisparo();
         
 		j=new Juego(this);
+		
+		//INICIALIZO HILOS
 		tiempo= new ContadorTiempo(j);
 		tiempo.start();
+		
 		
 	}
 	
 	protected void mover(KeyEvent key){
 		j.mover(key.getKeyCode());
-		
 		this.repaint();
 	}
 	
-<<<<<<< HEAD
 	protected void destruirEnemigo(KeyEvent key) {
 		if(key.getKeyCode()==KeyEvent.VK_SPACE) {
-			System.out.println("Destruir enemigo y sumar puntaje");
+			j.eliminarEnemigo();
+			System.out.println("Elimine enemigo");
 		}
 	}
 	
-	/*private void agregarDibujo(){
-		ImageIcon imagen = new ImageIcon(this.getClass().getResource("/img/nave.png"));
-		dibujo = new JLabel(imagen);
-		dibujo.setBounds(165,490 , 50, 50);
+	private class OyenteDisparo implements MouseListener{
+
+		//CURSOR TIENE QUE ESTAR ADENTRO DEL LABEL
+		public void mouseClicked(MouseEvent e) {
+			j.eliminarEnemigo();
+			System.out.println("Elimine enemigo");
+		}
+
+		@Override
+		public void mousePressed(MouseEvent e) {
+			// TODO Auto-generated method stub
+			
+		}
+
+		@Override
+		public void mouseReleased(MouseEvent e) {
+			// TODO Auto-generated method stub
+			
+		}
+
+		@Override
+		public void mouseEntered(MouseEvent e) {
+			// TODO Auto-generated method stub
+			
+		}
+
+		@Override
+		public void mouseExited(MouseEvent e) {
+			// TODO Auto-generated method stub
+			
+		}
 		
-		this.add(dibujo);
-	}*/
-=======
->>>>>>> e940f06e43b863b57886ec5b5d7e805e11cd5af0
+	}
 }
