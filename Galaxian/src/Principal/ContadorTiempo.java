@@ -1,7 +1,5 @@
 package Principal;
 
-import java.util.LinkedList;
-
 public class ContadorTiempo extends Thread{
 	private Juego elJuego;
 	
@@ -19,6 +17,7 @@ public class ContadorTiempo extends Thread{
 			}
 			elJuego.mover();
 			elJuego.eliminarEntidades();
+			//elJuego.actualizarLabels();
 		}
 	}
 }

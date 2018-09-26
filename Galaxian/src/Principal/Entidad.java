@@ -11,6 +11,7 @@ public abstract class Entidad {
 	protected JLabel grafico;
 	protected Icon []imagen;
 	protected Point pos;
+	protected int puntaje;
 	
 	//CONSTRUCTOR
 	protected Entidad(int velocidad,int x,int y) {
@@ -35,7 +36,7 @@ public abstract class Entidad {
                         if(pos.getX()>10)pos.setLocation(pos.x - velocidad, pos.y);
                         break;
                     case 1 : //Derecha
-                    	if(pos.getX()<340)pos.setLocation(pos.x + velocidad, pos.y);
+                    	if(pos.getX()<536)pos.setLocation(pos.x + velocidad, pos.y);
                         break;
                 }
                 cambiarGrafico(0);
@@ -49,9 +50,21 @@ public abstract class Entidad {
         }
     }
 	
+	public Rectangle getRectangle() {
+		return new Rectangle((int)pos.getX(),(int)pos.getY(),grafico.getWidth(),grafico.getHeight());
+	}
+	
 	public void destruir() {
 		grafico.setIcon(null);
 		vida=0;
 	}
-	//public abstract void serColisionado(Colision col);
+	
+	public void setPuntaje(int x) {
+		puntaje=x;
+	}
+	
+	public int getPuntaje() {
+		return puntaje;
+	}
+
 }

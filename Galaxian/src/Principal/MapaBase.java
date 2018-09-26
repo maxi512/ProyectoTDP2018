@@ -9,7 +9,7 @@ public class MapaBase extends Mapa {
 		this.obstaculos= new LinkedList<Obstaculo>();
 		int x= 20;
 		int y= 20;
-		for(int i=0;i<5;i++){
+		for(int i=0;i<8;i++){
 			enemigos.add(new EnemigoBase(5,x,y));
 			x+=30;
 			y+=30;

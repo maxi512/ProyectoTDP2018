@@ -23,6 +23,7 @@ public class GUI extends JFrame {
 	private static final long serialVersionUID = 1L;
 
 	private JPanel panel;
+	private JLabel [] labelPuntaje;
 	private Juego j;
 	private ContadorTiempo tiempo;
 	private OyenteDisparo OyenteMouse;
@@ -35,7 +36,7 @@ public class GUI extends JFrame {
 			public void run() {
 				try {
 					GUI frame = new GUI();
-					frame.setVisible(true);					//que es esto?????
+					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -59,16 +60,27 @@ public class GUI extends JFrame {
 		
 		getContentPane().setLayout(null);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setBounds(100, 100, 400, 600);
+        setBounds(100, 100, 600, 900);
         setResizable(false);
         panel= new JPanel();
+        
         setContentPane(panel);
         panel.setBackground(Color.BLACK);
         panel.setLayout(null);
+        
+        //LABEL PUNTAJE
+        labelPuntaje= new JLabel[8];
+        for(int i=0;i<labelPuntaje.length;i++) {
+        	ImageIcon img= new ImageIcon(this.getClass().getResource("/img/Sin título-3.png"));
+        	labelPuntaje[i]=new JLabel(img);
+        	labelPuntaje[i].setBounds(420+i*20, 20, 30, 30);
+        	labelPuntaje[i].setVisible(true);
+        	panel.add(labelPuntaje[i]);
+        }
+
         //OYENTE MOUSE
         OyenteMouse= new OyenteDisparo();
         panel.addMouseListener(OyenteMouse);
-        
         
 		j=new Juego(this);
 		
@@ -87,9 +99,12 @@ public class GUI extends JFrame {
 	protected void destruirEnemigo(KeyEvent key) {
 		if(key.getKeyCode()==KeyEvent.VK_SPACE) {
 			j.eliminarEnemigo();
-			System.out.println("Elimine enemigo");
+			j.actualizarLabels();
+			//labelPuntaje.setText("Puntaje: "+j.getPuntajeTotal());
 		}
 	}
+	
+	
 	
 	private class OyenteDisparo implements MouseListener{
 
@@ -123,5 +138,9 @@ public class GUI extends JFrame {
 			
 		}
 		
+	}
+
+	public JLabel[] getLabelPuntaje() {
+		return labelPuntaje;
 	}
 }
