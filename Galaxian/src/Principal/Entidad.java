@@ -5,6 +5,10 @@ import Prueba.*;
 
 public abstract class Entidad {
 	
+	//ATRIBUTOS PROVISORIOS
+	protected int cantidad_de_Movidas;
+	protected int direccion;
+	
 	//ATRIBUTOS
 	protected int velocidad;
 	protected int vida;
@@ -66,5 +70,13 @@ public abstract class Entidad {
 	public int getPuntaje() {
 		return puntaje;
 	}
-
+	
+	//METODOS PROVISORIOS
+	public void ajustarMovimientos(int mov) {
+		cantidad_de_Movidas= mov;
+	}
+	
+	public int getCantMovidas() {
+		return cantidad_de_Movidas;
+	}
 }

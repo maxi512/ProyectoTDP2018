@@ -19,25 +19,24 @@ public class Juego {
  	private LinkedList<Entidad> entidades;
  	private LinkedList<Entidad> entidadesAEliminar;
  	private int puntajeTotal;
- 	//ATRIBUTO PROVISORIO
- 	private LinkedList<Enemigo> enem;
 	
  	//CONSTRUCTOR
 	public Juego(GUI gui) {	
 		this.mapa=new MapaBase();	//Pongo Mapa base para probar
+		
 		entidades = new LinkedList<Entidad>();
 		entidadesAEliminar = new LinkedList<Entidad>();
 		
-		this.jugador=new Jugador(265,790);
+		this.jugador=new Jugador(265,610);
 		gui.add(jugador.getGrafico());
+		entidades.add(jugador);
+		
 		miGui = gui;
 		
-		enem= mapa.getEnemigos();
+		LinkedList<Enemigo> enem= mapa.getEnemigos();
 		
 		for(Enemigo e: enem) {
 			entidades.add(e);
-		}
-		for (Enemigo e: enem) {
 			gui.add(e.getGrafico());
 		}
 	}
@@ -56,29 +55,28 @@ public class Juego {
 	}
 
 	public void mover() {
-		int dir=-1;
-		int movimientos;
+		int dir=-1,movimientos;
+		Entidad elemento;
 		
-		for(Enemigo e: enem){
-			movimientos=e.getCantMovimientos();
-			
-			if(movimientos>=0 && movimientos<30) {
+		for(int i=1;i<entidades.size();i++) {
+			elemento= entidades.get(i);
+			movimientos= elemento.getCantMovidas();
+			if(movimientos>=0 && movimientos<39) {
 				dir= 1;
 				movimientos++;
-				e.ajustarMovimientos(movimientos);
+				elemento.ajustarMovimientos(movimientos);
 			}
 			else {
-				if(movimientos>=30 && movimientos< 60) {
+				if(movimientos>=39 && movimientos< 78) {
 					dir=0;
 					movimientos++;
-					e.ajustarMovimientos(movimientos);
-					if(movimientos==60) {
-						e.ajustarMovimientos(0);
+					elemento.ajustarMovimientos(movimientos);
+					if(movimientos==78) {
+						elemento.ajustarMovimientos(0);
 					}
 				}
-				
-			}	
-			e.mover(dir);
+			}
+			elemento.mover(dir);			
 		}
 	}
 	
@@ -88,26 +86,6 @@ public class Juego {
 			for(int j=i+1;j<entidades.size();j++) {
 				Rectangle r2= entidades.get(j).getRectangle();
 				if(r1.intersects(r2)){
-					System.out.println("Colisionaron");
-				}
-			}
-		}
-	}
-	
-	public void detectarColisionesAux() {
-		for(int i=0;i<entidades.size();i++) {
-			int x1=entidades.get(i).getGrafico().getX();
-			int y1=entidades.get(i).getGrafico().getY();
-			int w1=entidades.get(i).getGrafico().getWidth();
-			int h1=entidades.get(i).getGrafico().getHeight();
-			for(int j=i+1;j<entidades.size();j++) {
-				int x2=entidades.get(j).getGrafico().getX();
-				int y2=entidades.get(j).getGrafico().getY();
-				int w2=entidades.get(j).getGrafico().getWidth();
-				int h2=entidades.get(j).getGrafico().getHeight();
-				
-				boolean intersectan = (x1>=x2-w1)&&(x1<=x2+w2)&&(y1>=y2-h1)&&(y1<=y2+h2);
-				if(intersectan){
 					System.out.println("Colisionaron");
 				}
 			}
@@ -124,18 +102,18 @@ public class Juego {
 	
 	public void eliminarEntidades() {
 		try {
-			if(!(entidades.isEmpty()&&entidadesAEliminar.isEmpty())) {
-				for(Entidad e: entidadesAEliminar) {
-					puntajeTotal+=e.getPuntaje();
-					entidades.remove(e);
-					enem.remove(e); //PROVISORIO
-					e.destruir();
-					entidadesAEliminar.remove(e);
+			Entidad elemento;
+			if(!(entidades.isEmpty()&&entidadesAEliminar.isEmpty())){
+				for(int i=0;i<entidadesAEliminar.size();i++) {
+					elemento= entidadesAEliminar.get(i);
+					entidades.remove(elemento);
+					elemento.destruir();
+					entidadesAEliminar.remove(elemento);
 				}
 			}
 		}
 		catch(NoSuchElementException e) {
-			
+			System.out.println("eliminarEntidades >> No hay mas entidades para eliminar");
 		}
 	}
 	
@@ -152,42 +130,48 @@ public class Juego {
 			int a= aux%10;
 			switch(a) {
 			case 0:
-				arr[i].setIcon(new ImageIcon(this.getClass().getResource("/img/Sin título-3.png")));
+				arr[i].setIcon(new ImageIcon(this.getClass().getResource("/img/numeros/Sin título-3.png")));
 				break;
 			case 1:
-				arr[i].setIcon(new ImageIcon(this.getClass().getResource("/img/numero1.png")));
+				arr[i].setIcon(new ImageIcon(this.getClass().getResource("/img/numeros/numero1.png")));
 				break;
 			case 2:
-				arr[i].setIcon(new ImageIcon(this.getClass().getResource("/img/numero2.png")));
+				arr[i].setIcon(new ImageIcon(this.getClass().getResource("/img/numeros/numero2.png")));
 				break;
 			case 3:
-				arr[i].setIcon(new ImageIcon(this.getClass().getResource("/img/numero3.png")));
+				arr[i].setIcon(new ImageIcon(this.getClass().getResource("/img/numeros/numero3.png")));
 				break;
 			case 4:
-				arr[i].setIcon(new ImageIcon(this.getClass().getResource("/img/numero4.png")));
+				arr[i].setIcon(new ImageIcon(this.getClass().getResource("/img/numeros/numero4.png")));
 				break;
 			case 5:
-				arr[i].setIcon(new ImageIcon(this.getClass().getResource("/img/numero5.png")));
+				arr[i].setIcon(new ImageIcon(this.getClass().getResource("/img/numeros/numero5.png")));
 				break;
 			case 6:
-				arr[i].setIcon(new ImageIcon(this.getClass().getResource("/img/numero6.png")));
+				arr[i].setIcon(new ImageIcon(this.getClass().getResource("/img/numeros/numero6.png")));
 				break;
 			case 7:
-				arr[i].setIcon(new ImageIcon(this.getClass().getResource("/img/numero7png.png")));
+				arr[i].setIcon(new ImageIcon(this.getClass().getResource("/img/numeros/numero7png.png")));
 				break;
 			case 8:
-				arr[i].setIcon(new ImageIcon(this.getClass().getResource("/img/numero8.png")));
+				arr[i].setIcon(new ImageIcon(this.getClass().getResource("/img/numeros/numero8.png")));
 				break;
 			case 9:
-				arr[i].setIcon(new ImageIcon(this.getClass().getResource("/img/numero9.png")));
+				arr[i].setIcon(new ImageIcon(this.getClass().getResource("/img/numeros/numero9.png")));
 				break;
 			}
 			aux/=10;
 		}
 		
 	}
+	
+	
 	//METODO PROVISORIO PARA TERCER SPRINT
 	public void eliminarEnemigo() {
-		if(!(enem.isEmpty()))entidadesAEliminar.add(enem.getLast());
+		int cantidad_entidades= entidades.size();
+		if(cantidad_entidades>1) {
+			entidadesAEliminar.add(entidades.getLast());
+			puntajeTotal+= entidades.getLast().getPuntaje();
+		}
 	}
 }

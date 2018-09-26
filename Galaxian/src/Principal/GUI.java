@@ -60,7 +60,7 @@ public class GUI extends JFrame {
 		
 		getContentPane().setLayout(null);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setBounds(100, 100, 600, 900);
+        setBounds(100, 20, 600, 700);
         setResizable(false);
         panel= new JPanel();
         
@@ -71,7 +71,7 @@ public class GUI extends JFrame {
         //LABEL PUNTAJE
         labelPuntaje= new JLabel[8];
         for(int i=0;i<labelPuntaje.length;i++) {
-        	ImageIcon img= new ImageIcon(this.getClass().getResource("/img/Sin título-3.png"));
+        	ImageIcon img= new ImageIcon(this.getClass().getResource("/img/numeros/Sin título-3.png"));
         	labelPuntaje[i]=new JLabel(img);
         	labelPuntaje[i].setBounds(420+i*20, 20, 30, 30);
         	labelPuntaje[i].setVisible(true);

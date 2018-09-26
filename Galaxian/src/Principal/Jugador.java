@@ -16,17 +16,4 @@ public class Jugador extends Entidad {
 		this.imagen[0]= new ImageIcon(this.getClass().getResource("/img/naveFinal1.png"));
 	}
 	
-	/*public void serColisionado(Colision col) {
-		col.afectarJugador(this);
-	}
-	
-	public int quitarVida(int puntos) {
-		vida= vida-puntos;
-		
-		return vida;
-	}
-	
-	public int getVida() {
-		return vida;
-	}*/
 }
