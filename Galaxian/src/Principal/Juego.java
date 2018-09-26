@@ -55,28 +55,8 @@ public class Juego {
 	}
 
 	public void mover() {
-		int dir=-1,movimientos;
-		Entidad elemento;
-		
 		for(int i=1;i<entidades.size();i++) {
-			elemento= entidades.get(i);
-			movimientos= elemento.getCantMovidas();
-			if(movimientos>=0 && movimientos<39) {
-				dir= 1;
-				movimientos++;
-				elemento.ajustarMovimientos(movimientos);
-			}
-			else {
-				if(movimientos>=39 && movimientos< 78) {
-					dir=0;
-					movimientos++;
-					elemento.ajustarMovimientos(movimientos);
-					if(movimientos==78) {
-						elemento.ajustarMovimientos(0);
-					}
-				}
-			}
-			elemento.mover(dir);			
+			entidades.get(i).mover();
 		}
 	}
 	
@@ -164,7 +144,6 @@ public class Juego {
 		}
 		
 	}
-	
 	
 	//METODO PROVISORIO PARA TERCER SPRINT
 	public void eliminarEnemigo() {

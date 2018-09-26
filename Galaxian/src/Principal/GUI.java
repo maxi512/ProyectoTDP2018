@@ -97,7 +97,7 @@ public class GUI extends JFrame {
 	}
 	
 	protected void destruirEnemigo(KeyEvent key) {
-		if(key.getKeyCode()==KeyEvent.VK_SPACE) {
+		if(key.getKeyCode()==KeyEvent.VK_F) {
 			j.eliminarEnemigo();
 			j.actualizarLabels();
 			//labelPuntaje.setText("Puntaje: "+j.getPuntajeTotal());
