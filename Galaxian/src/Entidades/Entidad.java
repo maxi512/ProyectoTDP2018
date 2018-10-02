@@ -1,7 +1,10 @@
-package Principal;
+package Entidades;
+
 import javax.swing.*;
 import java.awt.*;
-import Prueba.*;
+
+import Colisionadores.*;
+import Inteligencias.*;
 
 public abstract class Entidad {
 	
@@ -40,6 +43,9 @@ public abstract class Entidad {
                     case 1 : //Derecha
                     	if(pos.getX()<536)pos.setLocation(pos.x + velocidad, pos.y);
                         break;
+                    case 2: //Arriba
+                    	pos.setLocation(pos.x,pos.y-velocidad);
+                    	break;
                 }
                 cambiarGrafico(0);
             }
@@ -76,4 +82,17 @@ public abstract class Entidad {
 	public void mover() {
 		
 	}
+
+	//METODOS PROVISORIOS
+	public int getVida() {
+		return vida;
+	}
+	
+	public void quitarVida(int v) {
+		vida-= v;
+	}
+	
+	public abstract void serColisionado(Colision col); //Deben ser abstractas
+	
+	public abstract void colisionar(Entidad e);// Deben ser abstractas 
 }

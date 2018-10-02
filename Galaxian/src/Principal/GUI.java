@@ -1,19 +1,13 @@
 package Principal;
 
-import java.awt.AWTException;
 import java.awt.Color;
 import java.awt.EventQueue;
-import java.awt.Rectangle;
 
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
 
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.InputEvent;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseEvent;
@@ -27,6 +21,9 @@ public class GUI extends JFrame {
 	private Juego j;
 	private ContadorTiempo tiempo;
 	private OyenteDisparo OyenteMouse;
+	
+	//ATRIBUTOS PROVISORIOS
+	private TiempoDisparo tiempoDisparo;
 	
 	/**
 	 * Launch the application.
@@ -54,7 +51,9 @@ public class GUI extends JFrame {
 				mover(arg0);
 			}
 			public void keyReleased(KeyEvent arg) {
+				disparar(arg);
 				destruirEnemigo(arg);
+				
 			}
 		});
 		
@@ -87,6 +86,8 @@ public class GUI extends JFrame {
 		//INICIALIZO HILOS
 		tiempo= new ContadorTiempo(j);
 		tiempo.start();
+		tiempoDisparo= new TiempoDisparo(j);
+		tiempoDisparo.start();
 		
 		
 	}
@@ -101,6 +102,12 @@ public class GUI extends JFrame {
 			j.eliminarEnemigo();
 			j.actualizarLabels();
 			//labelPuntaje.setText("Puntaje: "+j.getPuntajeTotal());
+		}
+	}
+	
+	protected void disparar(KeyEvent key) {
+		if(key.getKeyCode() == KeyEvent.VK_SPACE) {
+			j.generarDisparo();
 		}
 	}
 	

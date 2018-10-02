@@ -1,4 +1,4 @@
-package Principal;
+package Entidades;
 
 public abstract class Obstaculo extends Entidad {
 	public Obstaculo(int x, int y) {

@@ -1,4 +1,6 @@
-package Principal;
+package Inteligencias;
+
+import Entidades.*;
 
 public class InteligenciaEnemigo extends Inteligencia{
 	
@@ -11,15 +13,15 @@ public class InteligenciaEnemigo extends Inteligencia{
 	
 	public void mover() {
 		int dir=-1;
-			if(movimientos>=0 && movimientos<39) {
+			if(movimientos>=0 && movimientos<20) {
 				dir= 1;
 				movimientos++;
 			}
 			else {
-				if(movimientos>=39 && movimientos< 78) {
+				if(movimientos>=20 && movimientos<40 ) {
 					dir=0;
 					movimientos++;
-					if(movimientos==78) {
+					if(movimientos==40) {
 						movimientos=0;
 					}
 				}

@@ -16,7 +16,7 @@ public class ContadorTiempo extends Thread{
 				e.printStackTrace();
 			}
 			elJuego.mover();
-			//elJuego.detectarColisiones();
+			elJuego.detectarColisiones();
 			elJuego.eliminarEntidades();
 			elJuego.actualizarLabels();
 		}
