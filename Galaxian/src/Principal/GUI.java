@@ -99,7 +99,6 @@ public class GUI extends JFrame {
 	
 	protected void destruirEnemigo(KeyEvent key) {
 		if(key.getKeyCode()==KeyEvent.VK_F) {
-			j.eliminarEnemigo();
 			j.actualizarLabels();
 			//labelPuntaje.setText("Puntaje: "+j.getPuntajeTotal());
 		}
@@ -117,7 +116,7 @@ public class GUI extends JFrame {
 
 		//CURSOR TIENE QUE ESTAR ADENTRO DEL LABEL
 		public void mouseClicked(MouseEvent e) {
-			j.eliminarEnemigo();
+			//j.eliminarEnemigo();
 			System.out.println("Elimine enemigo");
 		}
 

@@ -162,13 +162,8 @@ public class Juego {
 		return jugador.getPos();
 	}
 	
-	//METODO PROVISORIO PARA TERCER SPRINT   BORARR!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-	public void eliminarEnemigo() {
-		int cantidad_entidades= entidades.size();
-		if(cantidad_entidades>1) {
-			entidadesAEliminar.add(entidades.getLast());
-			puntajeTotal+= entidades.getLast().getPuntaje();
-		}
+	public int getAnchoJugador() {
+		return jugador.getGrafico().getWidth();
 	}
 	
 	//METODOS PROVISORIOS

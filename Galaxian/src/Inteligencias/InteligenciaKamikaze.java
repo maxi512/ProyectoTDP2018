@@ -3,6 +3,7 @@ import Principal.*;
 import java.awt.*;
 
 import Entidades.Enemigo;
+
 public class InteligenciaKamikaze extends InteligenciaEnemigo {
 	
 	private Juego juego;
@@ -14,13 +15,17 @@ public class InteligenciaKamikaze extends InteligenciaEnemigo {
 	}
 	
 	public void mover() {
-		Point posJ = juego.getPosJugador();
-		if(this.enemigo.getPos().getX()>posJ.getX()) {
-			this.enemigo.mover(0);
+		Point posJ = juego.getPosJugador(); 
+		int anchoJugador= juego.getAnchoJugador();
+		int posXEnemigo= (int)this.enemigo.getPos().getX();
+		if(posXEnemigo > posJ.getX() ) {
+			if(posXEnemigo+35 > (posJ.getX()+anchoJugador)) {
+				this.enemigo.mover(0);
+			}
 			this.enemigo.mover(3);
 		}
 		else {
-			if(this.enemigo.getPos().getX()<posJ.getX()) {
+			if(posXEnemigo < posJ.getX()) {
 				this.enemigo.mover(1);
 				this.enemigo.mover(3);
 			}
