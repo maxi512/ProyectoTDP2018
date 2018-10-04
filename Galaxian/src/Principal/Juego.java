@@ -11,7 +11,7 @@ import java.awt.event.KeyEvent;
 
 import Principal.GUI;
 import Entidades.*;
-
+import java.awt.*;
 public class Juego {
 	//ATRIBUTOS
 	private GUI miGui;
@@ -24,7 +24,7 @@ public class Juego {
 	
  	//CONSTRUCTOR
 	public Juego(GUI gui) {	
-		this.mapa=new MapaBase();	//Pongo Mapa base para probar
+		this.mapa=new MapaBase(this);	//Pongo Mapa base para probar
 		miGui = gui;
 		entidades = new LinkedList<Entidad>();
 		entidadesAEliminar = new LinkedList<Entidad>();
@@ -156,6 +156,10 @@ public class Juego {
 			aux/=10;
 		}
 		
+	}
+	
+	public Point getPosJugador() {
+		return jugador.getPos();
 	}
 	
 	//METODO PROVISORIO PARA TERCER SPRINT   BORARR!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!

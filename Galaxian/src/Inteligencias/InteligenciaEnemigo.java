@@ -5,7 +5,7 @@ import Entidades.*;
 public class InteligenciaEnemigo extends Inteligencia{
 	
 	private int movimientos;
-	private Enemigo enemigo;
+	protected Enemigo enemigo;
 	public InteligenciaEnemigo(Enemigo e) {
 		movimientos=0;
 		enemigo=e;

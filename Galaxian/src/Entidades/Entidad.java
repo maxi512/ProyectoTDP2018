@@ -35,7 +35,7 @@ public abstract class Entidad {
 	}
 	
 	public void mover(int dir){
-        	if(dir!=-1) {//Si el movimiento que se quiere realizar es a la izquierda o derecha
+        	if(dir!=-1) {//Si el movimiento que se quiere realizar es a la izquierda o derecha arriba o abajo
                 switch (dir) {
                     case 0 : //Izquierda
                         if(pos.getX()>10)pos.setLocation(pos.x - velocidad, pos.y);
@@ -46,6 +46,14 @@ public abstract class Entidad {
                     case 2: //Arriba
                     	pos.setLocation(pos.x,pos.y-velocidad);
                     	break;
+                    case 3:{//Abajo
+                    	if(pos.getY()>700) {
+                    		pos.setLocation(pos.x,pos.y+velocidad-720);	
+                    	}
+                    	else {
+                    		pos.setLocation(pos.x,pos.y+velocidad);
+                    	}
+                    }
                 }
                 cambiarGrafico(0);
             }
@@ -81,6 +89,10 @@ public abstract class Entidad {
 	
 	public void mover() {
 		
+	}
+	
+	public Point getPos() {
+		return pos;
 	}
 
 	//METODOS PROVISORIOS

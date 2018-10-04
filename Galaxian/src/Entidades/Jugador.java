@@ -2,7 +2,7 @@ package Entidades;
 
 import javax.swing.ImageIcon;
 import Colisionadores.*;
-
+import java.awt.*;
 public class Jugador extends Entidad {
 	
 	public Jugador(int x, int y) {
