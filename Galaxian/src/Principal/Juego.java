@@ -59,9 +59,13 @@ public class Juego {
 	}
 
 	public void mover() {
-		for(int i=1;i<entidades.size();i++) {
+		for(int i=0;i<entidades.size();i++) {
 			entidades.get(i).mover();
 		}
+	}
+	
+	public Jugador getJugador() {
+		return jugador;
 	}
 	
 	public void detectarColisiones() {

@@ -11,7 +11,7 @@ public class MapaBase extends Mapa {
 		int x= 20;
 		int y= 110;
 		for(int i=0;i<5;i++){
-			enemigos.add(new EnemigoKamikaze(5,x,y,j));
+			enemigos.add(new EnemigoKamikaze(7,x,y,j));
 			x+=100;
 		}
 		

@@ -46,13 +46,18 @@ public class GUI extends JFrame {
 	 */
 	public GUI() {
 		addKeyListener(new KeyAdapter() {
+			
+			
+			
 			@Override
 			public void keyPressed(KeyEvent arg0) {
-				mover(arg0);
+				//mover(arg0);
+				j.getJugador().keyPressed(arg0);
 			}
-			public void keyReleased(KeyEvent arg) {
-				disparar(arg);
-				destruirEnemigo(arg);
+			public void keyReleased(KeyEvent arg0) {
+				disparar(arg0);
+				j.getJugador().keyReleased(arg0);
+				//destruirEnemigo(arg);
 				
 			}
 		});
@@ -66,6 +71,8 @@ public class GUI extends JFrame {
         setContentPane(panel);
         panel.setBackground(Color.BLACK);
         panel.setLayout(null);
+        
+        j=new Juego(this);
         
         //LABEL PUNTAJE
         labelPuntaje= new JLabel[8];
@@ -81,7 +88,7 @@ public class GUI extends JFrame {
         OyenteMouse= new OyenteDisparo();
         panel.addMouseListener(OyenteMouse);
         
-		j=new Juego(this);
+		
 		
 		//INICIALIZO HILOS
 		tiempo= new ContadorTiempo(j);
