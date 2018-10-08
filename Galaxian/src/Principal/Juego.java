@@ -28,7 +28,6 @@ public class Juego {
 		miGui = gui;
 		entidades = new LinkedList<Entidad>();
 		entidadesAEliminar = new LinkedList<Entidad>();
-		
 		disparos= new LinkedList<Entidad>();
 		
 		this.jugador=new Jugador(265,610);
@@ -42,6 +41,11 @@ public class Juego {
 		for(Enemigo e: enem) {
 			entidades.add(e);
 			miGui.add(e.getGrafico());
+		}
+		
+		for(Obstaculo o: mapa.getObstaculos()) {
+			entidades.add(o);
+			miGui.add(o.getGrafico());
 		}
 	}
 	
@@ -78,7 +82,6 @@ public class Juego {
 					if(entidades.get(i).getVida()<=0) {
 						entidadesAEliminar.add(entidades.get(i));
 						puntajeTotal+= entidades.get(i).getPuntaje();
-						
 					}
 					if(entidades.get(j).getVida()<=0) {
 						entidadesAEliminar.add(entidades.get(j));

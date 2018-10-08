@@ -41,6 +41,11 @@ public class Disparo extends Entidad{
 		this.vida=-1;
 	}
 	
+	public void golpearEntidad(Entidad e) {
+		e.quitarVida(damage);
+		this.vida=-1;
+	}
+	
 	public int getDamage() {
 		return damage;
 	}

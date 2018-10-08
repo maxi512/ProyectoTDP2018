@@ -55,14 +55,7 @@ public class Jugador extends Entidad {
     public void keyReleased(KeyEvent e) {
         int key = e.getKeyCode();
  
-        switch (key){
-       
-            case KeyEvent.VK_UP :
-                dy = 0;
-                break;
-            case KeyEvent.VK_DOWN :
-                dy = 0;
-                break;     
+        switch (key){   
             case KeyEvent.VK_LEFT :
                 dx = 0;
                 break;

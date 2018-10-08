@@ -13,4 +13,10 @@ public class ColisionadorEnemigo extends Colision{
 		disp.quitarVida(disp.getVida());
 	}
 	
+	public void afectarObstaculo(Obstaculo o) {
+		/////PREGUNTAR COLISION///
+		enem.quitarVida(100);
+		o.quitarVida(20);
+	}
+	
 }

@@ -10,4 +10,8 @@ public abstract class Mapa {
 	public LinkedList<Enemigo> getEnemigos() {
 		return enemigos;
 	}
+	
+	public LinkedList<Obstaculo> getObstaculos() {
+		return obstaculos;
+	}
 }
