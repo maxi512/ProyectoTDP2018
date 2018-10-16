@@ -25,7 +25,7 @@ public class Jugador extends Entidad {
 	}
 	
 	public Disparo crearDisparo() {
-		Disparo disp= new Disparo(5,(int)pos.getX()+(this.getGrafico().getWidth()/2 -1),(int)pos.getY()-12);
+		Disparo disp= new Disparo(4,(int)pos.getX()+(this.getGrafico().getWidth()/2 -1),(int)pos.getY()-12);
 		return disp;
 	}
 	

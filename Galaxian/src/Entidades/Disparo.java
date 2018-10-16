@@ -19,7 +19,7 @@ public class Disparo extends Entidad{
 	}
 	
 	private void inicializarArregloImg() {
-		this.imagen[0]= new ImageIcon(this.getClass().getResource("/img/disparoBasico.png"));
+		this.imagen[0]= new ImageIcon(this.getClass().getResource("/img/disparoMejorado.png"));
 	}
 	
 	public void mover() {
