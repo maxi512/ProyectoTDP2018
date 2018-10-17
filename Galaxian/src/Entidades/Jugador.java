@@ -1,19 +1,15 @@
 package Entidades;
 
 
-import java.awt.event.KeyEvent;
-
 import javax.swing.ImageIcon;
 import Colisionadores.*;
 
 public class Jugador extends Entidad {
-	
-	int dx;
-	int dy;
-	
+	private static final int SHOOT_COOLDOWN_UPDATE_TIME = 10;
+	private long timeUntilShootingAvailable = 0;
 	
 	public Jugador(int x, int y) {
-		super(12,x,y);
+		super(10,x,y);
 		
 		this.vida=200;
 		
@@ -25,46 +21,16 @@ public class Jugador extends Entidad {
 	}
 	
 	public Disparo crearDisparo() {
-		Disparo disp= new Disparo(4,(int)pos.getX()+(this.getGrafico().getWidth()/2 -1),(int)pos.getY()-12);
+		Disparo disp;
+		if(timeUntilShootingAvailable <=0) {
+			disp= new DisparoJugador(5,(int)pos.getX()+(this.getGrafico().getWidth()/2 -1),(int)pos.getY()-12);
+			timeUntilShootingAvailable= SHOOT_COOLDOWN_UPDATE_TIME;
+		}
+		else {
+			disp= null;
+		}
 		return disp;
 	}
-	
-	public void mover() {
-        pos.setLocation(pos.x+dx, pos.y+dy);
-        if (pos.x < 10) {
-            pos.x = 10;
-        }
-        if (pos.x > 536)
-            pos.x = 536;
-        this.cambiarGrafico(0);
-    }
-   
-   
-     public void keyPressed(KeyEvent e) {
-        int key = e.getKeyCode();
-        switch (key){  
-            case KeyEvent.VK_LEFT :
-                dx = -velocidad;
-                break;
-            case KeyEvent.VK_RIGHT :
-                dx = velocidad;
-                break;
-        }
-    }
- 
-    public void keyReleased(KeyEvent e) {
-        int key = e.getKeyCode();
- 
-        switch (key){   
-            case KeyEvent.VK_LEFT :
-                dx = 0;
-                break;
-            case KeyEvent.VK_RIGHT :
-                dx = 0;
-                break;
-        }
- 
-    }
 	
 	
 	//METODOS PROVISORIOS
@@ -76,4 +42,9 @@ public class Jugador extends Entidad {
 	public void serColisionado(Colision col) {
 		col.afectarJugador(this);
 	}
+	
+	 public void Update(){
+	        timeUntilShootingAvailable = timeUntilShootingAvailable - 1;
+	    }
+	
 }

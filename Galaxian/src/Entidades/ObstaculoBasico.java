@@ -3,7 +3,6 @@ package Entidades;
 import javax.swing.ImageIcon;
 
 import Colisionadores.Colision;
-import Colisionadores.ColisionadorEnemigo;
 import Colisionadores.ColisionadorObstaculo;
 
 public class ObstaculoBasico extends Obstaculo{

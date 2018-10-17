@@ -18,6 +18,8 @@ public class InteligenciaKamikaze extends InteligenciaEnemigo {
 		Point posJ = juego.getPosJugador(); 
 		int anchoJugador= juego.getAnchoJugador();
 		int posXEnemigo= (int)this.enemigo.getPos().getX();
+		int posYEnemigo=(int)this.enemigo.getPos().getY();
+		if(posYEnemigo>700)this.enemigo.getPos().setLocation(posXEnemigo, -10);
 		if(posXEnemigo > posJ.getX() ) {
 			if(posXEnemigo+35 > (posJ.getX()+anchoJugador)) {
 				this.enemigo.mover(0);

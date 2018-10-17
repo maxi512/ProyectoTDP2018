@@ -2,10 +2,10 @@ package Inteligencias;
 
 import Entidades.*;
 
-public class InteligenciaDisparo extends Inteligencia{
+public class InteligenciaDisparoJugador extends Inteligencia{
 	Disparo disp;
 	
-	public InteligenciaDisparo(Disparo d) {
+	public InteligenciaDisparoJugador(Disparo d) {
 		disp= d;
 	}
 	

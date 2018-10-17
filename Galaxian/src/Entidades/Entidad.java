@@ -47,13 +47,9 @@ public abstract class Entidad {
                     	pos.setLocation(pos.x,pos.y-velocidad);
                     	break;
                     case 3:{//Abajo
-                    	if(pos.getY()>700) {
-                    		pos.setLocation(pos.x,pos.y+velocidad-720);	
-                    	}
-                    	else {
-                    		pos.setLocation(pos.x,pos.y+velocidad);
-                    	}
-                    }
+                    		pos.setLocation(pos.x,pos.y+velocidad);	
+                    		break;
+                    		}	
                 }
                 cambiarGrafico(0);
             }
@@ -107,4 +103,8 @@ public abstract class Entidad {
 	public abstract void serColisionado(Colision col); //Deben ser abstractas
 	
 	public abstract void colisionar(Entidad e);// Deben ser abstractas 
+
+	public void disparar() {
+		
+	}
 }
