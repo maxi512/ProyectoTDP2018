@@ -80,13 +80,12 @@ public class GUI extends JFrame {
         }
         
         //Hilos
-        tiemp1=new ContadorTiempo(j);
-        tiempo= new TiempoJugador(j);
         tiempoDisparo= new TiempoDisparo(j);
-       
-        tiemp1.start();
-        tiempo.start();
         tiempoDisparo.start();
+        tiempo= new TiempoJugador(j);
+        tiempo.start();
+        tiemp1=new ContadorTiempo(j);
+        tiemp1.start();
 	}
 	
 	public void toggleKey(int keyCode, boolean isPressed){

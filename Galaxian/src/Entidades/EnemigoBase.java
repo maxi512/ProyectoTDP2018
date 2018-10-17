@@ -30,7 +30,7 @@ public class EnemigoBase extends Enemigo{
 
 	public void disparar() {
 		if(r.nextInt(40)==5) {
-			DisparoEnemigo d =new DisparoEnemigo(5,(int)pos.getX()+(this.getGrafico().getWidth()/2 -1),(int)pos.getY()+60);
+			DisparoEnemigo d =new DisparoEnemigo(5,(int)pos.getX()+(this.getGrafico().getWidth()/2 -1),(int)pos.getY()+30);
 			juego.addDisparo(d);
 		}
 	}

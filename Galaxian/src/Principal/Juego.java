@@ -1,7 +1,7 @@
 package Principal;
 
 import java.util.LinkedList;
-import java.util.NoSuchElementException;
+
 
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
@@ -32,9 +32,11 @@ public class Juego {
 	public Juego(GUI gui) {	
 		this.mapa=new MapaBase(this);	//Pongo Mapa base para probar
 		miGui = gui;
+		
 		entidades = new LinkedList<Entidad>();
 		entidadesAEliminar = new LinkedList<Entidad>();
 		disparos= new LinkedList<Disparo>();
+		disparosParaAgregar= new LinkedList<Disparo>();
 		
 		this.jugador=new Jugador(265,610);
 		miGui.add(jugador.getGrafico());
@@ -54,8 +56,6 @@ public class Juego {
 		
 		cambioDireccion= false;
 		moverDerecha=true;
-		
-		disparosParaAgregar= new LinkedList<Disparo>();
 	}
 	
 	public int getAnchoGui() {
@@ -64,7 +64,7 @@ public class Juego {
 
 	public void mover() {
 		synchronized(entidades) {
-			for(int i=0;i<entidades.size();i++) {
+			for(int i=1;i<entidades.size();i++) {
 				entidades.get(i).mover();
 			}
 		}
@@ -101,19 +101,18 @@ public class Juego {
 	}
 	
 	public void eliminarEntidades() {
-		try {
-			Entidad elemento;
-			if(!(entidades.isEmpty()&&entidadesAEliminar.isEmpty())){
-				for(int i=0;i<entidadesAEliminar.size();i++) {
-					elemento= entidadesAEliminar.get(i);
-					entidades.remove(elemento);
-					elemento.destruir();
-					entidadesAEliminar.remove(elemento);
+		Entidad elemento;
+		synchronized(entidades) {
+			synchronized(entidadesAEliminar) {
+				if(!(entidades.isEmpty()&&entidadesAEliminar.isEmpty())){
+					for(int i=0;i<entidadesAEliminar.size();i++) {
+						elemento= entidadesAEliminar.get(i);
+						entidades.remove(elemento);
+						elemento.destruir();
+						entidadesAEliminar.remove(elemento);
+					}
 				}
 			}
-		}
-		catch(NoSuchElementException e) {
-			System.out.println("eliminarEntidades >> No hay mas entidades para eliminar");
 		}
 	}
 	
@@ -179,10 +178,6 @@ public class Juego {
 	
 	//METODOS PROVISORIOS
 	
-	public LinkedList<Disparo> getListaDisparos(){
-		return disparos;
-	}
-	
 	public void moverDisparo() {
 		synchronized(disparos) {
 			for(Disparo d : disparos) {
@@ -192,12 +187,14 @@ public class Juego {
 	}
 
 	public void eliminarDisparos() {
-		synchronized(disparos) {
-			for(int i=0;i<disparos.size();i++) {
-				if(disparos.get(i).getVida()<=0) {
-					entidades.remove(disparos.get(i));
-					disparos.get(i).destruir();
-					disparos.remove(i);
+		synchronized(entidades) {
+			synchronized(disparos) {
+				for(int i=0;i<disparos.size();i++) {
+					if(disparos.get(i).getVida()<=0) {
+						entidades.remove(disparos.get(i));
+						disparos.get(i).destruir();
+						disparos.remove(i);
+					}
 				}
 			}
 		}
@@ -259,19 +256,19 @@ public class Juego {
 
 	public void addDisparo(Disparo d) {
 		synchronized(disparosParaAgregar) {
-			disparosParaAgregar.add(d);
+			disparosParaAgregar.addLast(d);
 		}
 	}
 	
 	public synchronized void agregarDisparos() {
 		Disparo d;
-		synchronized(disparosParaAgregar) {
-			synchronized(entidades) {
+		synchronized(entidades) {
+			synchronized(disparos) {
 				if(disparosParaAgregar.size()>0) {			
 					for(int i=0;i<disparosParaAgregar.size();i++) {
 						d= disparosParaAgregar.get(i);
 						entidades.add(d);
-						disparos.add(d);
+						disparos.addLast(d);
 						miGui.add(d.getGrafico());
 						disparosParaAgregar.remove(d); 
 					}

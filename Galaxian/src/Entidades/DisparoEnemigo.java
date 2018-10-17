@@ -37,11 +37,6 @@ public class DisparoEnemigo extends Disparo {
 		col.afectarDisparo(this);
 	}
 	
-	public void golpearEnemigo(Enemigo e) {
-		e.quitarVida(damage);
-		this.vida=-1;
-	}
-	
 	public void golpearJugador(Jugador j) {
 		j.quitarVida(damage);
 		this.vida=-1;
