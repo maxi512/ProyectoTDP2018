@@ -21,7 +21,7 @@ public class Jugador extends Entidad {
 	}
 	
 	private void inicializarArregloImg() {
-		this.imagen[0]= new ImageIcon(this.getClass().getResource("/img/naveFinal1.png"));
+		this.imagen[0]= new ImageIcon(this.getClass().getResource("/img/naveEscudo.png"));
 	}
 	
 	public Disparo crearDisparo() {
