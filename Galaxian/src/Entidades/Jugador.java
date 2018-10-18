@@ -16,7 +16,7 @@ public class Jugador extends Entidad {
 	public Jugador(int x, int y) {
 		super(10,x,y);
 		
-		this.vida=200;
+		this.vida=100;
 		
 		arma= new ArmaBasicaJugador();
 		

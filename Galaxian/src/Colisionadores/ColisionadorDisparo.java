@@ -8,5 +8,4 @@ public class ColisionadorDisparo extends Colision{
 	public ColisionadorDisparo(Disparo d) {
 		disp=d;
 	}
-	
 }

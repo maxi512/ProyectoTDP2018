@@ -83,7 +83,7 @@ public class GUI extends JFrame {
         //LABEL VIDA
         
         labelVida= new JLabel();
-        labelVida.setBounds(0,0,100,500);
+        labelVida.setBounds(0,0,100,50);
         labelVida.setForeground(Color.WHITE);
         labelVida.setText("VIDA: ");
         panel.add(labelVida);

@@ -2,7 +2,7 @@ package Entidades;
 
 import javax.swing.ImageIcon;
 
-import Colisionadores.Colision;
+import Colisionadores.*;
 import Inteligencias.InteligenciaPowerUp;
 import Principal.Juego;
 
@@ -10,6 +10,7 @@ public class PowerUpEscudo extends PowerUp {
 
 	public PowerUpEscudo(int velocidad, int x, int y, Juego j) {
 		super(velocidad, x, y, j);
+		this.vida=10;
 		this.setInteligencia(new InteligenciaPowerUp(this));
 		inicializarArregloImg();
 	}
@@ -34,8 +35,8 @@ public class PowerUpEscudo extends PowerUp {
 	}
 
 	public void colisionar(Entidad e) {
-		// TODO Auto-generated method stub
-		
+		ColisionadorPowerUp col= new ColisionadorPowerUp(this);
+		e.serColisionado(col);
 	}
 	
 }
