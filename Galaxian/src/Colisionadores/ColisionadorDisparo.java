@@ -9,11 +9,4 @@ public class ColisionadorDisparo extends Colision{
 		disp=d;
 	}
 	
-	public void afectarEnemigo(Enemigo e) {
-		disp.golpearEnemigo(e);
-	}
-	
-	public void afectarObstaculo(Obstaculo o) {
-		disp.golpearEntidad(o);
-	}
 }

@@ -1,6 +1,5 @@
 package Entidades;
 
-import Colisionadores.*;
 import Principal.Juego;
 
 public abstract class Enemigo extends Entidad {
@@ -10,12 +9,6 @@ public abstract class Enemigo extends Entidad {
 		super(velocidad,x,y);
 		juego=null;
 	}
-	
-	
-	public abstract void colisionar(Entidad e);
-	
-	public abstract void serColisionado(Colision col);
-
 	//METODOS PROVISORIOS
 	
 	public Juego getJuego() {
@@ -24,5 +17,13 @@ public abstract class Enemigo extends Entidad {
 	
 	public void setJuego(Juego j) {
 		juego=j;
+	}
+	
+	public void golpearObstaculo(Obstaculo o) {
+		
+	}
+	
+	public void golpearJugador(Jugador j) {
+		
 	}
 }

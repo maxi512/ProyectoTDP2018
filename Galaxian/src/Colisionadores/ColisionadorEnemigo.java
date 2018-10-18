@@ -9,14 +9,11 @@ public class ColisionadorEnemigo extends Colision{
 	}
 	
 	public void afectarDisparo(Disparo disp) {
-		enem.quitarVida(disp.getDamage());
-		disp.quitarVida(disp.getVida());
+		disp.golpearEnemigo(enem);
 	}
 	
 	public void afectarObstaculo(Obstaculo o) {
-		/////PREGUNTAR COLISION///
-		enem.quitarVida(100);
-		o.quitarVida(20);
+		enem.golpearObstaculo(o);
 	}
 	
 }

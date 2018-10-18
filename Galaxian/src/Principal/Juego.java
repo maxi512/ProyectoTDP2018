@@ -1,13 +1,13 @@
 package Principal;
 
 import java.util.LinkedList;
-import java.util.NoSuchElementException;
+
 
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
+import javax.swing.JPanel;
 
 import java.awt.Rectangle;
-import java.awt.event.KeyEvent;
 
 import Principal.GUI;
 import Entidades.*;
@@ -16,25 +16,31 @@ public class Juego {
 	//ATRIBUTOS
 	private GUI miGui;
 	private Mapa mapa;
+	
 	private Jugador jugador;
+	
  	private LinkedList<Entidad> entidades;
  	private LinkedList<Entidad> entidadesAEliminar;
- 	private LinkedList<Entidad> disparos;
+ 	private LinkedList<Disparo> disparos;
+ 	private LinkedList<Disparo> disparosParaAgregar;
+ 	
  	private int puntajeTotal;
+ 	
+ 	private boolean moverDerecha,cambioDireccion;
 	
  	//CONSTRUCTOR
 	public Juego(GUI gui) {	
 		this.mapa=new MapaBase(this);	//Pongo Mapa base para probar
 		miGui = gui;
+		
 		entidades = new LinkedList<Entidad>();
 		entidadesAEliminar = new LinkedList<Entidad>();
-		disparos= new LinkedList<Entidad>();
+		disparos= new LinkedList<Disparo>();
+		disparosParaAgregar= new LinkedList<Disparo>();
 		
 		this.jugador=new Jugador(265,610);
 		miGui.add(jugador.getGrafico());
 		entidades.add(jugador);
-		
-		
 		
 		LinkedList<Enemigo> enem= mapa.getEnemigos();
 		
@@ -47,27 +53,29 @@ public class Juego {
 			entidades.add(o);
 			miGui.add(o.getGrafico());
 		}
+		
+		cambioDireccion= false;
+		moverDerecha=true;
 	}
 	
-	public void mover(int dir) {
-		int direccion=-1;
-		switch(dir) {
-		case KeyEvent.VK_LEFT:
-			direccion=0;
-			break;
-		case KeyEvent.VK_RIGHT:
-			direccion=1;
-			break;
-		}
-		jugador.mover(direccion);
+	public int getAnchoGui() {
+		return miGui.getWidth();
 	}
 
 	public void mover() {
-		for(int i=0;i<entidades.size();i++) {
-			entidades.get(i).mover();
+		synchronized(entidades) {
+			for(int i=1;i<entidades.size();i++) {
+				entidades.get(i).mover();
+			}
+		}
+		if(cambioDireccion) {
+			moverDerecha=false;
+		}
+		else {
+			moverDerecha= true;
 		}
 	}
-	
+		
 	public Jugador getJugador() {
 		return jugador;
 	}
@@ -92,28 +100,19 @@ public class Juego {
 		}
 	}
 	
-	public LinkedList<Entidad> getListaEntidades(){
-		return entidades;
-	}
-	
-	public LinkedList<Entidad> getListaEntidadesAEliminar(){
-		return entidadesAEliminar;
-	}
-	
 	public void eliminarEntidades() {
-		try {
-			Entidad elemento;
-			if(!(entidades.isEmpty()&&entidadesAEliminar.isEmpty())){
-				for(int i=0;i<entidadesAEliminar.size();i++) {
-					elemento= entidadesAEliminar.get(i);
-					entidades.remove(elemento);
-					elemento.destruir();
-					entidadesAEliminar.remove(elemento);
+		Entidad elemento;
+		synchronized(entidades) {
+			synchronized(entidadesAEliminar) {
+				if(!(entidades.isEmpty()&&entidadesAEliminar.isEmpty())){
+					for(int i=0;i<entidadesAEliminar.size();i++) {
+						elemento= entidadesAEliminar.get(i);
+						entidades.remove(elemento);
+						elemento.destruir();
+						entidadesAEliminar.remove(elemento);
+					}
 				}
 			}
-		}
-		catch(NoSuchElementException e) {
-			System.out.println("eliminarEntidades >> No hay mas entidades para eliminar");
 		}
 	}
 	
@@ -173,30 +172,127 @@ public class Juego {
 		return jugador.getGrafico().getWidth();
 	}
 	
-	//METODOS PROVISORIOS
-	public void generarDisparo() {
-		Disparo d= jugador.crearDisparo();
-		miGui.add(d.getGrafico());
-		entidades.add(d);
-		disparos.add(d);
+	public void addEntidad(Entidad e) {
+		entidades.add(e);
 	}
 	
-	public LinkedList<Entidad> getListaDisparos(){
-		return disparos;
-	}
+	//METODOS PROVISORIOS
 	
 	public void moverDisparo() {
-		for(int i=0;i<disparos.size();i++) {
-			disparos.get(i).mover();
+		synchronized(disparos) {
+			for(Disparo d : disparos) {
+				d.mover();
+			}
 		}
 	}
 
 	public void eliminarDisparos() {
-		for(int i=0;i<disparos.size();i++) {
-			if(disparos.get(i).getVida()<=0) {
-				disparos.get(i).destruir();
-				disparos.remove(i);
+		synchronized(entidades) {
+			synchronized(disparos) {
+				for(int i=0;i<disparos.size();i++) {
+					if(disparos.get(i).getVida()<=0) {
+						entidades.remove(disparos.get(i));
+						disparos.get(i).destruir();
+						disparos.remove(i);
+					}
+				}
 			}
 		}
+	}
+
+	
+	////METODOS PROVISORIOS 2
+	public void moverJugador() {
+		if(miGui.right.isKeyDown())
+           jugador.mover(1);
+
+        if(miGui.left.isKeyDown())
+        	jugador.mover(0);
+
+        if(miGui.space.isKeyDown()) {
+        	Disparo d= jugador.crearDisparo();
+    		if(d!=null) {
+    			this.addDisparo(d);
+    		}
+        }
+        	
+	}
+	
+	public void Update() {
+		jugador.Update();
+	}
+	
+	public void manage() {
+		if(entidades.size()== 1&& jugador.getVida()>0) {
+			PrimerBoss boss=null;
+			boss = PrimerBoss.getPrimerBoss(10,200,200);
+			if(boss!=null) {
+				boss.setJuego(this);
+				entidades.add(boss);
+				miGui.add(boss.getGrafico());
+			}
+		}
+	}
+	
+	public void setCambiarDireccion(boolean dir) {
+		cambioDireccion= dir;
+	}
+	
+	public boolean moverDerecha() {
+		return moverDerecha;
+	}
+	
+	public boolean cambioDireccion() {
+		return cambioDireccion;
+	}
+	
+	public void accionarDisparos() {
+		synchronized(entidades) {
+			for(Entidad e: entidades) {
+				e.disparar();
+			}
+		}
+	}
+
+	public void addDisparo(Disparo d) {
+		synchronized(disparosParaAgregar) {
+			disparosParaAgregar.addLast(d);
+		}
+	}
+	
+	public synchronized void agregarDisparos() {
+		Disparo d;
+		synchronized(entidades) {
+			synchronized(disparos) {
+				if(disparosParaAgregar.size()>0) {			
+					for(int i=0;i<disparosParaAgregar.size();i++) {
+						d= disparosParaAgregar.get(i);
+						entidades.add(d);
+						disparos.addLast(d);
+						miGui.add(d.getGrafico());
+						disparosParaAgregar.remove(d); 
+					}
+				}
+			}
+		}
+	}
+	
+	public boolean jugadorVivo() {
+		return jugador.getVida()>0;
+	}
+
+
+	public void terminarJuego() {
+		JLabel partidaTerminada= new JLabel("La partida termino",JLabel.CENTER);
+		JPanel panel= new JPanel(new BorderLayout());
+		panel.setBounds(0, 0, miGui.getWidth(), miGui.getHeight());
+		panel.setBackground(Color.RED);  
+		panel.add(partidaTerminada,BorderLayout.CENTER);
+		
+		//Destruyo el jugador
+		entidades.get(0).destruir();
+		entidades.removeFirst();
+		//
+		miGui.add(panel);
 	}
 }

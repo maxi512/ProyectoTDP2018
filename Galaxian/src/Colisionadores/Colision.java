@@ -16,7 +16,9 @@ public abstract class Colision {
 		
 	}
 	
-	public void afectarObstaculo(Obstaculo o) {}
+	public void afectarObstaculo(Obstaculo o) {
+		
+	}
 	
 	
 }

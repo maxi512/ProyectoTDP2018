@@ -1,7 +1,6 @@
 package Principal;
 
 import java.awt.Color;
-import java.awt.EventQueue;
 
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
@@ -10,55 +9,50 @@ import javax.swing.JPanel;
 
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
 
 public class GUI extends JFrame {
+	/**
+	* ATRIBUTOS DE PRUEBA
+	*/
+	  public Key left = new Key();
+	  public Key right = new Key();
+	  public Key space = new Key();
+	/**
+	 * ACA TERMINAN LOS ATRIBUTOS DE PRUEBA
+	 */
+	
 	private static final long serialVersionUID = 1L;
 
 	private JPanel panel;
 	private JLabel [] labelPuntaje;
 	private Juego j;
-	private ContadorTiempo tiempo;
-	private OyenteDisparo OyenteMouse;
+	private ContadorTiempo tiemp1;
+	private TiempoJugador tiempo;
 	
 	//ATRIBUTOS PROVISORIOS
 	private TiempoDisparo tiempoDisparo;
 	
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					GUI frame = new GUI();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
+	public class Key{
+		private boolean isKeyDown = false;
+        public void toggle(boolean isKeyDown){
+            this.isKeyDown = isKeyDown;
+        }
+        public boolean isKeyDown(){
+            return isKeyDown;
+        }
 	}
-
 	/**
 	 * Create the frame.
 	 */
-	public GUI() {
+	public GUI() {		
 		addKeyListener(new KeyAdapter() {
-			
-			
-			
+						
 			@Override
 			public void keyPressed(KeyEvent arg0) {
-				//mover(arg0);
-				j.getJugador().keyPressed(arg0);
+				toggleKey(arg0.getKeyCode(),true);
 			}
 			public void keyReleased(KeyEvent arg0) {
-				disparar(arg0);
-				j.getJugador().keyReleased(arg0);
-				//destruirEnemigo(arg);
-				
+				toggleKey(arg0.getKeyCode(),false);
 			}
 		});
 		
@@ -71,10 +65,11 @@ public class GUI extends JFrame {
         setContentPane(panel);
         panel.setBackground(Color.BLACK);
         panel.setLayout(null);
+    
         
         j=new Juego(this);
         
-        //LABEL PUNTAJE
+      //LABEL PUNTAJE
         labelPuntaje= new JLabel[8];
         for(int i=0;i<labelPuntaje.length;i++) {
         	ImageIcon img= new ImageIcon(this.getClass().getResource("/img/numeros/Sin título-3.png"));
@@ -83,77 +78,28 @@ public class GUI extends JFrame {
         	labelPuntaje[i].setVisible(true);
         	panel.add(labelPuntaje[i]);
         }
-
-        //OYENTE MOUSE
-        OyenteMouse= new OyenteDisparo();
-        panel.addMouseListener(OyenteMouse);
         
-		
-		
-		//INICIALIZO HILOS
-		tiempo= new ContadorTiempo(j);
-		tiempo.start();
-		tiempoDisparo= new TiempoDisparo(j);
-		tiempoDisparo.start();
-		
-		
+        //Hilos
+        tiempoDisparo= new TiempoDisparo(j);
+        tiempoDisparo.start();
+        tiempo= new TiempoJugador(j);
+        tiempo.start();
+        tiemp1=new ContadorTiempo(j);
+        tiemp1.start();
 	}
 	
-	protected void mover(KeyEvent key){
-		j.mover(key.getKeyCode());
-		this.repaint();
-	}
-	
-	protected void destruirEnemigo(KeyEvent key) {
-		if(key.getKeyCode()==KeyEvent.VK_F) {
-			j.actualizarLabels();
-			//labelPuntaje.setText("Puntaje: "+j.getPuntajeTotal());
-		}
-	}
-	
-	protected void disparar(KeyEvent key) {
-		if(key.getKeyCode() == KeyEvent.VK_SPACE) {
-			j.generarDisparo();
-		}
-	}
-	
-	
-	
-	private class OyenteDisparo implements MouseListener{
-
-		//CURSOR TIENE QUE ESTAR ADENTRO DEL LABEL
-		public void mouseClicked(MouseEvent e) {
-			//j.eliminarEnemigo();
-			System.out.println("Elimine enemigo");
-		}
-
-		@Override
-		public void mousePressed(MouseEvent e) {
-			// TODO Auto-generated method stub
-			
-		}
-
-		@Override
-		public void mouseReleased(MouseEvent e) {
-			// TODO Auto-generated method stub
-			
-		}
-
-		@Override
-		public void mouseEntered(MouseEvent e) {
-			// TODO Auto-generated method stub
-			
-		}
-
-		@Override
-		public void mouseExited(MouseEvent e) {
-			// TODO Auto-generated method stub
-			
-		}
-		
-	}
+	public void toggleKey(int keyCode, boolean isPressed){
+        if(keyCode == KeyEvent.VK_RIGHT)
+            right.toggle(isPressed);
+        if(keyCode == KeyEvent.VK_LEFT)
+            left.toggle(isPressed);
+        if(keyCode == KeyEvent.VK_SPACE)
+            space.toggle(isPressed);
+    }
 
 	public JLabel[] getLabelPuntaje() {
 		return labelPuntaje;
 	}
 }
+	
+	
