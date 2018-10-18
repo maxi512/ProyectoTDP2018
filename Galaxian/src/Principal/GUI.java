@@ -25,6 +25,8 @@ public class GUI extends JFrame {
 
 	private JPanel panel;
 	private JLabel [] labelPuntaje;
+	private JLabel labelVida;
+	
 	private Juego j;
 	private ContadorTiempo tiemp1;
 	private TiempoJugador tiempo;
@@ -78,6 +80,13 @@ public class GUI extends JFrame {
         	labelPuntaje[i].setVisible(true);
         	panel.add(labelPuntaje[i]);
         }
+        //LABEL VIDA
+        
+        labelVida= new JLabel();
+        labelVida.setBounds(0,0,100,500);
+        labelVida.setForeground(Color.WHITE);
+        labelVida.setText("VIDA: ");
+        panel.add(labelVida);
         
         //Hilos
         tiempoDisparo= new TiempoDisparo(j);
@@ -88,6 +97,7 @@ public class GUI extends JFrame {
         tiemp1.start();
 	}
 	
+
 	public void toggleKey(int keyCode, boolean isPressed){
         if(keyCode == KeyEvent.VK_RIGHT)
             right.toggle(isPressed);
@@ -99,6 +109,10 @@ public class GUI extends JFrame {
 
 	public JLabel[] getLabelPuntaje() {
 		return labelPuntaje;
+	}
+	
+	public JLabel getLabelVida() {
+		return labelVida;
 	}
 }
 	

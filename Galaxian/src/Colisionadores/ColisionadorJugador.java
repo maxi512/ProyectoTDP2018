@@ -15,4 +15,8 @@ public class ColisionadorJugador extends Colision{
 	public void afectarEnemigo(Enemigo enem) {
 		enem.golpearJugador(jug);
 	}
+	
+	public void afectarPowerUp(PowerUp p) {
+		p.afectar();
+	}
 }

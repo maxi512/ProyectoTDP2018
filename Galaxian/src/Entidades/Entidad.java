@@ -17,19 +17,21 @@ public abstract class Entidad {
 	protected Icon []imagen;
 	protected Point pos;
 	protected int puntaje;
+	protected int imagenActual;
 	
 	//CONSTRUCTOR
 	protected Entidad(int velocidad,int x,int y) {
 		this.velocidad= velocidad;
 		pos = new Point (x,y);
 		imagen= new Icon[30];
+		imagenActual=0;
 	}
 	
 	//METODOS
 	public JLabel getGrafico() {
 		if(this.grafico==null) {
 			this.grafico=new JLabel (this.imagen[0]);
-			this.grafico.setBounds(this.pos.x,this.pos.y,this.imagen[0].getIconWidth(),this.imagen[0].getIconHeight()); //PREGUNTAR!!!!!!!!!!　　　　
+			this.grafico.setBounds(this.pos.x,this.pos.y,this.imagen[0].getIconWidth(),this.imagen[0].getIconHeight());
 		}
 		return this.grafico;
 	}
@@ -51,7 +53,7 @@ public abstract class Entidad {
                     		break;
                     		}	
                 }
-                cambiarGrafico(0);
+                cambiarGrafico(imagenActual);
             }
         }
 	
@@ -63,7 +65,17 @@ public abstract class Entidad {
     }
 	
 	public Rectangle getRectangle() {
-		return new Rectangle((int)pos.getX(),(int)pos.getY(),grafico.getWidth(),grafico.getHeight());
+		
+		
+		int posX = (int)pos.getX();
+		int posY = (int)pos.getY();
+		
+		int width = grafico.getWidth();
+		int height = grafico.getHeight();
+		
+		
+		Rectangle toReturn = new Rectangle(posX,posY,width,height);
+		return toReturn;
 	}
 	
 	public void destruir() {

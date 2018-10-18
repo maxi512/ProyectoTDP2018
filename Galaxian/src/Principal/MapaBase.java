@@ -7,10 +7,12 @@ public class MapaBase extends Mapa {
 	
 	public MapaBase(Juego j) {
 		this.enemigos= new LinkedList<Enemigo>();
-		this.obstaculos= new LinkedList<Obstaculo>();
+		this.obstaculos= new LinkedList<Entidad>();
 		int x= 50;
 		int y= 50;
 		
+		obstaculos.add(new PowerUpEscudo(7,0,0,j));
+		/**
 	 	for(int i=0;i<5;i++){
 			EnemigoBase enem= new EnemigoBase(7,x,y);
 			enem.setJuego(j);

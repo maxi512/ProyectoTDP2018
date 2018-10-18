@@ -9,6 +9,7 @@ import Colisionadores.*;
 public class EnemigoBase extends Enemigo{
 	
 	private Random r;
+	private Arma arma;
 	
 	public EnemigoBase(int velocidad,int x, int y) {
 		super(velocidad,x,y);
@@ -18,6 +19,7 @@ public class EnemigoBase extends Enemigo{
 		this.setPuntaje(7);
 		this.setInteligencia(new InteligenciaEnemigo(this));
 		r= new Random();
+		arma = new ArmaEnemigo();
 	}
 	
 	private void inicializarArregloImg() {
@@ -30,7 +32,9 @@ public class EnemigoBase extends Enemigo{
 
 	public void disparar() {
 		if(r.nextInt(40)==5) {
-			DisparoEnemigo d =new DisparoEnemigo(5,(int)pos.getX()+(this.getGrafico().getWidth()/2 -1),(int)pos.getY()+30);
+			Disparo d = arma.generarDisparo();
+			d.getPos().setLocation((int)pos.getX()+(this.getGrafico().getWidth()/2 -1), (int)pos.getY()+30);
+			//DisparoEnemigo d =new DisparoEnemigo(5,(int)pos.getX()+(this.getGrafico().getWidth()/2 -1),(int)pos.getY()+30);
 			juego.addDisparo(d);
 		}
 	}

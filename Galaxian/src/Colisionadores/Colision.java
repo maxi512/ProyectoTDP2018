@@ -20,5 +20,10 @@ public abstract class Colision {
 		
 	}
 	
+	public void afectarPowerUp(PowerUp p) {
+		
+	}
+
+	
 	
 }

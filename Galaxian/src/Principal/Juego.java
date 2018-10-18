@@ -49,7 +49,7 @@ public class Juego {
 			miGui.add(e.getGrafico());
 		}
 		
-		for(Obstaculo o: mapa.getObstaculos()) {
+		for(Entidad o: mapa.getObstaculos()) {
 			entidades.add(o);
 			miGui.add(o.getGrafico());
 		}
@@ -82,18 +82,22 @@ public class Juego {
 	
 	public void detectarColisiones() {
 		for(int i=0;i<entidades.size();i++) {
-			Rectangle r1 = entidades.get(i).getRectangle();
-			for(int j=i+1;j<entidades.size();j++) {
-				Rectangle r2= entidades.get(j).getRectangle();
-				if(r1.intersects(r2)){
-					entidades.get(i).colisionar(entidades.get(j));
-					if(entidades.get(i).getVida()<=0) {
-						entidadesAEliminar.add(entidades.get(i));
-						puntajeTotal+= entidades.get(i).getPuntaje();
-					}
-					if(entidades.get(j).getVida()<=0) {
-						entidadesAEliminar.add(entidades.get(j));
-						puntajeTotal+= entidades.get(j).getPuntaje();
+			if(entidades.get(i)!=null) {
+				Rectangle r1 = entidades.get(i).getRectangle();
+				for(int j=i+1;j<entidades.size();j++) {
+					if(entidades.get(j).getGrafico()!=null) {
+						Rectangle r2= entidades.get(j).getRectangle();
+		 				if(r1.intersects(r2)){
+							entidades.get(i).colisionar(entidades.get(j));
+							if(entidades.get(i).getVida()<=0) {
+								entidadesAEliminar.add(entidades.get(i)); 
+ 								puntajeTotal+= entidades.get(i).getPuntaje();
+							}
+							if(entidades.get(j).getVida()<=0) {
+								entidadesAEliminar.add(entidades.get(j));
+								puntajeTotal+= entidades.get(j).getPuntaje();
+							}
+						}
 					}
 				}
 			}
@@ -161,6 +165,8 @@ public class Juego {
 			}
 			aux/=10;
 		}
+		JLabel vida = miGui.getLabelVida();
+		vida.setText("VIDA: "+jugador.getVida());
 		
 	}
 	
