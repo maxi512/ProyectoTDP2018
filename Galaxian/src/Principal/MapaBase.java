@@ -11,7 +11,8 @@ public class MapaBase extends Mapa {
 		int x= 50;
 		int y= 50;
 		
-		obstaculos.add(new PowerUpEscudo(7,150,150,j));
+		obstaculos.add(new PowerUpArmaMejorada(7,150,150,j));
+		obstaculos.add(new EnemigoBase(7,x,y));
 		/*
 	 	for(int i=0;i<5;i++){
 			EnemigoBase enem= new EnemigoBase(7,x,y);

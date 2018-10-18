@@ -10,6 +10,8 @@ public class InteligenciaEnemigo extends Inteligencia{
 	
 	public void mover() {
 		int dir=-1;
+		System.out.println(this.enemigo.getJuego()==null);
+		
 		if(enemigo.getJuego().moverDerecha()){
 			dir=1;
 		}

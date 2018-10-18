@@ -2,16 +2,16 @@ package Entidades;
 
 import javax.swing.ImageIcon;
 
-import Colisionadores.*;
+import Colisionadores.Colision;
+import Colisionadores.ColisionadorPowerUp;
 import Inteligencias.InteligenciaPowerUp;
 import Principal.Juego;
 
-public class PowerUpEscudo extends PowerUp {
-
-	public PowerUpEscudo(int velocidad, int x, int y, Juego j) {
+public class PowerUpArmaMejorada extends PowerUp {
+	public PowerUpArmaMejorada(int velocidad, int x, int y, Juego j) {
 		super(velocidad, x, y, j);
-		this.setInteligencia(new InteligenciaPowerUp(this));
 		inicializarArregloImg();
+		this.setInteligencia(new InteligenciaPowerUp(this));
 	}
 	
 	public void mover() {
@@ -22,11 +22,11 @@ public class PowerUpEscudo extends PowerUp {
 	}
 	
 	private void inicializarArregloImg() {
-		this.imagen[0]= new ImageIcon(this.getClass().getResource("/img/escudo.png"));
+		this.imagen[0]= new ImageIcon(this.getClass().getResource("/img/armaMejorada.png"));
 	}
 	
 	public void afectar() {
-		this.juego.getJugador().activarEscudo();
+		this.juego.getJugador().setArma(new ArmaMejorada());
 	}
 
 	public void serColisionado(Colision col) {
@@ -37,5 +37,4 @@ public class PowerUpEscudo extends PowerUp {
 		ColisionadorPowerUp col= new ColisionadorPowerUp(this);
 		e.serColisionado(col);
 	}
-	
 }

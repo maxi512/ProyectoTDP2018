@@ -119,4 +119,11 @@ public abstract class Entidad {
 	public void disparar() {
 		
 	}
+
+	public Inteligencia getInteligencia() {
+		return this.inteligencia;
+	}
+
+	
+	
 }

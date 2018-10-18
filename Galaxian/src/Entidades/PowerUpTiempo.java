@@ -2,16 +2,18 @@ package Entidades;
 
 import javax.swing.ImageIcon;
 
-import Colisionadores.*;
+import Colisionadores.Colision;
+import Colisionadores.ColisionadorPowerUp;
 import Inteligencias.InteligenciaPowerUp;
+import Principal.HiloDetieneTiempo;
 import Principal.Juego;
 
-public class PowerUpEscudo extends PowerUp {
+public class PowerUpTiempo extends PowerUp {
 
-	public PowerUpEscudo(int velocidad, int x, int y, Juego j) {
+	public PowerUpTiempo(int velocidad, int x, int y, Juego j) {
 		super(velocidad, x, y, j);
-		this.setInteligencia(new InteligenciaPowerUp(this));
 		inicializarArregloImg();
+		this.setInteligencia(new InteligenciaPowerUp(this));
 	}
 	
 	public void mover() {
@@ -20,22 +22,27 @@ public class PowerUpEscudo extends PowerUp {
 			this.vida=-1;
 		}
 	}
-	
+
 	private void inicializarArregloImg() {
-		this.imagen[0]= new ImageIcon(this.getClass().getResource("/img/escudo.png"));
+		this.imagen[0]= new ImageIcon(this.getClass().getResource("/img/reloj.png"));
 	}
-	
+	@Override
 	public void afectar() {
-		this.juego.getJugador().activarEscudo();
+		HiloDetieneTiempo hilo = new HiloDetieneTiempo(this.juego);
+		hilo.start();	
 	}
 
+	@Override
 	public void serColisionado(Colision col) {
 		col.afectarPowerUp(this);
 	}
 
+	@Override
 	public void colisionar(Entidad e) {
 		ColisionadorPowerUp col= new ColisionadorPowerUp(this);
 		e.serColisionado(col);
+		
 	}
+	
 	
 }

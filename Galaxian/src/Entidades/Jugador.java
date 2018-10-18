@@ -54,6 +54,10 @@ public class Jugador extends Entidad {
 		escudo=true;
 	}
 	
+	public void setArma(Arma a) {
+		this.arma=a;
+	}
+	
 	public void desactivarEscudo() {
 		this.grafico= new JLabel(this.imagen[0]);
 		escudo=false;

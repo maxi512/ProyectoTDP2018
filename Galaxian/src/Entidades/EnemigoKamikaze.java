@@ -8,14 +8,15 @@ import javax.swing.ImageIcon;
 import Colisionadores.Colision;
 import Colisionadores.ColisionadorEnemigo;
 import Inteligencias.*;
+import Principal.Juego;
 
 public class EnemigoKamikaze extends Enemigo{
 	
 	private int damage;
 	private boolean cambieInteligencia;
 	
-	public EnemigoKamikaze(int velocidad,int x, int y) {
-		super(velocidad,x,y);
+	public EnemigoKamikaze(int velocidad,int x, int y, Juego j) {
+		super(velocidad,x,y,j);
 		
 		this.vida= 200;
 		damage=80;
@@ -36,6 +37,7 @@ public class EnemigoKamikaze extends Enemigo{
 		this.setInteligencia(new InteligenciaKamikaze(this,this.juego));
 			cambieInteligencia=true;
 		}
+		System.out.println("Inteligencia es nula?"+this.inteligencia==null);
 		this.inteligencia.mover();
 		
 	}

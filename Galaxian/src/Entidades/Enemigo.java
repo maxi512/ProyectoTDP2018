@@ -9,6 +9,10 @@ public abstract class Enemigo extends Entidad {
 		super(velocidad,x,y);
 		juego=null;
 	}
+	public Enemigo(int velocidad,int x,int y, Juego j) {
+		super(velocidad,x,y);
+		juego=j;
+	}
 	//METODOS PROVISORIOS
 	
 	public Juego getJuego() {
