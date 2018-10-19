@@ -1,4 +1,4 @@
-package Entidades;
+ package Entidades;
 
 import javax.swing.ImageIcon;
 
@@ -14,6 +14,7 @@ public class PowerUpTiempo extends PowerUp {
 		super(velocidad, x, y, j);
 		inicializarArregloImg();
 		this.setInteligencia(new InteligenciaPowerUp(this));
+		this.vida= 10;
 	}
 	
 	public void mover() {
@@ -30,6 +31,7 @@ public class PowerUpTiempo extends PowerUp {
 	public void afectar() {
 		HiloDetieneTiempo hilo = new HiloDetieneTiempo(this.juego);
 		hilo.start();	
+		this.vida=-1;
 	}
 
 	@Override

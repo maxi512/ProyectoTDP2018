@@ -6,7 +6,7 @@ import javax.swing.ImageIcon;
 
 import Colisionadores.Colision;
 import Colisionadores.ColisionadorEnemigo;
-import Inteligencias.InteligenciaEnemigo;
+import Inteligencias.InteligenciaEnemigoConArma;
 
 public class PrimerBoss extends Enemigo {
 	
@@ -19,7 +19,7 @@ public class PrimerBoss extends Enemigo {
 		this.vida= 100;
 		inicializarArregloImg();
 		this.setPuntaje(7);
-		this.setInteligencia(new InteligenciaEnemigo(this));
+		this.setInteligencia(new InteligenciaEnemigoConArma(this));
 		
 		r= new Random();
 	}

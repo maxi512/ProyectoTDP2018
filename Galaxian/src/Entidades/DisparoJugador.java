@@ -20,7 +20,6 @@ public class DisparoJugador extends Disparo{
 		this.imagen[0]= new ImageIcon(this.getClass().getResource("/img/disparoBasico.png"));
 	}	
 	public void mover() {
-		if(this.inteligencia==null)System.out.println("INTELIGENCIA NULA");
 		this.inteligencia.mover();
 		if(this.pos.getY()<-5) {
 			this.vida=-1;

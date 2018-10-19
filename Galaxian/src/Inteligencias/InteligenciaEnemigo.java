@@ -2,16 +2,11 @@ package Inteligencias;
 
 import Entidades.*;
 
-public class InteligenciaEnemigo extends Inteligencia{
+public abstract class InteligenciaEnemigo extends Inteligencia{
 	protected Enemigo enemigo;
-	public InteligenciaEnemigo(Enemigo e) {
-		enemigo=e;
-	}
 	
 	public void mover() {
 		int dir=-1;
-		System.out.println(this.enemigo.getJuego()==null);
-		
 		if(enemigo.getJuego().moverDerecha()){
 			dir=1;
 		}
@@ -33,5 +28,6 @@ public class InteligenciaEnemigo extends Inteligencia{
 		}
 		
 	}
+
 }
 

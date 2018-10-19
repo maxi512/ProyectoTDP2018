@@ -10,6 +10,7 @@ public class PowerUpEscudo extends PowerUp {
 
 	public PowerUpEscudo(int velocidad, int x, int y, Juego j) {
 		super(velocidad, x, y, j);
+		this.vida=10;
 		this.setInteligencia(new InteligenciaPowerUp(this));
 		inicializarArregloImg();
 	}

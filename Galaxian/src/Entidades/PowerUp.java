@@ -8,7 +8,6 @@ public abstract class PowerUp extends Entidad {
 	
 	public PowerUp(int velocidad, int x, int y, Juego j) {
 		super(velocidad, x, y);
-		this.vida=10;
 		juego=j;
 	}
 	

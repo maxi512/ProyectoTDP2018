@@ -1,5 +1,7 @@
 package Colisionadores;
+
 import Entidades.*;
+import Inteligencias.*;
 
 public class ColisionadorEnemigo extends Colision{
 	private Enemigo enem;
@@ -14,6 +16,10 @@ public class ColisionadorEnemigo extends Colision{
 	
 	public void afectarObstaculo(Obstaculo o) {
 		enem.golpearObstaculo(o);
+	}
+	
+	public void cambiarInteligencia(Inteligencia i) {
+		enem.setInteligencia(i);
 	}
 	
 }

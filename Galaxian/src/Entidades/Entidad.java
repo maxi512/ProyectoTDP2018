@@ -91,6 +91,10 @@ public abstract class Entidad {
 		inteligencia =i;
 	}
 	
+	public Inteligencia getInteligencia() {
+		return this.inteligencia;
+	}
+	
 	public int getPuntaje() {
 		return puntaje;
 	}
@@ -119,11 +123,10 @@ public abstract class Entidad {
 	public void disparar() {
 		
 	}
-
-	public Inteligencia getInteligencia() {
-		return this.inteligencia;
-	}
-
 	
+	
+	public void serDetenido(Inteligencia i){
+		
+	}
 	
 }

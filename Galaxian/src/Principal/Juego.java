@@ -80,10 +80,6 @@ public class Juego {
 		return jugador;
 	}
 	
-	public LinkedList<Disparo> getListaDisparos(){
-		return disparos;
-	}
-	
 	public void detectarColisiones() {
 		for(int i=0;i<entidades.size();i++) {
 			if(entidades.get(i)!=null) {
@@ -291,12 +287,7 @@ public class Juego {
 		return jugador.getVida()>0;
 	}
 
-	public LinkedList<Entidad>getListaEntidades(){
-		synchronized(entidades) {
-			return entidades;
-		}
-	}
-	
+
 	public void terminarJuego() {
 		JLabel partidaTerminada= new JLabel("La partida termino",JLabel.CENTER);
 		JPanel panel= new JPanel(new BorderLayout());
@@ -310,4 +301,14 @@ public class Juego {
 		//
 		miGui.add(panel);
 	}
+	
+	
+	public LinkedList<Entidad>getListaEntidades(){
+		return entidades;
+	}
+	
+	public LinkedList<Disparo> getListaDisparos(){
+		return disparos;
+	}
+	
 }

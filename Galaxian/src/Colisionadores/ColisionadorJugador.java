@@ -18,6 +18,5 @@ public class ColisionadorJugador extends Colision{
 	
 	public void afectarPowerUp(PowerUp p) {
 		p.afectar();
-		p.destruir();
 	}
 }
