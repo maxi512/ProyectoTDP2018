@@ -2,6 +2,7 @@ package Principal;
 
 import java.util.LinkedList;
 import Entidades.*;
+import Inteligencias.InteligenciaMareado;
 
 public class MapaBase extends Mapa {
 	
@@ -18,6 +19,13 @@ public class MapaBase extends Mapa {
 			enemigos.add(enem);
 			x+= 70;
 		}
+	 	//AGREGRE UN KAMIKAZE
+	 	EnemigoKamikazeBuscaYMareado enemigo= new EnemigoKamikazeBuscaYMareado(9,x,y);
+		enemigo.setJuego(j);
+		enemigos.add(enemigo);
+		x+= 70;
+	 	
+	 	
 	 	/*x=100;
 	 	y+=100;
 		for(int i=0;i<5;i++){
