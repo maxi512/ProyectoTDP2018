@@ -3,7 +3,6 @@ package Entidades;
 import javax.swing.ImageIcon;
 
 import Colisionadores.Colision;
-import Inteligencias.InteligenciaDisparoEnemigo;
 import Inteligencias.InteligenciaPowerUp;
 import Principal.Juego;
 
@@ -13,6 +12,8 @@ public class PowerUpVida extends PowerUp {
 		super(velocidad, x, y, j);
 		inicializarArregloImg();
 		this.setInteligencia(new InteligenciaPowerUp(this));
+		
+		this.vida=10;
 
 	}
 	
@@ -28,7 +29,9 @@ public class PowerUpVida extends PowerUp {
 	}
 	
 	public void afectar() {
-		this.juego.getJugador().sumarVida(50);
+		this.juego.getJugador().sumarVida(150);
+		this.vida=0;
+		
 	}
 
 	public void serColisionado(Colision col) {

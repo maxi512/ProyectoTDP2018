@@ -28,6 +28,7 @@ public class PowerUpEscudo extends PowerUp {
 	
 	public void afectar() {
 		this.juego.getJugador().activarEscudo();
+		this.vida=0;
 	}
 
 	public void serColisionado(Colision col) {
