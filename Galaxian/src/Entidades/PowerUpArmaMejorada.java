@@ -12,6 +12,8 @@ public class PowerUpArmaMejorada extends PowerUp {
 		super(velocidad, x, y, j);
 		inicializarArregloImg();
 		this.setInteligencia(new InteligenciaPowerUp(this));
+		
+		this.vida=10;
 	}
 	
 	public void mover() {
@@ -27,6 +29,7 @@ public class PowerUpArmaMejorada extends PowerUp {
 	
 	public void afectar() {
 		this.juego.getJugador().setArma(new ArmaMejorada());
+		this.vida=0;
 	}
 
 	public void serColisionado(Colision col) {
