@@ -7,7 +7,7 @@ import javax.swing.JLabel;
 import Colisionadores.*;
 
 public class Jugador extends Entidad {
-	private static final int SHOOT_COOLDOWN_UPDATE_TIME = 10;
+	private int SHOOT_COOLDOWN_UPDATE_TIME = 10;
 	private long timeUntilShootingAvailable = 0;
 	
 	private Arma arma;
@@ -26,7 +26,7 @@ public class Jugador extends Entidad {
 	}
 	
 	private void inicializarArregloImg() {
-		this.imagen[0]= new ImageIcon(this.getClass().getResource("/img/naveFinal1.png"));
+		this.imagen[0]= new ImageIcon(this.getClass().getResource("/img/playerShip1_blue.png"));
 		this.imagen[1]= new ImageIcon(this.getClass().getResource("/img/naveEscudo.png"));
 	}
 	
@@ -46,6 +46,10 @@ public class Jugador extends Entidad {
 	
 	public void sumarVida(int v) {
 		this.vida+=v;
+	}
+	
+	public void setTiempoDisparo(int tiempo) {
+		SHOOT_COOLDOWN_UPDATE_TIME=tiempo;
 	}
 	
 	public void activarEscudo() {

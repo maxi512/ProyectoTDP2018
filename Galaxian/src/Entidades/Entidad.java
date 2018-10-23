@@ -80,7 +80,8 @@ public abstract class Entidad {
 	
 	public void destruir() {
 		grafico.setIcon(null);
-		vida=0;
+		vida=-1;
+		
 	}
 	
 	public void setPuntaje(int x) {

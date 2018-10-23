@@ -6,34 +6,34 @@ import Colisionadores.Colision;
 import Colisionadores.ColisionadorDisparo;
 import Inteligencias.InteligenciaDisparoJugador;
 
-public class DisparoMejorado extends Disparo {
+public class DisparoRapido extends Disparo {
 	
 	private int damage;
 	
-	public DisparoMejorado(int velocidad,int x,int y) {
-		super(velocidad,x,y);
-		this.damage= 100;
-		
+	public DisparoRapido(int velocidad, int x, int y) {
+		super(velocidad, x, y);
 		this.setInteligencia(new InteligenciaDisparoJugador(this));
 		inicializarArregloImg();
+		this.damage=15;
 	}
 	
+	
 	private void inicializarArregloImg() {
-		this.imagen[0]= new ImageIcon(this.getClass().getResource("/img/disparoMejorado.png"));
-	}	
-	
-	
+		this.imagen[0]= new ImageIcon(this.getClass().getResource("/img/disparoChico.png"));
+	}
+
+	public void serColisionado(Colision col) {
+		col.afectarDisparo(this);
+	}
+
 	public void colisionar(Entidad e) {
 		ColisionadorDisparo col= new ColisionadorDisparo(this);
 		e.serColisionado(col);
-	}
-	
-	public void serColisionado(Colision col) {
-		col.afectarDisparo(this);
 	}
 	
 	public void golpearEnemigo(Enemigo e) {
 		e.quitarVida(damage);
 		this.vida=-1;
 	}
+	
 }
