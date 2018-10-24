@@ -26,7 +26,7 @@ public class EnemigoKamikazeMareado extends Enemigo{
 		this.setInteligencia(new InteligenciaEnemigoConArma(this));
 	}
 	private void inicializarArregloImg() {
-		this.imagen[0]= new ImageIcon(this.getClass().getResource("/img/Webp.net-gifmaker (3).gif"));
+		this.imagen[0]= new ImageIcon(this.getClass().getResource("/img/enemigoMareable.gif"));
 	}
 	
 	public void mover() {

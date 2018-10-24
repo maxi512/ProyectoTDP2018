@@ -29,7 +29,7 @@ public class MapaBase extends Mapa {
 		}
 		x=50;
 	 	y+=100;
-		for(int i=0;i<5;i++){
+		/**for(int i=0;i<5;i++){
 			EnemigoBase enem= new EnemigoBase(7,x,y);
 			enem.setJuego(j);
 			enemigos.add(enem);
@@ -40,11 +40,13 @@ public class MapaBase extends Mapa {
 			enemigo.setJuego(j);
 			enemigos.add(enemigo);
 			x+= 70;
-		}
+		}*/
 		
 		
 		
 		
 		//obstaculos.add(new ObstaculoBasico (x,y));
+		obstaculos.add(new ObstaculoRompeJugador(200,500));
+		obstaculos.add(new ObstaculoBasico(300,500));
 	}
 }
