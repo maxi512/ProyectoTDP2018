@@ -57,12 +57,16 @@ public abstract class Entidad {
             }
         }
 	
-	protected void cambiarGrafico(int dir){
+	public void cambiarGrafico(int dir){
         if(this.grafico != null){
             this.grafico.setIcon(this.imagen[dir]);
             this.grafico.setBounds(this.pos.x, this.pos.y, this.imagen[dir].getIconWidth(), this.imagen[dir].getIconHeight());
         }
     }
+	
+	public void setImagenActual(int i) {
+		this.imagenActual=i;
+	}
 	
 	public Rectangle getRectangle() {
 		
