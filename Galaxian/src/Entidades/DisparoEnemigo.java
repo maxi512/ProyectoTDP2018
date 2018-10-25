@@ -46,29 +46,5 @@ public class DisparoEnemigo extends Disparo {
 	}
 	public void golpearObstaculoJugador(Obstaculo o) {
 	}
-	public void golpearObstaculoEnemigoYJugador(Obstaculo o) {
-		o.quitarVida(20);
-	}
-	public void golpearObstaculoJugador(Obstaculo o) {
-		
-	}
-	public void golpearObstaculoEnemigoYJugador(Obstaculo o) {
-		o.quitarVida(20);
-	}
-	public void golpearObstaculoJugador(Obstaculo o) {
-		
-	}
-	public void golpearObstaculoEnemigoYJugador(Obstaculo o) {
-		o.quitarVida(20);
-	}
-	public void golpearObstaculoJugador(Obstaculo o) {
-		
-	}
-	public void golpearObstaculoEnemigoYJugador(Obstaculo o) {
-		o.quitarVida(20);
-	}
-	public void golpearObstaculoJugador(Obstaculo o) {
-		
-	}
-	public void golpearObstaculoEnemigoYJugador(Obstaculo o) {
+	
 }
