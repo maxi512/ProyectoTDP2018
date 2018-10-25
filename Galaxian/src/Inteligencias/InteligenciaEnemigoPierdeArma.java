@@ -29,7 +29,7 @@ public class InteligenciaEnemigoPierdeArma extends InteligenciaEnemigo {
 			}
 		}
 		else {
-			enemigo.setInteligencia(new InteligenciaEnemigoSinArma(this.enemigo));
+			enemigo.setInteligencia(new InteligenciaKamikaze(this.enemigo, this.enemigo.getJuego()));
 			this.enemigo.setImagenActual(1);
 		}
 		

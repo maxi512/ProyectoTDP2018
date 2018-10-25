@@ -36,4 +36,12 @@ public class DisparoMejorado extends Disparo {
 		e.quitarVida(damage);
 		this.vida=-1;
 	}
+	public void golpearObstaculoEnemigoYJugador(Obstaculo o) {
+		vida=0; 
+		o.quitarVida(damage);
+	}
+	public void golpearObstaculoJugador(Obstaculo o) {
+		vida=0;
+		o.quitarVida(damage);
+	}
 }

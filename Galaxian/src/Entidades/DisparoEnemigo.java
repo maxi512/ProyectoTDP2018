@@ -42,7 +42,8 @@ public class DisparoEnemigo extends Disparo {
 		this.vida=-1;
 	}
 	public void golpearObstaculoEnemigoYJugador(Obstaculo o) {
-		o.quitarVida(20);
+		vida=0;
+		o.quitarVida(damage);
 	}
 	public void golpearObstaculoJugador(Obstaculo o) {
 	}

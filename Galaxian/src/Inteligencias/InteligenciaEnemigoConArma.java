@@ -13,7 +13,7 @@ public class InteligenciaEnemigoConArma extends InteligenciaEnemigo{
 	}
 	
 	public void disparar() {
-		if(r.nextInt(10)==5) {
+		if(r.nextInt(40)==5) {
 			Arma arma= enemigo.getArma();
 			if(arma!=null) {
 				Disparo d= arma.generarDisparo();

@@ -16,6 +16,7 @@ public class Juego {
 	//ATRIBUTOS
 	private GUI miGui;
 	private Mapa mapa;
+	private boolean pasoBoss;
 	
 	private Jugador jugador;
 	
@@ -56,6 +57,7 @@ public class Juego {
 		
 		cambioDireccion= false;
 		moverDerecha=true;
+		pasoBoss=false;
 	}
 	
 	public int getAnchoGui() {
@@ -236,6 +238,7 @@ public class Juego {
 				boss.setJuego(this);
 				entidades.add(boss);
 				miGui.add(boss.getGrafico());
+				pasoBoss= true;
 			}
 		}
 	}
@@ -292,6 +295,11 @@ public class Juego {
 		boolean toReturn=false;
 		if(entidades.size()>1) {
 			toReturn=true;
+		}
+		else {
+			if(!pasoBoss) {
+				return true;
+			}
 		}
 		return toReturn;
 	}

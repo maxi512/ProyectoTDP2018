@@ -48,10 +48,10 @@ public abstract class Entidad {
                     case 2: //Arriba
                     	pos.setLocation(pos.x,pos.y-velocidad);
                     	break;
-                    case 3:{//Abajo
+                    case 3://Abajo
                     		pos.setLocation(pos.x,pos.y+velocidad);	
                     		break;
-                    		}	
+                    			
                 }
                 cambiarGrafico(imagenActual);
             }

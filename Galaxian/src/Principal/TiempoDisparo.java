@@ -21,7 +21,7 @@ public class TiempoDisparo extends Thread  {
 			elJuego.eliminarDisparos();
 			elJuego.agregarDisparos();
 			seguir= elJuego.jugadorVivo() && elJuego.hayEnemigos();
-			//System.out.println(elJuego.getListaEntidades().size());
+			System.out.println(elJuego.getListaEntidades().size());
 		}
 	}
 }

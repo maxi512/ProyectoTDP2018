@@ -18,7 +18,7 @@ public class PowerUpMisil extends PowerUp {
 	
 	public void mover() {
 		this.inteligencia.mover();
-		if(this.pos.getY()>710) {
+		if(this.pos.getY()>705) {
 			this.vida=-1;
 		}
 	}

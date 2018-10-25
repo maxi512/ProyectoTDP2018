@@ -11,66 +11,22 @@ public class MapaBase extends Mapa {
 		int x= 50;
 		int y= 50;
 		
-		EnemigoPierdeArma enem= new EnemigoPierdeArma(7,x,y);
-		enem.setJuego(j);
-		enemigos.add(enem);
-		obstaculos.add(new PowerUpMisil(7, x, y, j));
-	
-//	 	for(int i=0;i<5;i++){
-//			EnemigoBase enem= new EnemigoBase(7,x,y);
-//			enem.setJuego(j);
-//			//enem.setJuego(j);
-//			enemigos.add(enem);
-//			x+= 70;
-//		}
-//	 	x=100;
-//	 	y+=100;
-//		for(int i=0;i<5;i++){
-//			EnemigoBase enem= new EnemigoBase(7,x,y);
-//			enem.setJuego(j);
-//			enemigos.add(enem);
-//			x+= 70;
-//		}
-//		x=50;
-//	 	y+=100;
-//		for(int i=0;i<5;i++){
-//			EnemigoBase enem= new EnemigoBase(7,x,y);
-//			enem.setJuego(j);
-//			enemigos.add(enem);
-//			x+= 70;
-//		}
-//		for(int p=0;p<3;p++) {
-//			EnemigoKamikaze enemigo= new EnemigoKamikaze(9,x,y);
-//			enemigo.setJuego(j);
-//			enemigos.add(enemigo);
-//			x+= 70;
-//		}
-//		
-//		
-//		
-//		
-//		//obstaculos.add(new ObstaculoBasico (x,y));
-//	
-		}
-	
 		
-		/**for(int i=0;i<5;i++){
+		for(int i=0;i<3;i++){
 			EnemigoBase enem= new EnemigoBase(7,x,y);
 			enem.setJuego(j);
 			enemigos.add(enem);
 			x+= 70;
 		}
-		for(int p=0;p<3;p++) {
-			EnemigoKamikaze enemigo= new EnemigoKamikaze(9,x,y);
-			enemigo.setJuego(j);
-			enemigos.add(enemigo);
-			x+= 70;
-		}*/
 		
+		EnemigoKamikaze enem1= new EnemigoKamikaze(7,x,y);
+		enem1.setJuego(j);
+		enemigos.add(enem1);
 		
+		obstaculos.add(new PowerUpMisil(7, 200, 350, j));
+	 	obstaculos.add(new ObstaculoBasico(250,300));
+		}
 		
-		
-		//obstaculos.add(new ObstaculoBasico (x,y));
 		
 	}
 

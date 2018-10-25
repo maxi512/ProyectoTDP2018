@@ -40,10 +40,12 @@ public class DisparoJugador extends Disparo{
 	}
 	
 	public void golpearObstaculoEnemigoYJugador(Obstaculo o) {
-		o.quitarVida(20);
+		vida=0; 
+		o.quitarVida(damage);
 	}
 	public void golpearObstaculoJugador(Obstaculo o) {
-		o.quitarVida(20);
+		vida=0;
+		o.quitarVida(damage);
 	}
 	
 }
