@@ -1,7 +1,7 @@
 package Inteligencias;
 
 import java.util.Random;
-import Inteligencias.*;
+//import Inteligencias.*;
 
 import Entidades.Arma;
 import Entidades.Disparo;

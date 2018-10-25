@@ -10,6 +10,7 @@ public class MapaBase extends Mapa {
 		this.obstaculos= new LinkedList<Entidad>();
 		int x= 50;
 		int y= 50;
+		
 		EnemigoPierdeArma enem= new EnemigoPierdeArma(7,x,y);
 		enem.setJuego(j);
 		enemigos.add(enem);

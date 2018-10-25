@@ -114,6 +114,11 @@ public class GUI extends JFrame {
 	public JLabel getLabelVida() {
 		return labelVida;
 	}
+
+	public void destruir() {
+		panel.removeAll();
+		this.repaint();
+	}
 }
 	
 	

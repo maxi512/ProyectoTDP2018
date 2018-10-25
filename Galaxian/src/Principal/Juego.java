@@ -288,19 +288,37 @@ public class Juego {
 	}
 
 
+	public boolean hayEnemigos() {
+		boolean toReturn=false;
+		if(entidades.size()>1) {
+			toReturn=true;
+		}
+		return toReturn;
+	}
+	
 	public void terminarJuego() {
-		JLabel partidaTerminada= new JLabel("La partida termino",JLabel.CENTER);
+		Font fuente= new Font("Arial",Font.BOLD,40);
+		JLabel partidaTerminada= new JLabel("LA PARTIDA TERMINO",JLabel.CENTER);
+		partidaTerminada.setFont(fuente);
+		partidaTerminada.setForeground(Color.WHITE);
+		
 		JPanel panel= new JPanel(new BorderLayout());
 		panel.setBounds(0, 0, miGui.getWidth(), miGui.getHeight());
-		panel.setBackground(Color.RED);  
+		
+		panel.setBackground(Color.BLACK);  
 		panel.add(partidaTerminada,BorderLayout.CENTER);
 		
-		//Destruyo el jugador
-		entidades.get(0).destruir();
-		entidades.removeFirst();
-		//
-		miGui.add(panel);
+		
+		miGui.destruir();
+		if(jugador.getVida()>0) {
+			partidaTerminada.setText("GANASTE");
+		}
+		else {
+			partidaTerminada.setText("PERDISTE");
+		}
+		miGui.setContentPane(panel);
 	}
+	
 	
 	
 	public LinkedList<Entidad>getListaEntidades(){

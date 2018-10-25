@@ -1,7 +1,7 @@
 package Inteligencias;
 
 import Entidades.Enemigo;
-import Principal.Juego;
+//import Principal.Juego;
 
 public class InteligenciaEnemigoSinArma extends InteligenciaEnemigo{
 	

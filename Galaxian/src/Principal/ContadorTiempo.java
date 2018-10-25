@@ -22,9 +22,9 @@ public class ContadorTiempo extends Thread{
 			elJuego.eliminarEntidades();
 			elJuego.accionarDisparos();
 			elJuego.agregarDisparos();
-			elJuego.manage();
+			//elJuego.manage();
 			elJuego.actualizarLabels();
-			seguir=elJuego.jugadorVivo();
+			seguir= elJuego.jugadorVivo() && elJuego.hayEnemigos();
 		}
 		elJuego.terminarJuego();
 	}
