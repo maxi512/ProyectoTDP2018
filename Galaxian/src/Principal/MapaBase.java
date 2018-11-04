@@ -11,7 +11,6 @@ public class MapaBase extends Mapa {
 		int x= 50;
 		int y= 50;
 		
-		
 		for(int i=0;i<3;i++){
 			EnemigoBase enem= new EnemigoBase(7,x,y);
 			enem.setJuego(j);
@@ -23,7 +22,7 @@ public class MapaBase extends Mapa {
 		enem1.setJuego(j);
 		enemigos.add(enem1);
 		
-		obstaculos.add(new PowerUpMisil(7, 200, 350, j));
+		obstaculos.add(new PowerUpArmaRapida(7, 200, 350, j));
 	 	obstaculos.add(new ObstaculoBasico(250,300));
 		}
 		

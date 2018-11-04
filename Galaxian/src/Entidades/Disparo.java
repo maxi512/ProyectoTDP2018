@@ -29,5 +29,6 @@ public abstract class Disparo extends Entidad{
 	}
 	public void golpearObstaculoJugador(Obstaculo o) {
 		
-	}	
+	}
+	
 }

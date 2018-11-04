@@ -47,5 +47,6 @@ public class DisparoJugador extends Disparo{
 		vida=0;
 		o.quitarVida(damage);
 	}
+
 	
 }

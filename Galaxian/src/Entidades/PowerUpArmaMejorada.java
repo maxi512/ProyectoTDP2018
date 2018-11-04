@@ -28,7 +28,8 @@ public class PowerUpArmaMejorada extends PowerUp {
 	}
 	
 	public void afectar() {
-		this.juego.getJugador().setArma(new ArmaMejorada());
+		Jugador j= this.juego.getJugador();
+		j.setArma(new ArmaMejorada(j));
 		this.vida=0;
 	}
 

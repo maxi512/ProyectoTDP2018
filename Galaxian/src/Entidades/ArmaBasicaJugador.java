@@ -3,12 +3,18 @@ package Entidades;
 public class ArmaBasicaJugador extends Arma {
 	
 	
-	public ArmaBasicaJugador() {
+	public ArmaBasicaJugador(Entidad e) {
+		super(e);
 	}
 	
 	public Disparo generarDisparo() {
-		//POS DEFAULT EL JUGADOR TIENE QUE PONER SU POSICION
-		return new DisparoJugador(5,0,0);
+		if(this.chequearCooldown()) {
+			Disparo disp= new DisparoJugador(5,0,0);
+			disp.getPos().setLocation((int)propietario.getPos().getX()+(propietario.getGrafico().getWidth()/2 -1), (int)propietario.getPos().getY()-12);
+			return disp;
+		}
+			
+		else return null;
 	}
 	
 	

@@ -7,8 +7,6 @@ import javax.swing.JLabel;
 import Colisionadores.*;
 
 public class Jugador extends Entidad {
-	private int SHOOT_COOLDOWN_UPDATE_TIME = 10;
-	private long timeUntilShootingAvailable = 0;
 	
 	private Arma arma;
 	private boolean escudo;
@@ -18,7 +16,7 @@ public class Jugador extends Entidad {
 		
 		this.vida=100;
 		
-		arma= new ArmaBasicaJugador();
+		arma= new ArmaBasicaJugador(this);
 		
 		inicializarArregloImg();
 		
@@ -32,15 +30,7 @@ public class Jugador extends Entidad {
 	
 	public Disparo crearDisparo() {
 		Disparo disp;
-		if(timeUntilShootingAvailable <=0) {
-			disp = arma.generarDisparo();
-			disp.getPos().setLocation((int)pos.getX()+(this.getGrafico().getWidth()/2 -1), (int)pos.getY()-12);
-			//disp= new DisparoJugador(5,(int)pos.getX()+(this.getGrafico().getWidth()/2 -1),(int)pos.getY()-12);
-			timeUntilShootingAvailable= SHOOT_COOLDOWN_UPDATE_TIME;
-		}
-		else {
-			disp= null;
-		}
+		disp = arma.generarDisparo();
 		return disp;
 	}
 	
@@ -48,9 +38,6 @@ public class Jugador extends Entidad {
 		this.vida+=v;
 	}
 	
-	public void setTiempoDisparo(int tiempo) {
-		SHOOT_COOLDOWN_UPDATE_TIME=tiempo;
-	}
 	
 	public void activarEscudo() {
 		this.cambiarGrafico(1);
@@ -75,7 +62,7 @@ public class Jugador extends Entidad {
 	}
 	
 	 public void Update(){
-	        timeUntilShootingAvailable = timeUntilShootingAvailable - 1;
+		 arma.Update();
 	 }
 	 
 	 public void setArma(Arma a) {
