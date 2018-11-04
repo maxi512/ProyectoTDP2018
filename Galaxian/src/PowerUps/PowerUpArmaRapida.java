@@ -1,35 +1,36 @@
-package Entidades;
+package PowerUps;
 
 import javax.swing.ImageIcon;
 
+import Armas.ArmaRapida;
 import Colisionadores.Colision;
 import Colisionadores.ColisionadorPowerUp;
+import Entidades.Entidad;
+import Entidades.Jugador;
 import Inteligencias.InteligenciaPowerUp;
 import Principal.Juego;
 
-public class PowerUpArmaMejorada extends PowerUp {
-	public PowerUpArmaMejorada(int velocidad, int x, int y, Juego j) {
+public class PowerUpArmaRapida extends PowerUp {
+
+	public PowerUpArmaRapida(int velocidad, int x, int y, Juego j) {
 		super(velocidad, x, y, j);
-		inicializarArregloImg();
+		this.vida=10;                 
 		this.setInteligencia(new InteligenciaPowerUp(this));
-		
-		this.vida=10;
+		inicializarArregloImg();
 	}
-	
+	private void inicializarArregloImg() {
+		this.imagen[0]= new ImageIcon(this.getClass().getResource("/img/armaMejorada2.png"));
+	}
 	public void mover() {
 		this.inteligencia.mover();
 		if(this.pos.getY()>710) {
 			this.vida=-1;
+			this.destruir();
 		}
 	}
-	
-	private void inicializarArregloImg() {
-		this.imagen[0]= new ImageIcon(this.getClass().getResource("/img/armaMejorada.png"));
-	}
-	
 	public void afectar() {
 		Jugador j= this.juego.getJugador();
-		j.setArma(new ArmaMejorada(j));
+		j.setArma(new ArmaRapida(j));
 		this.vida=0;
 	}
 
@@ -41,4 +42,5 @@ public class PowerUpArmaMejorada extends PowerUp {
 		ColisionadorPowerUp col= new ColisionadorPowerUp(this);
 		e.serColisionado(col);
 	}
+
 }

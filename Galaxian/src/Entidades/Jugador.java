@@ -4,12 +4,15 @@ package Entidades;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 
+import Armas.Arma;
+import Armas.ArmaBasicaJugador;
 import Colisionadores.*;
+import Disparos.Disparo;
 
 public class Jugador extends Entidad {
 	
 	private Arma arma;
-	private boolean escudo;
+	private Escudo escudo;
 	
 	public Jugador(int x, int y) {
 		super(10,x,y);
@@ -18,9 +21,10 @@ public class Jugador extends Entidad {
 		
 		arma= new ArmaBasicaJugador(this);
 		
+		
 		inicializarArregloImg();
 		
-		escudo=false;
+		escudo=new EscudoNormal(this);
 	}
 	
 	private void inicializarArregloImg() {
@@ -39,15 +43,9 @@ public class Jugador extends Entidad {
 	}
 	
 	
-	public void activarEscudo() {
-		this.cambiarGrafico(1);
-		this.imagenActual=1;
-		escudo=true;
-	}
 	
-	public void desactivarEscudo() {
-		this.grafico= new JLabel(this.imagen[0]);
-		escudo=false;
+	public void quitarVida(int daño) {
+		escudo.recibirDaño(daño);
 	}
 	
 	
@@ -68,5 +66,17 @@ public class Jugador extends Entidad {
 	 public void setArma(Arma a) {
 		 this.arma=a;
 	 }
+
+	public void setVida(int i) {
+		this.vida=i;
+	}
 	
+	public void setEscudo(Escudo e) {
+		this.escudo=e;
+	}
+	
+	public void recibirDañoKamikaze(int daño) {
+		escudo.recibirDañoKamikaze(daño);
+	}
+
 }

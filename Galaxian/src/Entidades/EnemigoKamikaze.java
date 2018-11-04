@@ -51,7 +51,7 @@ public class EnemigoKamikaze extends Enemigo{
 	}
 	
 	public void golpearJugador(Jugador j) {
-		j.quitarVida(damage);
+		j.recibirDañoKamikaze(damage);
 		this.vida=-1;
 	}
 	

@@ -1,9 +1,12 @@
-package Entidades;
+package Disparos;
 
 import javax.swing.ImageIcon;
 
 import Colisionadores.Colision;
 import Colisionadores.ColisionadorDisparo;
+import Entidades.Enemigo;
+import Entidades.Entidad;
+import Entidades.Obstaculo;
 import Inteligencias.InteligenciaDisparoJugador;
 
 public class DisparoRapido extends Disparo {

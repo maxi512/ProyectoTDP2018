@@ -3,8 +3,8 @@ package Inteligencias;
 import java.util.Random;
 //import Inteligencias.*;
 
-import Entidades.Arma;
-import Entidades.Disparo;
+import Armas.Arma;
+import Disparos.Disparo;
 import Entidades.Enemigo;
 
 public class InteligenciaEnemigoPierdeArma extends InteligenciaEnemigo {

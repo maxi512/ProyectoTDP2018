@@ -7,10 +7,13 @@ import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import Disparos.Disparo;
+
 import java.awt.Rectangle;
 
 import Principal.GUI;
 import Entidades.*;
+
 import java.awt.*;
 public class Juego {
 	//ATRIBUTOS

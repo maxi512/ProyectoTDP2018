@@ -2,6 +2,8 @@ package Inteligencias;
 
 import java.util.Random;
 
+import Armas.Arma;
+import Disparos.Disparo;
 import Entidades.*;
 
 public class InteligenciaEnemigoConArma extends InteligenciaEnemigo{

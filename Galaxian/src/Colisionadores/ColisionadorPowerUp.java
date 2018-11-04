@@ -1,7 +1,7 @@
 package Colisionadores;
 
 import Entidades.Jugador;
-import Entidades.PowerUp;
+import PowerUps.PowerUp;
 
 public class ColisionadorPowerUp extends Colision {
 	

@@ -1,6 +1,6 @@
 package Colisionadores;
 
-import Entidades.Disparo;
+import Disparos.Disparo;
 import Entidades.Enemigo;
 import Entidades.Obstaculo;
 

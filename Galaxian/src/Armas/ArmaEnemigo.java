@@ -1,4 +1,8 @@
-package Entidades;
+package Armas;
+
+import Disparos.Disparo;
+import Disparos.DisparoEnemigo;
+import Entidades.Enemigo;
 
 public class ArmaEnemigo extends Arma {
 	public ArmaEnemigo(Enemigo e) {

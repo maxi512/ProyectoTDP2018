@@ -1,6 +1,9 @@
 package Entidades;
 
 import javax.swing.ImageIcon;
+
+import Armas.Arma;
+import Armas.ArmaEnemigo;
 import Inteligencias.*;
 import Colisionadores.*;
 

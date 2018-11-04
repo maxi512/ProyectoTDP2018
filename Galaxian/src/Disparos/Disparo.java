@@ -1,4 +1,9 @@
-package Entidades;
+package Disparos;
+
+import Entidades.Enemigo;
+import Entidades.Entidad;
+import Entidades.Jugador;
+import Entidades.Obstaculo;
 
 public abstract class Disparo extends Entidad{
 	int damage;

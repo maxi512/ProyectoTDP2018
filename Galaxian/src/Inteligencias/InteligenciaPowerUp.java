@@ -1,6 +1,6 @@
 package Inteligencias;
 
-import Entidades.PowerUp;
+import PowerUps.PowerUp;
 
 public class InteligenciaPowerUp extends Inteligencia{
 	private PowerUp p;

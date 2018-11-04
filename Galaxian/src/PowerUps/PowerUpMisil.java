@@ -1,37 +1,37 @@
-package Entidades;
+package PowerUps;
 
 import javax.swing.ImageIcon;
 
+import Armas.ArmaMisil;
 import Colisionadores.Colision;
+import Colisionadores.ColisionadorPowerUp;
+import Entidades.Entidad;
 import Inteligencias.InteligenciaPowerUp;
 import Principal.Juego;
 
-public class PowerUpVida extends PowerUp {
-
-	public PowerUpVida(int velocidad, int x, int y, Juego j) {
+public class PowerUpMisil extends PowerUp {
+	public PowerUpMisil(int velocidad, int x, int y, Juego j) {
 		super(velocidad, x, y, j);
 		inicializarArregloImg();
 		this.setInteligencia(new InteligenciaPowerUp(this));
 		
 		this.vida=10;
-
 	}
 	
 	public void mover() {
 		this.inteligencia.mover();
-		if(this.pos.getY()>710) {
+		if(this.pos.getY()>705) {
 			this.vida=-1;
 		}
 	}
 	
 	private void inicializarArregloImg() {
-		this.imagen[0]= new ImageIcon(this.getClass().getResource("/img/vida.png"));
+		this.imagen[0]= new ImageIcon(this.getClass().getResource("/img/powerUpMisil.png"));
 	}
 	
 	public void afectar() {
-		this.juego.getJugador().sumarVida(150);
+		this.juego.getJugador().setArma(new ArmaMisil(this.juego.getJugador()));
 		this.vida=0;
-		
 	}
 
 	public void serColisionado(Colision col) {
@@ -39,8 +39,7 @@ public class PowerUpVida extends PowerUp {
 	}
 
 	public void colisionar(Entidad e) {
-		// TODO Auto-generated method stub
-		
+		ColisionadorPowerUp col= new ColisionadorPowerUp(this);
+		e.serColisionado(col);
 	}
-
 }

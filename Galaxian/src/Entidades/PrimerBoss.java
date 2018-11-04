@@ -6,6 +6,7 @@ import javax.swing.ImageIcon;
 
 import Colisionadores.Colision;
 import Colisionadores.ColisionadorEnemigo;
+import Disparos.DisparoEnemigo;
 import Inteligencias.InteligenciaEnemigoConArma;
 
 public class PrimerBoss extends Enemigo {

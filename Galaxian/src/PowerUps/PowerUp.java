@@ -1,5 +1,6 @@
-package Entidades;
+package PowerUps;
 
+import Entidades.Entidad;
 import Principal.Juego;
 
 public abstract class PowerUp extends Entidad {

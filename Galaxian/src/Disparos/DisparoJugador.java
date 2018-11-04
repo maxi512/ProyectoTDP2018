@@ -1,23 +1,25 @@
-package Entidades;
+package Disparos;
 
 import javax.swing.ImageIcon;
 
 import Colisionadores.Colision;
 import Colisionadores.ColisionadorDisparo;
+import Entidades.Enemigo;
+import Entidades.Entidad;
+import Entidades.Obstaculo;
 import Inteligencias.InteligenciaDisparoJugador;
 
-public class DisparoMisil extends Disparo {
+public class DisparoJugador extends Disparo{
 	
-	
-	public DisparoMisil(int velocidad,int x,int y) {
+	public DisparoJugador(int velocidad,int x,int y) {
 		super(velocidad,x,y);
-		this.damage= 100;
+		this.damage= 20;
 		this.setInteligencia(new InteligenciaDisparoJugador(this));
 		inicializarArregloImg();
 	}
 	
 	private void inicializarArregloImg() {
-		this.imagen[0]= new ImageIcon(this.getClass().getResource("/img/misil.gif"));
+		this.imagen[0]= new ImageIcon(this.getClass().getResource("/img/disparoBasico.png"));
 	}	
 	public void mover() {
 		this.inteligencia.mover();
@@ -48,4 +50,6 @@ public class DisparoMisil extends Disparo {
 		vida=0;
 		o.quitarVida(damage);
 	}
+
+	
 }

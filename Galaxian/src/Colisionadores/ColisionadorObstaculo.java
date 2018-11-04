@@ -1,5 +1,6 @@
 package Colisionadores;
 
+import Disparos.Disparo;
 import Entidades.*;
 
 public class ColisionadorObstaculo extends Colision {

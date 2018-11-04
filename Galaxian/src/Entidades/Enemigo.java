@@ -1,5 +1,6 @@
 package Entidades;
 
+import Armas.Arma;
 import Colisionadores.ColisionadorEnemigo;
 import Inteligencias.Inteligencia;
 import Principal.Juego;

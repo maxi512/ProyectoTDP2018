@@ -2,6 +2,8 @@ package Principal;
 
 import java.util.LinkedList;
 import Entidades.*;
+import PowerUps.PowerUpArmaRapida;
+import PowerUps.PowerUpEscudo;
 
 public class MapaBase extends Mapa {
 	
@@ -22,7 +24,7 @@ public class MapaBase extends Mapa {
 		enem1.setJuego(j);
 		enemigos.add(enem1);
 		
-		obstaculos.add(new PowerUpArmaRapida(7, 200, 350, j));
+		obstaculos.add(new PowerUpEscudo(7, 200, 350, j));
 	 	obstaculos.add(new ObstaculoBasico(250,300));
 		}
 		

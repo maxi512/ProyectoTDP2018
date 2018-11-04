@@ -1,27 +1,33 @@
-package Entidades;
+package Disparos;
 
 import javax.swing.ImageIcon;
 
 import Colisionadores.Colision;
 import Colisionadores.ColisionadorDisparo;
+import Entidades.Enemigo;
+import Entidades.Entidad;
+import Entidades.Obstaculo;
 import Inteligencias.InteligenciaDisparoJugador;
 
-public class DisparoMejorado extends Disparo {
+public class DisparoMisil extends Disparo {
 	
-	private int damage;
 	
-	public DisparoMejorado(int velocidad,int x,int y) {
+	public DisparoMisil(int velocidad,int x,int y) {
 		super(velocidad,x,y);
 		this.damage= 100;
-		
 		this.setInteligencia(new InteligenciaDisparoJugador(this));
 		inicializarArregloImg();
 	}
 	
 	private void inicializarArregloImg() {
-		this.imagen[0]= new ImageIcon(this.getClass().getResource("/img/disparoMejorado.png"));
+		this.imagen[0]= new ImageIcon(this.getClass().getResource("/img/misil.gif"));
 	}	
-	
+	public void mover() {
+		this.inteligencia.mover();
+		if(this.pos.getY()<-5) {
+			this.vida=-1;
+		}
+	}
 	
 	public void colisionar(Entidad e) {
 		ColisionadorDisparo col= new ColisionadorDisparo(this);
@@ -36,6 +42,7 @@ public class DisparoMejorado extends Disparo {
 		e.quitarVida(damage);
 		this.vida=-1;
 	}
+	
 	public void golpearObstaculoEnemigoYJugador(Obstaculo o) {
 		vida=0; 
 		o.quitarVida(damage);

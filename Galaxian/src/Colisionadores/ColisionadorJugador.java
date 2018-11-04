@@ -1,5 +1,7 @@
 package Colisionadores;
+import Disparos.Disparo;
 import Entidades.*;
+import PowerUps.PowerUp;
 
 public class ColisionadorJugador extends Colision{
 	public Jugador jug;

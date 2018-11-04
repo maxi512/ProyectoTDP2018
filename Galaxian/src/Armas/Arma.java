@@ -1,4 +1,7 @@
-package Entidades;
+package Armas;
+
+import Disparos.Disparo;
+import Entidades.Entidad;
 
 public abstract class Arma {
 	
@@ -13,7 +16,7 @@ public abstract class Arma {
 	
 	public abstract Disparo generarDisparo();
 	
-	protected void Update() {
+	public void Update() {
         timeUntilShootingAvailable = timeUntilShootingAvailable - 1;
 	}
 	
