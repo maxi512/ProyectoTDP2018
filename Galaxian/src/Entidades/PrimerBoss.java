@@ -17,7 +17,7 @@ public class PrimerBoss extends Enemigo {
 	
 	private PrimerBoss(int velocidad,int x, int y) {
 		super(velocidad,x,y);
-		this.vida= 100;
+		this.vida= 500;
 		inicializarArregloImg();
 		this.setPuntaje(7);
 		this.setInteligencia(new InteligenciaEnemigoConArma(this));
@@ -56,9 +56,9 @@ public class PrimerBoss extends Enemigo {
 	
 	
 	public void disparar() {
-		if(r.nextInt(10)==5) {
-			DisparoEnemigo d1 =new DisparoEnemigo(5,(int)pos.getX()+(this.getGrafico().getWidth()/2 -5),(int)pos.getY()+55);
-			DisparoEnemigo d2 =new DisparoEnemigo(5,(int)pos.getX()+(this.getGrafico().getWidth()/2 +5),(int)pos.getY()+60);
+		if(r.nextInt(8)==4) {
+			DisparoEnemigo d1 =new DisparoEnemigo(5,(int)pos.getX()+(this.getGrafico().getWidth()/2 -8),(int)pos.getY()+55);
+			DisparoEnemigo d2 =new DisparoEnemigo(5,(int)pos.getX()+(this.getGrafico().getWidth()/2 +8),(int)pos.getY()+60);
 			juego.addDisparo(d1);
 			juego.addDisparo(d2);
 		}

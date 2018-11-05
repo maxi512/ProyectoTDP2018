@@ -1,18 +1,17 @@
 package Inteligencias;
 
 import java.util.Random;
-//import Inteligencias.*;
 
 import Armas.Arma;
 import Disparos.Disparo;
 import Entidades.Enemigo;
 
-public class InteligenciaEnemigoPierdeArma extends InteligenciaEnemigo {
-	
+public class InteligenciaEnemigoBasicoPierdeArma extends InteligenciaEnemigoConArma {
+
 	private Random r;
 	
-	public InteligenciaEnemigoPierdeArma(Enemigo enem){
-		this.enemigo=enem;
+	public InteligenciaEnemigoBasicoPierdeArma(Enemigo enem){
+		super(enem);
 		r= new Random();
 
 	}
@@ -29,7 +28,7 @@ public class InteligenciaEnemigoPierdeArma extends InteligenciaEnemigo {
 			}
 		}
 		else {
-			enemigo.setInteligencia(new InteligenciaKamikaze(this.enemigo,this.enemigo.getJuego()));
+			enemigo.setInteligencia(new InteligenciaEnemigoSinArma(this.enemigo));
 			this.enemigo.setImagenActual(1);
 		}
 		

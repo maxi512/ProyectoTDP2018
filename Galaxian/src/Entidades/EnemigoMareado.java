@@ -1,29 +1,24 @@
 package Entidades;
 
-import java.util.Random;
 
 import javax.swing.ImageIcon;
 
 import Colisionadores.Colision;
 import Colisionadores.ColisionadorEnemigo;
-import Inteligencias.InteligenciaEnemigoConArma;
-import Inteligencias.InteligenciaKamikaze;
-import Inteligencias.InteligenciaMareado;
+import Inteligencias.InteligenciaNormalCambiaMareado;
 
-public class EnemigoKamikazeBuscaYMareado extends Enemigo{
+public class EnemigoMareado extends Enemigo{
 	private int damage;
-	private boolean cambieInteligencia;
 	
-	public EnemigoKamikazeBuscaYMareado(int velocidad,int x, int y) {
+	public EnemigoMareado(int velocidad,int x, int y) {
 		super(velocidad,x,y);
 		
 		this.vida= 200;
 		damage=80;
-		this.cambieInteligencia = false;
 		
 		inicializarArregloImg();
 		this.setPuntaje(300);
-		this.setInteligencia(new InteligenciaEnemigoConArma(this));
+		this.setInteligencia(new InteligenciaNormalCambiaMareado(this));
 	}
 	
 	private void inicializarArregloImg() {
@@ -31,16 +26,7 @@ public class EnemigoKamikazeBuscaYMareado extends Enemigo{
 	}
 	
 	public void mover() {
-		Random r = new Random();
-		if(!cambieInteligencia&&r.nextInt(60)==5) {
-			this.setInteligencia(new InteligenciaKamikaze(this,this.juego));
-				cambieInteligencia=true;
-		}
-		if(cambieInteligencia&& this.vida==100) {
-			this.setInteligencia(new InteligenciaMareado(this));
-		}
 		this.inteligencia.mover();
-		
 	}
 	
 	//METODOS PROVISORIOS

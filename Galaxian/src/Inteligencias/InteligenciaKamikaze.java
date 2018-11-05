@@ -2,6 +2,7 @@ package Inteligencias;
 
 import Principal.*;
 import java.awt.*;
+import java.util.Random;
 
 import Entidades.Enemigo;
 
