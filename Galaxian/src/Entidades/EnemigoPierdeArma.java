@@ -16,6 +16,7 @@ public class EnemigoPierdeArma extends Enemigo {
 	public EnemigoPierdeArma(int velocidad, int x, int y) {
 		super(velocidad,x,y);
 		this.vida= 100;
+		vidaInicial=vida;
 		
 		inicializarArregloImg();
 		this.setPuntaje(7);

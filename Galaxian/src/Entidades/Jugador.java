@@ -18,6 +18,7 @@ public class Jugador extends Entidad {
 		super(10,x,y);
 		
 		this.vida=100;
+		vidaInicial=vida;
 		
 		arma= new ArmaBasicaJugador(this);
 		

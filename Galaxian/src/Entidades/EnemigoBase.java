@@ -13,6 +13,7 @@ public class EnemigoBase extends Enemigo{
 	public EnemigoBase(int velocidad,int x, int y) {
 		super(velocidad,x,y);
 		this.vida= 100;
+		vidaInicial=vida;
 		
 		inicializarArregloImg();
 		this.setPuntaje(7);

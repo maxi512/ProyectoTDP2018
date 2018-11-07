@@ -10,8 +10,8 @@ public class ObstaculoRompeJugador extends Obstaculo{
 	public ObstaculoRompeJugador(int x, int y) {
 		super(x,y);
 		inicializarArregloImg();
-		vidaInicial=400;
 		this.vida=400;
+		vidaInicial=vida;
 	}
 	
 	private void inicializarArregloImg() {
