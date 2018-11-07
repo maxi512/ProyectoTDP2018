@@ -13,54 +13,69 @@ import java.awt.Rectangle;
 
 import Principal.GUI;
 import Entidades.*;
-
 import java.awt.*;
 public class Juego {
 	//ATRIBUTOS
 	private GUI miGui;
-	private Mapa mapa;
-	private boolean pasoBoss;
+	private Mapa  [] mapa;
+	
 	
 	private Jugador jugador;
 	
  	private LinkedList<Entidad> entidades;
  	private LinkedList<Entidad> entidadesAEliminar;
+ 	private LinkedList<Entidad> entidadesParaAgregar;
  	private LinkedList<Disparo> disparos;
  	private LinkedList<Disparo> disparosParaAgregar;
  	
  	private int puntajeTotal;
+ 	private int nivelActual;
+ 	private int maxNivel;
  	
  	private boolean moverDerecha,cambioDireccion;
-	
+ 	private boolean pasoBoss;
+ 	private boolean terminarJuego=false;
+ 	
  	//CONSTRUCTOR
 	public Juego(GUI gui) {	
-		this.mapa=new MapaBase(this);	//Pongo Mapa base para probar
+		this.mapa=new Mapa[4];
+		mapa[0]= new MapaBase(this);
+		mapa[1]= new MapaNivel2(this);
+	
 		miGui = gui;
 		
-		entidades = new LinkedList<Entidad>();
 		entidadesAEliminar = new LinkedList<Entidad>();
+		entidadesParaAgregar= new LinkedList<Entidad>();
 		disparos= new LinkedList<Disparo>();
 		disparosParaAgregar= new LinkedList<Disparo>();
 		
 		this.jugador=new Jugador(265,610);
 		miGui.add(jugador.getGrafico());
-		entidades.add(jugador);
 		
-		LinkedList<Enemigo> enem= mapa.getEnemigos();
-		
-		for(Enemigo e: enem) {
-			entidades.add(e);
-			miGui.add(e.getGrafico());
-		}
-		
-		for(Entidad o: mapa.getObstaculos()) {
-			entidades.add(o);
-			miGui.add(o.getGrafico());
-		}
-		
+		armarNivel(1);
+		nivelActual=1;
+		maxNivel=1;
+				
 		cambioDireccion= false;
 		moverDerecha=true;
 		pasoBoss=false;
+	}
+	
+	private void armarNivel(int nivel) {
+		nivel--;
+		LinkedList<Entidad> aux= new LinkedList<Entidad>();
+		aux.addLast(jugador);
+		for(Enemigo e: mapa[nivel].getEnemigos()) {
+			aux.addLast(e);
+			miGui.add(e.getGrafico());
+		}
+		
+		for(Entidad o: mapa[nivel].getObstaculos()) {
+			aux.addLast(o);
+			miGui.add(o.getGrafico());
+		}
+		
+		entidades=aux;
 	}
 	
 	public int getAnchoGui() {
@@ -86,21 +101,15 @@ public class Juego {
 	}
 	
 	public void detectarColisiones() {
-		for(int i=0;i<entidades.size();i++) {
-			if(entidades.get(i)!=null) {
-				Rectangle r1 = entidades.get(i).getRectangle();
-				for(int j=i+1;j<entidades.size();j++) {
-					if(entidades.get(j).getGrafico()!=null) {
-						Rectangle r2= entidades.get(j).getRectangle();
-		 				if(r1.intersects(r2)){
-							entidades.get(i).colisionar(entidades.get(j));
-							if(entidades.get(i).getVida()<=0) {
-								entidadesAEliminar.add(entidades.get(i)); 
- 								puntajeTotal+= entidades.get(i).getPuntaje();
-							}
-							if(entidades.get(j).getVida()<=0) {
-								entidadesAEliminar.add(entidades.get(j));
-								puntajeTotal+= entidades.get(j).getPuntaje();
+		synchronized(entidades) {
+			for(int i=0;i<entidades.size();i++) {
+				if(entidades.get(i)!=null) {
+					Rectangle r1 = entidades.get(i).getRectangle();
+					for(int j=i+1;j<entidades.size();j++) {
+						if(entidades.get(j)!=null) {
+							Rectangle r2= entidades.get(j).getRectangle();
+			 				if(r1.intersects(r2)){
+								entidades.get(i).colisionar(entidades.get(j));
 							}
 						}
 					}
@@ -110,21 +119,47 @@ public class Juego {
 	}
 	
 	public void eliminarEntidades() {
-		Entidad elemento;
+		quitarEntidades();
+		
+		LinkedList<Entidad> entidadesEliminar= entidadesAEliminar;
+		entidadesAEliminar= new LinkedList<Entidad>();
+		
 		synchronized(entidades) {
-			synchronized(entidadesAEliminar) {
-				if(!(entidades.isEmpty()&&entidadesAEliminar.isEmpty())){
-					for(int i=0;i<entidadesAEliminar.size();i++) {
-						elemento= entidadesAEliminar.get(i);
-						entidades.remove(elemento);
-						elemento.destruir();
-						entidadesAEliminar.remove(elemento);
-					}
+			if(entidades.size()>0){
+				for(Entidad e: entidadesEliminar) {
+					entidades.remove(e);
+					e.destruir();
+					this.destruir(e);
+					
 				}
 			}
 		}
+		
 	}
 	
+	private void destruir(Entidad d) {
+		miGui.remove(d.getGrafico());
+		miGui.repaint();
+	}
+
+	private void quitarEntidades() {
+		LinkedList<Entidad> lista= (LinkedList<Entidad>) entidades.clone();
+		
+		for(Entidad e: lista) {
+			if(e.getVida()<=0) {
+				entidadesAEliminar.add(e);
+				puntajeTotal+= e.getPuntaje();
+			}
+		}
+		
+		/*for(Entidad e: entidades) {
+			if(e.getVida()<=0) {
+				entidadesAEliminar.add(e);
+				puntajeTotal+= e.getPuntaje();
+			}
+		}*/
+	}
+
 	public int getPuntajeTotal() {
 		return puntajeTotal;
 	}
@@ -183,10 +218,21 @@ public class Juego {
 		return jugador.getGrafico().getWidth();
 	}
 	
-	public void addEntidad(Entidad e) {
-		entidades.add(e);
+	public synchronized void addEntidad(Entidad e) {
+		entidadesParaAgregar.add(e);
 	}
 	
+	public void agregarEntidades() {
+		LinkedList<Entidad> aux= entidadesParaAgregar;
+		entidadesParaAgregar= new LinkedList<Entidad>();
+		
+		synchronized(entidades) {
+			for(Entidad e : aux) {
+				entidades.addLast(e);
+				miGui.add(e.getGrafico());
+			}
+		}
+	}
 	//METODOS PROVISORIOS
 	
 	public void moverDisparo() {
@@ -198,29 +244,26 @@ public class Juego {
 	}
 
 	public void eliminarDisparos() {
-		synchronized(entidades) {
-			synchronized(disparos) {
-				for(int i=0;i<disparos.size();i++) {
-					if(disparos.get(i).getVida()<=0) {
-						entidades.remove(disparos.get(i));
-						disparos.get(i).destruir();
-						disparos.remove(i);
-					}
+		Disparo d;
+		synchronized(disparos) {
+			for(int i=0;i<disparos.size();i++) {
+				d= disparos.get(i);
+				if(d.getVida()<=0) {
+					entidadesAEliminar.add(d);
+					disparos.remove(d);
 				}
 			}
 		}
 	}
 
-	
-	////METODOS PROVISORIOS 2
 	public void moverJugador() {
-		if(miGui.right.isKeyDown())
+		if(miGui.getRight().isKeyDown())
            jugador.mover(1);
 
-        if(miGui.left.isKeyDown())
+        if(miGui.getLeft().isKeyDown())
         	jugador.mover(0);
 
-        if(miGui.space.isKeyDown()) {
+        if(miGui.getSpace().isKeyDown()) {
         	Disparo d= jugador.crearDisparo();
     		if(d!=null) {
     			this.addDisparo(d);
@@ -229,8 +272,8 @@ public class Juego {
         	
 	}
 	
-	public void Update() {
-		jugador.Update();
+	public void Actualizar() {
+		jugador.actualizar();
 	}
 	
 	public void manage() {
@@ -267,24 +310,18 @@ public class Juego {
 	}
 
 	public void addDisparo(Disparo d) {
-		synchronized(disparosParaAgregar) {
-			disparosParaAgregar.addLast(d);
-		}
+		disparosParaAgregar.addLast(d);
 	}
 	
-	public synchronized void agregarDisparos() {
-		Disparo d;
-		synchronized(entidades) {
-			synchronized(disparos) {
-				if(disparosParaAgregar.size()>0) {			
-					for(int i=0;i<disparosParaAgregar.size();i++) {
-						d= disparosParaAgregar.get(i);
-						entidades.add(d);
-						disparos.addLast(d);
-						miGui.add(d.getGrafico());
-						disparosParaAgregar.remove(d); 
-					}
-				}
+	public synchronized void agregarDisparos() {	
+		LinkedList<Disparo> disparoAux= disparosParaAgregar;
+		disparosParaAgregar= new LinkedList<Disparo>();
+		
+		synchronized(disparos) {
+			for(Disparo d : disparoAux) {
+				entidadesParaAgregar.addLast(d);
+				disparos.addLast(d);
+				miGui.add(d.getGrafico());
 			}
 		}
 	}
@@ -293,44 +330,67 @@ public class Juego {
 		return jugador.getVida()>0;
 	}
 
-
 	public boolean hayEnemigos() {
 		boolean toReturn=false;
 		if(entidades.size()>1) {
 			toReturn=true;
 		}
-		else {
+		/*else {
 			if(!pasoBoss) {
 				return true;
 			}
-		}
+		}*/
 		return toReturn;
 	}
 	
-	public void terminarJuego() {
-		Font fuente= new Font("Arial",Font.BOLD,40);
-		JLabel partidaTerminada= new JLabel("LA PARTIDA TERMINO",JLabel.CENTER);
-		partidaTerminada.setFont(fuente);
-		partidaTerminada.setForeground(Color.WHITE);
-		
-		JPanel panel= new JPanel(new BorderLayout());
-		panel.setBounds(0, 0, miGui.getWidth(), miGui.getHeight());
-		
-		panel.setBackground(Color.BLACK);  
-		panel.add(partidaTerminada,BorderLayout.CENTER);
-		
-		
-		miGui.destruir();
-		if(jugador.getVida()>0) {
-			partidaTerminada.setText("GANASTE");
+	public int maxNiveles() {
+		return maxNivel;
+	}
+	
+	public int nivelActual() {
+		return nivelActual;
+	}
+	
+	public void cambiarNivel() {
+		if(nivelActual<maxNivel) {
+			nivelActual++;
+			armarNivel(nivelActual);
 		}
 		else {
-			partidaTerminada.setText("PERDISTE");
+			terminarJuego=true;
 		}
-		miGui.setContentPane(panel);
+	}
+
+	public boolean continuarJuego() {
+		return (jugador.getVida()>0 && !terminarJuego); 
+	}
+	
+	public void terminarJuego() {
+			Font fuente= new Font("Arial",Font.BOLD,40);
+			JLabel partidaTerminada= new JLabel("LA PARTIDA TERMINO",JLabel.CENTER);
+			partidaTerminada.setFont(fuente);
+			partidaTerminada.setForeground(Color.WHITE);
+			
+			JPanel panel= new JPanel(new BorderLayout());
+			panel.setBounds(0, 0, miGui.getWidth(), miGui.getHeight());
+			
+			panel.setBackground(Color.BLACK);  
+			panel.add(partidaTerminada,BorderLayout.CENTER);
+			
+			
+			miGui.destruir();
+			if(jugador.getVida()>0) {
+				partidaTerminada.setText("GANASTE");
+			}
+			else {
+				partidaTerminada.setText("PERDISTE");
+			}
+			miGui.setContentPane(panel);		
 	}
 	
 	
+	
+	///METODOS QUE HAY QUE BORRAAAR!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 	
 	public LinkedList<Entidad>getListaEntidades(){
 		return entidades;

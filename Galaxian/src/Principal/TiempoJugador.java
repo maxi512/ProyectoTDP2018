@@ -18,8 +18,9 @@ public class TiempoJugador extends Thread {
 					e.printStackTrace();
 				}
 				elJuego.moverJugador();
-				elJuego.Update();
-				seguir= elJuego.jugadorVivo() && elJuego.hayEnemigos();
+				elJuego.Actualizar();
+				
+				seguir= elJuego.continuarJuego();
 			}			
 			elJuego.terminarJuego();
 		}

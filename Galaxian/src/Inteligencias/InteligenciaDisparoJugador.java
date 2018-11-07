@@ -2,7 +2,6 @@ package Inteligencias;
 
 import Disparos.Disparo;
 
-
 public class InteligenciaDisparoJugador extends Inteligencia{
 	Disparo disp;
 	

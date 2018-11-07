@@ -14,7 +14,6 @@ public class InteligenciaEnemigoPierdeArma extends InteligenciaEnemigo {
 	public InteligenciaEnemigoPierdeArma(Enemigo enem){
 		this.enemigo=enem;
 		r= new Random();
-
 	}
 	
 	public void disparar() {
@@ -29,7 +28,7 @@ public class InteligenciaEnemigoPierdeArma extends InteligenciaEnemigo {
 			}
 		}
 		else {
-			enemigo.setInteligencia(new InteligenciaKamikaze(this.enemigo,this.enemigo.getJuego()));
+			enemigo.setInteligencia(new InteligenciaKamikaze(this.enemigo, this.enemigo.getJuego()));
 			this.enemigo.setImagenActual(1);
 		}
 		

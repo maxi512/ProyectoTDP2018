@@ -1,6 +1,5 @@
 package Entidades;
 
-
 import javax.swing.ImageIcon;
 
 import Armas.Arma;
@@ -13,15 +12,12 @@ public class Jugador extends Entidad {
 	private Arma arma;
 	private Escudo escudo;
 	
-	
 	public Jugador(int x, int y) {
 		super(10,x,y);
 		
 		this.vida=100;
-		vidaInicial=vida;
 		
 		arma= new ArmaBasicaJugador(this);
-		
 		
 		inicializarArregloImg();
 		
@@ -36,6 +32,10 @@ public class Jugador extends Entidad {
 	public Disparo crearDisparo() {
 		Disparo disp;
 		disp = arma.generarDisparo();
+		if(disp!=null) {
+			disp.getPos().setLocation((int)pos.getX()+(this.getGrafico().getWidth()/2 -1), (int)pos.getY()-12);
+		}
+		
 		return disp;
 	}
 	
@@ -43,14 +43,6 @@ public class Jugador extends Entidad {
 		this.vida+=v;
 	}
 	
-	
-	
-	public void quitarVida(int daño) {
-		escudo.recibirDaño(daño);
-	}
-	
-	
-	//METODOS PROVISORIOS
 	public void colisionar(Entidad e) {
 		ColisionadorJugador col= new ColisionadorJugador(this);
 		e.serColisionado(col);
@@ -60,24 +52,27 @@ public class Jugador extends Entidad {
 		col.afectarJugador(this);
 	}
 	
-	 public void Update(){
-		 arma.Update();
+	 public void actualizar(){
+	        arma.actualizar();
 	 }
 	 
 	 public void setArma(Arma a) {
 		 this.arma=a;
 	 }
-
-	public void setVida(int i) {
-		this.vida=i;
-	}
 	
-	public void setEscudo(Escudo e) {
-		this.escudo=e;
-	}
-	
-	public void recibirDañoKamikaze(int daño) {
-		escudo.recibirDañoKamikaze(daño);
-	}
+	 public void setEscudo(Escudo e) {
+		 this.escudo=e;
+	 }
+	 
+	 public void setVida(int i) {
+		 this.vida=i;
+	 }
 
+	 public void recibirDañoKamikaze(int damage) {
+		 escudo.recibirDañoKamikaze(damage);
+	 }
+
+	 public void quitarVida(int damage) {
+		 escudo.recibirDaño(damage);
+	 }
 }

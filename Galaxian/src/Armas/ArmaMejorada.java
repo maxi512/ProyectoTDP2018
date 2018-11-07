@@ -1,21 +1,32 @@
 package Armas;
 
 import Disparos.Disparo;
+import Entidades.*;
 import Disparos.DisparoMejorado;
-import Entidades.Jugador;
 
 public class ArmaMejorada extends Arma {
+	
 	public ArmaMejorada(Jugador j) {
 		super(j);
+		this.tiempoHastaProximoDisparoDisponible=0;
+		this.tiempoParaDisparar=17;
+		this.cantBalas = 20;
 	}
 	
 	public Disparo generarDisparo() {
-		if(this.chequearCooldown()) {
-			Disparo disp= new DisparoMejorado(5,0,0);
-			disp.getPos().setLocation((int)propietario.getPos().getX()+(propietario.getGrafico().getWidth()/2 -1), (int)propietario.getPos().getY()-12);
-			return disp;
+		DisparoMejorado disp=null;
+		if(tiempoHastaProximoDisparoDisponible<=0) {
+			disp= new DisparoMejorado(5,0,0);
+			tiempoHastaProximoDisparoDisponible= tiempoParaDisparar;
+			cantBalas--;
 		}
-			
-		else return null;
+		if(cantBalas==0) {
+			propietario.setArma(new ArmaBasicaJugador(propietario));
+		}
+		return disp;
+	}
+	
+	public void actualizar() {
+		tiempoHastaProximoDisparoDisponible--;
 	}
 }

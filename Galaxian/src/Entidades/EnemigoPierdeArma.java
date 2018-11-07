@@ -8,7 +8,6 @@ import Colisionadores.Colision;
 import Colisionadores.ColisionadorEnemigo;
 import Inteligencias.InteligenciaEnemigoBasicoPierdeArma;
 
-
 public class EnemigoPierdeArma extends Enemigo {
 	
 	protected Arma arma;
@@ -16,12 +15,11 @@ public class EnemigoPierdeArma extends Enemigo {
 	public EnemigoPierdeArma(int velocidad, int x, int y) {
 		super(velocidad,x,y);
 		this.vida= 100;
-		vidaInicial=vida;
 		
 		inicializarArregloImg();
 		this.setPuntaje(7);
 		this.setInteligencia(new InteligenciaEnemigoBasicoPierdeArma(this));
-		this.arma = new ArmaEnemigo(this);
+		this.arma = new ArmaEnemigo();
 	}
 	
 	private void inicializarArregloImg() {

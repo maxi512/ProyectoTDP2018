@@ -1,24 +1,29 @@
 package Armas;
 
 import Disparos.Disparo;
+import Entidades.*;
 import Disparos.DisparoJugador;
-import Entidades.Entidad;
 
 public class ArmaBasicaJugador extends Arma {
 	
 	
-	public ArmaBasicaJugador(Entidad e) {
-		super(e);
+	public ArmaBasicaJugador(Jugador j) {
+		super(j);
+		this.tiempoHastaProximoDisparoDisponible=0;
+		this.tiempoParaDisparar=10;
 	}
 	
 	public Disparo generarDisparo() {
-		if(this.chequearCooldown()) {
-			Disparo disp= new DisparoJugador(5,0,0);
-			disp.getPos().setLocation((int)propietario.getPos().getX()+(propietario.getGrafico().getWidth()/2 -1), (int)propietario.getPos().getY()-12);
-			return disp;
+		DisparoJugador disp=null;
+		if(tiempoHastaProximoDisparoDisponible<=0) {
+			disp= new DisparoJugador(5,0,0);
+			tiempoHastaProximoDisparoDisponible= tiempoParaDisparar;
 		}
-			
-		else return null;
+		return disp;
+	}
+	
+	public void actualizar() {
+		tiempoHastaProximoDisparoDisponible--;
 	}
 	
 	

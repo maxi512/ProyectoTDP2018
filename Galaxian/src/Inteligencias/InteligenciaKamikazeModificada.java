@@ -12,7 +12,7 @@ public class InteligenciaKamikazeModificada extends InteligenciaKamikaze{
 	
 	public void mover() {
 		super.mover();
-		if(enemigo.getVida()<=enemigo.getVidaInicial()*0.5) {
+		if(this.enemigo.getVida()<=enemigo.getVidaInicial()*0.5) {
 			this.enemigo.setInteligencia(new InteligenciaMareado(this.enemigo));
 		}
 	}

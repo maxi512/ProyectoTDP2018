@@ -1,12 +1,10 @@
 package Entidades;
 
-
-
 import javax.swing.ImageIcon;
+
 import Colisionadores.Colision;
 import Colisionadores.ColisionadorEnemigo;
 import Inteligencias.InteligenciaKamikazeMareado;
-
 
 public class EnemigoKamikazeMareado extends Enemigo{
 
@@ -14,8 +12,9 @@ public class EnemigoKamikazeMareado extends Enemigo{
 	
 	public EnemigoKamikazeMareado(int velocidad, int x, int y) {
 		super(velocidad,x,y);
+		
 		this.vida= 200;
-		vidaInicial=vida;
+		this.vidaInicial=vida;
 		damage=80;
 		
 		inicializarArregloImg();
@@ -43,7 +42,7 @@ public class EnemigoKamikazeMareado extends Enemigo{
 	}
 	
 	public void golpearJugador(Jugador j) {
-		j.quitarVida(damage);
+		j.recibirDañoKamikaze(damage);
 		this.vida=-1;
 	}
 	

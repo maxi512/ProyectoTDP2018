@@ -3,7 +3,6 @@ package Inteligencias;
 import Principal.*;
 import java.awt.*;
 
-
 import Entidades.Enemigo;
 
 public class InteligenciaKamikaze extends InteligenciaEnemigo {

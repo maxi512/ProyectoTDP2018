@@ -12,8 +12,9 @@ public class EnemigoKamikaze extends Enemigo{
 	
 	public EnemigoKamikaze(int velocidad,int x, int y) {
 		super(velocidad,x,y);
+		
 		this.vida= 200;
-		vidaInicial=vida;
+		this.vidaInicial=vida;
 		damage=80;
 		
 		inicializarArregloImg();

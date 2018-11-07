@@ -7,16 +7,26 @@ public abstract class PowerUp extends Entidad {
 	
 	protected Juego juego;
 	
-	public PowerUp(int velocidad, int x, int y, Juego j) {
+	public PowerUp(int velocidad, int x, int y) {
 		super(velocidad, x, y);
-		juego=j;
-		vida=10;
+		
+		this.vida=10;
 	}
+	
 	public void mover() {
 		this.inteligencia.mover();
 		if(this.pos.getY()>710) {
 			this.vida=-1;
 		}
 	}
-	 public abstract void afectar();
+	
+	public abstract void afectar();
+	 
+	public Juego getJuego() {
+			return juego;
+		}
+		
+	public void setJuego(Juego j) {
+			juego=j;
+	}
 }

@@ -6,16 +6,14 @@ import Armas.ArmaMisil;
 import Colisionadores.Colision;
 import Colisionadores.ColisionadorPowerUp;
 import Entidades.Entidad;
+import Entidades.Jugador;
 import Inteligencias.InteligenciaPowerUp;
-import Principal.Juego;
 
 public class PowerUpMisil extends PowerUp {
-	public PowerUpMisil(int velocidad, int x, int y, Juego j) {
-		super(velocidad, x, y, j);
+	public PowerUpMisil(int velocidad, int x, int y) {
+		super(velocidad, x, y);
 		inicializarArregloImg();
 		this.setInteligencia(new InteligenciaPowerUp(this));
-		
-		
 	}
 	
 	public void mover() {
@@ -30,7 +28,8 @@ public class PowerUpMisil extends PowerUp {
 	}
 	
 	public void afectar() {
-		this.juego.getJugador().setArma(new ArmaMisil(this.juego.getJugador()));
+		Jugador j= this.juego.getJugador();
+		j.setArma(new ArmaMisil(j));
 		this.vida=0;
 	}
 

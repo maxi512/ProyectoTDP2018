@@ -13,7 +13,7 @@ public class DisparoEnemigo extends Disparo {
 	public DisparoEnemigo(int velocidad,int x,int y) {
 		super(velocidad,x,y);
 		
-		this.damage=30;
+		this.damage=15;
 				
 		this.setInteligencia(new InteligenciaDisparoEnemigo(this));
 		inicializarArregloImg();

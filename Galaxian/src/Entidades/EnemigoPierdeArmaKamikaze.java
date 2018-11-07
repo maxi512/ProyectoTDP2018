@@ -9,18 +9,18 @@ import Colisionadores.ColisionadorEnemigo;
 import Inteligencias.InteligenciaEnemigoPierdeArma;
 
 public class EnemigoPierdeArmaKamikaze extends Enemigo {
-
+	protected int damage;
 	protected Arma arma;
 	
 	public EnemigoPierdeArmaKamikaze(int velocidad, int x, int y) {
 		super(velocidad,x,y);
 		this.vida= 100;
-		vidaInicial=vida;
 		
+		this.damage=80;
 		inicializarArregloImg();
 		this.setPuntaje(7);
 		this.setInteligencia(new InteligenciaEnemigoPierdeArma(this));
-		this.arma = new ArmaEnemigo(this);
+		this.arma = new ArmaEnemigo();
 	}
 	
 	private void inicializarArregloImg() {
@@ -45,6 +45,11 @@ public class EnemigoPierdeArmaKamikaze extends Enemigo {
 	public void colisionar(Entidad e) {
 		ColisionadorEnemigo col= new ColisionadorEnemigo(this);
 		e.serColisionado(col);
+	}
+	
+	public void golpearJugador(Jugador j) {
+		j.recibirDañoKamikaze(damage);
+		this.vida=-1;
 	}
 	
 	public void golpearObstaculo(Obstaculo o) {

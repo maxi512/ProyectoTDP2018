@@ -17,7 +17,7 @@ public class DisparoRapido extends Disparo {
 		super(velocidad, x, y);
 		this.setInteligencia(new InteligenciaDisparoJugador(this));
 		inicializarArregloImg();
-		this.damage=15;
+		this.damage=10;
 	}
 	
 	

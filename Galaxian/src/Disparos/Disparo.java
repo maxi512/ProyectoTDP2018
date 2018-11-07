@@ -10,8 +10,9 @@ public abstract class Disparo extends Entidad{
 	
 	public Disparo(int velocidad,int x,int y) {
 		super(velocidad,x,y);
-		vida= 10;	
-		vidaInicial=vida;
+		
+		vida= 10;
+		vidaInicial= vida;
 	}
 	
 	
@@ -34,6 +35,5 @@ public abstract class Disparo extends Entidad{
 	}
 	public void golpearObstaculoJugador(Obstaculo o) {
 		
-	}
-	
+	}	
 }

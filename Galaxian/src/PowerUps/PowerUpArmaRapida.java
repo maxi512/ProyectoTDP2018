@@ -8,13 +8,11 @@ import Colisionadores.ColisionadorPowerUp;
 import Entidades.Entidad;
 import Entidades.Jugador;
 import Inteligencias.InteligenciaPowerUp;
-import Principal.Juego;
 
 public class PowerUpArmaRapida extends PowerUp {
 
-	public PowerUpArmaRapida(int velocidad, int x, int y, Juego j) {
-		super(velocidad, x, y, j);
-		             
+	public PowerUpArmaRapida(int velocidad, int x, int y) {
+		super(velocidad, x, y);              
 		this.setInteligencia(new InteligenciaPowerUp(this));
 		inicializarArregloImg();
 	}
@@ -25,7 +23,6 @@ public class PowerUpArmaRapida extends PowerUp {
 		this.inteligencia.mover();
 		if(this.pos.getY()>710) {
 			this.vida=-1;
-			this.destruir();
 		}
 	}
 	public void afectar() {

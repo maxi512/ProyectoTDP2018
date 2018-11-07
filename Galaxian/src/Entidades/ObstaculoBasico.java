@@ -10,8 +10,9 @@ public class ObstaculoBasico extends Obstaculo{
 	public ObstaculoBasico(int x, int y) {
 		super(x,y);
 		inicializarArregloImg();
+		
 		this.vida=400;
-		vidaInicial=vida;
+		this.vidaInicial=vida;
 	}
 	
 	private void inicializarArregloImg() {

@@ -1,21 +1,16 @@
 package PowerUps;
 
 import javax.swing.ImageIcon;
-
 import Colisionadores.Colision;
 import Entidades.Entidad;
 import Inteligencias.InteligenciaPowerUp;
-import Principal.Juego;
 
 public class PowerUpVida extends PowerUp {
 
-	public PowerUpVida(int velocidad, int x, int y, Juego j) {
-		super(velocidad, x, y, j);
+	public PowerUpVida(int velocidad, int x, int y) {
+		super(velocidad, x, y);
 		inicializarArregloImg();
 		this.setInteligencia(new InteligenciaPowerUp(this));
-		
-
-
 	}
 	
 	public void mover() {
@@ -30,7 +25,7 @@ public class PowerUpVida extends PowerUp {
 	}
 	
 	public void afectar() {
-		this.juego.getJugador().sumarVida(150);
+		this.juego.getJugador().sumarVida(50);
 		this.vida=0;
 		
 	}

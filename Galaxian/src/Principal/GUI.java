@@ -11,16 +11,10 @@ import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 
 public class GUI extends JFrame {
-	/**
-	* ATRIBUTOS DE PRUEBA
-	*/
-	  public Key left = new Key();
-	  public Key right = new Key();
-	  public Key space = new Key();
-	/**
-	 * ACA TERMINAN LOS ATRIBUTOS DE PRUEBA
-	 */
-	
+	private Key left = new Key();
+	private Key right = new Key();
+	private Key space = new Key();
+
 	private static final long serialVersionUID = 1L;
 
 	private JPanel panel;
@@ -28,10 +22,9 @@ public class GUI extends JFrame {
 	private JLabel labelVida;
 	
 	private Juego j;
+	
 	private ContadorTiempo tiemp1;
 	private TiempoJugador tiempo;
-	
-	//ATRIBUTOS PROVISORIOS
 	private TiempoDisparo tiempoDisparo;
 	
 	public class Key{
@@ -43,6 +36,7 @@ public class GUI extends JFrame {
             return isKeyDown;
         }
 	}
+	
 	/**
 	 * Create the frame.
 	 */
@@ -80,8 +74,9 @@ public class GUI extends JFrame {
         	labelPuntaje[i].setVisible(true);
         	panel.add(labelPuntaje[i]);
         }
-        //LABEL VIDA
         
+        
+        //LABEL VIDA
         labelVida= new JLabel();
         labelVida.setBounds(0,0,100,50);
         labelVida.setForeground(Color.WHITE);
@@ -89,14 +84,13 @@ public class GUI extends JFrame {
         panel.add(labelVida);
         
         //Hilos
-        tiempoDisparo= new TiempoDisparo(j);
-        tiempoDisparo.start();
-        tiempo= new TiempoJugador(j);
-        tiempo.start();
         tiemp1=new ContadorTiempo(j);
-        tiemp1.start();
+        tiempo= new TiempoJugador(j);
+        tiempoDisparo= new TiempoDisparo(j);
+        tiempo.start();
+		tiemp1.start();
+        tiempoDisparo.start();
 	}
-	
 
 	public void toggleKey(int keyCode, boolean isPressed){
         if(keyCode == KeyEvent.VK_RIGHT)
@@ -118,6 +112,18 @@ public class GUI extends JFrame {
 	public void destruir() {
 		panel.removeAll();
 		this.repaint();
+	}
+
+	public Key getLeft() {
+		return left;
+	}
+	
+	public Key getRight() {
+		return right;
+	}
+	
+	public Key getSpace() {
+		return space;
 	}
 }
 	

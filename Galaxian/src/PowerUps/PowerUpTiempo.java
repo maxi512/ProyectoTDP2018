@@ -7,15 +7,13 @@ import Colisionadores.ColisionadorPowerUp;
 import Entidades.Entidad;
 import Inteligencias.InteligenciaPowerUp;
 import Principal.HiloDetieneTiempo;
-import Principal.Juego;
 
 public class PowerUpTiempo extends PowerUp {
 
-	public PowerUpTiempo(int velocidad, int x, int y, Juego j) {
-		super(velocidad, x, y, j);
+	public PowerUpTiempo(int velocidad, int x, int y) {
+		super(velocidad, x, y);
 		inicializarArregloImg();
 		this.setInteligencia(new InteligenciaPowerUp(this));
-		
 	}
 	
 	public void mover() {

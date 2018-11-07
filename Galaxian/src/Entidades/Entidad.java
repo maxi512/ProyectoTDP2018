@@ -13,12 +13,12 @@ public abstract class Entidad {
 	//ATRIBUTOS
 	protected int velocidad;
 	protected int vida;
+	protected int vidaInicial;
 	protected JLabel grafico;
 	protected Icon []imagen;
 	protected Point pos;
 	protected int puntaje;
 	protected int imagenActual;
-	protected int vidaInicial;
 	
 	//CONSTRUCTOR
 	protected Entidad(int velocidad,int x,int y) {
@@ -26,7 +26,6 @@ public abstract class Entidad {
 		pos = new Point (x,y);
 		imagen= new Icon[30];
 		imagenActual=0;
-		vidaInicial=0;
 	}
 	
 	//METODOS
@@ -84,12 +83,6 @@ public abstract class Entidad {
 		return toReturn;
 	}
 	
-	public void destruir() {
-		grafico.setIcon(null);
-		vida=-1;
-		
-	}
-	
 	public void setPuntaje(int x) {
 		puntaje=x;
 	}
@@ -108,6 +101,10 @@ public abstract class Entidad {
 	
 	public void mover() {
 		
+	}
+	
+	public int getVidaInicial() {
+		return vidaInicial;
 	}
 	
 	public Point getPos() {
@@ -131,12 +128,11 @@ public abstract class Entidad {
 		
 	}
 	
+	public void destruir() {
+	}
 	
 	public void serDetenido(Inteligencia i){
 		
-	}
-	public int getVidaInicial() {
-		return vidaInicial;
 	}
 	
 }

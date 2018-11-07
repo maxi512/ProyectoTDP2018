@@ -12,8 +12,9 @@ public class EnemigoMareado extends Enemigo{
 	
 	public EnemigoMareado(int velocidad,int x, int y) {
 		super(velocidad,x,y);
+		
 		this.vida= 200;
-		vidaInicial=vida;
+		this.vidaInicial=vida;
 		damage=80;
 		
 		inicializarArregloImg();
@@ -40,7 +41,7 @@ public class EnemigoMareado extends Enemigo{
 	}
 	
 	public void golpearJugador(Jugador j) {
-		j.quitarVida(damage);
+		j.recibirDañoKamikaze(damage);
 		this.vida=-1;
 	}
 	

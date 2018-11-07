@@ -14,4 +14,6 @@ public abstract class Mapa {
 	public LinkedList<Entidad> getObstaculos() {
 		return obstaculos;
 	}
+	
+	
 }

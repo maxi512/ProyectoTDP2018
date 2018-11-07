@@ -5,17 +5,14 @@ import javax.swing.ImageIcon;
 import Armas.ArmaMejorada;
 import Colisionadores.Colision;
 import Colisionadores.ColisionadorPowerUp;
-import Entidades.Entidad;
-import Entidades.Jugador;
 import Inteligencias.InteligenciaPowerUp;
-import Principal.Juego;
+import Entidades.*;
 
 public class PowerUpArmaMejorada extends PowerUp {
-	public PowerUpArmaMejorada(int velocidad, int x, int y, Juego j) {
-		super(velocidad, x, y, j);
+	public PowerUpArmaMejorada(int velocidad, int x, int y) {
+		super(velocidad, x, y);
 		inicializarArregloImg();
 		this.setInteligencia(new InteligenciaPowerUp(this));
-		
 	}
 	
 	public void mover() {
