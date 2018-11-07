@@ -15,7 +15,7 @@ public class PowerUpMisil extends PowerUp {
 		inicializarArregloImg();
 		this.setInteligencia(new InteligenciaPowerUp(this));
 		
-		this.vida=10;
+		
 	}
 	
 	public void mover() {

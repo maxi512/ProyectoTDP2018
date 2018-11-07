@@ -2,7 +2,6 @@ package Entidades;
 
 
 import javax.swing.ImageIcon;
-import javax.swing.JLabel;
 
 import Armas.Arma;
 import Armas.ArmaBasicaJugador;
@@ -13,6 +12,7 @@ public class Jugador extends Entidad {
 	
 	private Arma arma;
 	private Escudo escudo;
+	
 	
 	public Jugador(int x, int y) {
 		super(10,x,y);

@@ -7,7 +7,7 @@ import Armas.ArmaEnemigo;
 import Colisionadores.Colision;
 import Colisionadores.ColisionadorEnemigo;
 import Inteligencias.InteligenciaEnemigoBasicoPierdeArma;
-import Inteligencias.InteligenciaEnemigoPierdeArma;
+
 
 public class EnemigoPierdeArma extends Enemigo {
 	

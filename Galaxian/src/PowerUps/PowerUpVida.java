@@ -14,7 +14,7 @@ public class PowerUpVida extends PowerUp {
 		inicializarArregloImg();
 		this.setInteligencia(new InteligenciaPowerUp(this));
 		
-		this.vida=10;
+
 
 	}
 	

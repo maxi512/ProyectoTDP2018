@@ -17,7 +17,7 @@ public class InteligenciaEnemigoBasicoPierdeArma extends InteligenciaEnemigoConA
 	}
 	
 	public void disparar() {
-		if (enemigo.getVida()>20) {
+		if (enemigo.getVida()>enemigo.getVidaInicial()*0.2) {
 			if(r.nextInt(10)==5) {
 				Arma arma= enemigo.getArma();
 				if(arma!=null) {

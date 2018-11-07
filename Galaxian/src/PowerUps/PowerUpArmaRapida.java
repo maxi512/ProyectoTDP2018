@@ -14,7 +14,7 @@ public class PowerUpArmaRapida extends PowerUp {
 
 	public PowerUpArmaRapida(int velocidad, int x, int y, Juego j) {
 		super(velocidad, x, y, j);
-		this.vida=10;                 
+		             
 		this.setInteligencia(new InteligenciaPowerUp(this));
 		inicializarArregloImg();
 	}

@@ -2,7 +2,7 @@ package Principal;
 
 import java.util.LinkedList;
 import Entidades.*;
-import PowerUps.PowerUpArmaRapida;
+
 import PowerUps.PowerUpEscudo;
 
 public class MapaBase extends Mapa {

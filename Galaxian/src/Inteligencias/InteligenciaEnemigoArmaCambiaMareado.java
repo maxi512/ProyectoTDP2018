@@ -11,7 +11,7 @@ public class InteligenciaEnemigoArmaCambiaMareado extends InteligenciaEnemigoCon
 	
 	public void mover() {
 		super.mover();
-		if(this.enemigo.getVida()<=30) {
+		if(enemigo.getVida()<=enemigo.getVidaInicial()*0.3) {
 			this.enemigo.setInteligencia(new InteligenciaMareado(this.enemigo));
 		}
 	}

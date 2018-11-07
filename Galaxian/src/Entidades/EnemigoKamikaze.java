@@ -12,7 +12,7 @@ public class EnemigoKamikaze extends Enemigo{
 	
 	public EnemigoKamikaze(int velocidad,int x, int y) {
 		super(velocidad,x,y);
-		
+		vidaInicial=200;
 		this.vida= 200;
 		damage=80;
 		

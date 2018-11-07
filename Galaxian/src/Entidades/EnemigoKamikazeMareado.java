@@ -1,14 +1,12 @@
 package Entidades;
 
-import java.util.Random;
+
 
 import javax.swing.ImageIcon;
-
 import Colisionadores.Colision;
 import Colisionadores.ColisionadorEnemigo;
-import Inteligencias.InteligenciaEnemigoConArma;
 import Inteligencias.InteligenciaKamikazeMareado;
-import Inteligencias.InteligenciaMareado;
+
 
 public class EnemigoKamikazeMareado extends Enemigo{
 
@@ -16,7 +14,7 @@ public class EnemigoKamikazeMareado extends Enemigo{
 	
 	public EnemigoKamikazeMareado(int velocidad, int x, int y) {
 		super(velocidad,x,y);
-		
+		vidaInicial=200;
 		this.vida= 200;
 		damage=80;
 		

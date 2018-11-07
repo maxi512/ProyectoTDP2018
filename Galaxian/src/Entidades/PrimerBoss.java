@@ -17,6 +17,7 @@ public class PrimerBoss extends Enemigo {
 	
 	private PrimerBoss(int velocidad,int x, int y) {
 		super(velocidad,x,y);
+		vidaInicial=500;
 		this.vida= 500;
 		inicializarArregloImg();
 		this.setPuntaje(7);

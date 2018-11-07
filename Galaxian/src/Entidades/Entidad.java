@@ -18,6 +18,7 @@ public abstract class Entidad {
 	protected Point pos;
 	protected int puntaje;
 	protected int imagenActual;
+	protected int vidaInicial;
 	
 	//CONSTRUCTOR
 	protected Entidad(int velocidad,int x,int y) {
@@ -25,6 +26,7 @@ public abstract class Entidad {
 		pos = new Point (x,y);
 		imagen= new Icon[30];
 		imagenActual=0;
+		vidaInicial=0;
 	}
 	
 	//METODOS
@@ -132,6 +134,9 @@ public abstract class Entidad {
 	
 	public void serDetenido(Inteligencia i){
 		
+	}
+	public int getVidaInicial() {
+		return vidaInicial;
 	}
 	
 }
