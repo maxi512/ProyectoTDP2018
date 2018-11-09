@@ -13,12 +13,9 @@ public class ColisionadorObstaculo extends Colision {
 	
 	public void afectarEnemigo(Enemigo e) {
 		e.quitarVida(100);
-		System.out.println("Colisionaron");
 	}
 	
 	public void afectarDisparo(Disparo d) {
-	
-	
 		d.golpearObstaculoEnemigoYJugador(obstaculo);
 	}
 	

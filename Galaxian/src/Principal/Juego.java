@@ -41,6 +41,8 @@ public class Juego {
 		this.mapa=new Mapa[4];
 		mapa[0]= new MapaBase(this);
 		mapa[1]= new MapaNivel2(this);
+		mapa[2]= new MapaNivel3(this);
+		mapa[3]= new MapaNivel4(this);
 	
 		miGui = gui;
 		
@@ -52,9 +54,9 @@ public class Juego {
 		this.jugador=new Jugador(265,610);
 		miGui.add(jugador.getGrafico());
 		
-		armarNivel(1);
-		nivelActual=1;
-		maxNivel=1;
+		armarNivel(4);
+		nivelActual=4;
+		maxNivel=4;
 				
 		cambioDireccion= false;
 		moverDerecha=true;

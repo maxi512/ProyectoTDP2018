@@ -25,7 +25,7 @@ public class Jugador extends Entidad {
 	}
 	
 	private void inicializarArregloImg() {
-		this.imagen[0]= new ImageIcon(this.getClass().getResource("/img/playerShip1_blue.png"));
+		this.imagen[0]= new ImageIcon(this.getClass().getResource("/img/naveFinal1.png"));
 		this.imagen[1]= new ImageIcon(this.getClass().getResource("/img/naveEscudo.png"));
 	}
 	

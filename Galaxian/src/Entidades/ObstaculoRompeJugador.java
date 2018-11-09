@@ -21,7 +21,7 @@ public class ObstaculoRompeJugador extends Obstaculo{
 	
 	//METODOS PROVISORIOS
 	public void serColisionado(Colision col) {
-		col.afectarObstaculo(this);
+		col.afectarObstaculoRompeJugador(this);
 }
 
 	public void colisionar(Entidad e) {

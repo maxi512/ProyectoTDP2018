@@ -23,7 +23,7 @@ public class EnemigoMareado extends Enemigo{
 	}
 	
 	private void inicializarArregloImg() {
-		this.imagen[0]= new ImageIcon(this.getClass().getResource("/img/Webp.net-gifmaker (3).gif"));
+		this.imagen[0]= new ImageIcon(this.getClass().getResource("/img/enemigoMareable.gif"));
 	}
 	
 	public void mover() {

@@ -19,6 +19,10 @@ public class ColisionadorEnemigo extends Colision{
 		enem.golpearObstaculo(o);
 	}
 	
+	public void afectarObstaculoRompeJugador(Obstaculo o) {
+		
+	}
+	
 	public void cambiarInteligencia(Inteligencia i) {
 		enem.setInteligencia(i);
 	}
