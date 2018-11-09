@@ -12,6 +12,7 @@ public class ObstaculoRompeJugador extends Obstaculo{
 		inicializarArregloImg();
 		
 		this.vida=400;
+		this.vida= 50;
 		this.vidaInicial=vida;
 	}
 	

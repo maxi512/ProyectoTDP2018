@@ -14,11 +14,13 @@ public class EnemigoPierdeArmaKamikaze extends Enemigo {
 	
 	public EnemigoPierdeArmaKamikaze(int velocidad, int x, int y) {
 		super(velocidad,x,y);
-		this.vida= 100;
+		this.vida= 200;
 		
 		this.damage=80;
+		this.puntaje=250;
+		
 		inicializarArregloImg();
-		this.setPuntaje(7);
+		
 		this.setInteligencia(new InteligenciaEnemigoPierdeArma(this));
 		this.arma = new ArmaEnemigo();
 	}

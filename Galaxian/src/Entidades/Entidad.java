@@ -111,6 +111,9 @@ public abstract class Entidad {
 		return pos;
 	}
 
+	public int getVelocidad() {
+		return velocidad;
+	}
 	//METODOS PROVISORIOS
 	public int getVida() {
 		return vida;

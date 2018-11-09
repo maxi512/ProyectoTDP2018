@@ -25,6 +25,7 @@ public abstract class Colision {
 	public void afectarPowerUp(PowerUp p) {
 		
 	}
+	
 	public void afectarObstaculoRompeJugador(Obstaculo o) {
 		
 	}

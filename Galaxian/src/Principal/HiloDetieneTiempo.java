@@ -17,7 +17,7 @@ public class HiloDetieneTiempo extends Thread {
 	}
 	
 	public void run() {
-		LinkedList<Entidad> listaEntidades =(LinkedList<Entidad>) elJuego.getListaEntidades().clone();
+		LinkedList<Entidad> listaEntidades =(LinkedList<Entidad>)  elJuego.getListaEntidades().clone();
 
 		Map<Entidad,Inteligencia>mapeo= new HashMap<Entidad ,Inteligencia>();
 		

@@ -17,8 +17,9 @@ public class EnemigoKamikazeMareado extends Enemigo{
 		this.vidaInicial=vida;
 		damage=80;
 		
+		this.puntaje=200;
+		
 		inicializarArregloImg();
-		this.setPuntaje(300);
 		this.setInteligencia(new InteligenciaKamikazeMareado(this));
 	}
 	

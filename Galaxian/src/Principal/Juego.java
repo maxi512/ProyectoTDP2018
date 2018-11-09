@@ -5,7 +5,6 @@ import java.util.LinkedList;
 
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
-import javax.swing.JPanel;
 
 import Disparos.Disparo;
 
@@ -14,6 +13,7 @@ import java.awt.Rectangle;
 import Principal.GUI;
 import Entidades.*;
 import java.awt.*;
+
 public class Juego {
 	//ATRIBUTOS
 	private GUI miGui;
@@ -39,7 +39,7 @@ public class Juego {
  	//CONSTRUCTOR
 	public Juego(GUI gui) {	
 		this.mapa=new Mapa[4];
-		mapa[0]= new MapaBase(this);
+		mapa[0]= new MapaNivel1(this);
 		mapa[1]= new MapaNivel2(this);
 		mapa[2]= new MapaNivel3(this);
 		mapa[3]= new MapaNivel4(this);
@@ -54,8 +54,8 @@ public class Juego {
 		this.jugador=new Jugador(265,610);
 		miGui.add(jugador.getGrafico());
 		
-		armarNivel(4);
-		nivelActual=4;
+		armarNivel(1);
+		nivelActual=1;
 		maxNivel=4;
 				
 		cambioDireccion= false;
@@ -145,6 +145,7 @@ public class Juego {
 	}
 
 	private void quitarEntidades() {
+		@SuppressWarnings("unchecked")
 		LinkedList<Entidad> lista= (LinkedList<Entidad>) entidades.clone();
 		
 		for(Entidad e: lista) {
@@ -153,13 +154,6 @@ public class Juego {
 				puntajeTotal+= e.getPuntaje();
 			}
 		}
-		
-		/*for(Entidad e: entidades) {
-			if(e.getVida()<=0) {
-				entidadesAEliminar.add(e);
-				puntajeTotal+= e.getPuntaje();
-			}
-		}*/
 	}
 
 	public int getPuntajeTotal() {
@@ -368,7 +362,7 @@ public class Juego {
 	}
 	
 	public void terminarJuego() {
-			Font fuente= new Font("Arial",Font.BOLD,40);
+			/*Font fuente= new Font("Arial",Font.BOLD,40);
 			JLabel partidaTerminada= new JLabel("LA PARTIDA TERMINO",JLabel.CENTER);
 			partidaTerminada.setFont(fuente);
 			partidaTerminada.setForeground(Color.WHITE);
@@ -378,16 +372,24 @@ public class Juego {
 			
 			panel.setBackground(Color.BLACK);  
 			panel.add(partidaTerminada,BorderLayout.CENTER);
+			*/
 			
-			
-			miGui.destruir();
+			/*miGui.destruir();
 			if(jugador.getVida()>0) {
 				partidaTerminada.setText("GANASTE");
 			}
 			else {
 				partidaTerminada.setText("PERDISTE");
 			}
-			miGui.setContentPane(panel);		
+			miGui.setContentPane(panel);
+			miGui.agregarBoton();*/
+		
+		if(jugador.getVida()>0) {
+			miGui.terminar(0);
+		}
+		else {
+			miGui.terminar(1);
+		}
 	}
 	
 	

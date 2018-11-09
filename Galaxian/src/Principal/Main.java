@@ -2,7 +2,7 @@ package Principal;
 
 public class Main {
 	public static void main(String[] args) {
-		GUI game= new GUI();
+		GUIMenu game= new GUIMenu();
 		game.setVisible(true);
 	}
 }

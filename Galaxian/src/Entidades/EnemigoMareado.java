@@ -16,9 +16,9 @@ public class EnemigoMareado extends Enemigo{
 		this.vida= 200;
 		this.vidaInicial=vida;
 		damage=80;
+		this.puntaje=200;
 		
-		inicializarArregloImg();
-		this.setPuntaje(300);
+		inicializarArregloImg();	
 		this.setInteligencia(new InteligenciaNormalCambiaMareado(this));
 	}
 	

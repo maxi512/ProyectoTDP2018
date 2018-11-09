@@ -20,9 +20,9 @@ public class PrimerBoss extends Enemigo {
 		
 		this.vida= 500;
 		this.vidaInicial=vida;
+		this.puntaje=1000;
 		
 		inicializarArregloImg();
-		this.setPuntaje(7);
 		this.setInteligencia(new InteligenciaEnemigoConArma(this));
 		
 		r= new Random();

@@ -39,9 +39,5 @@ public class MapaNivel4 extends Mapa {
 	 	obstaculos.add(new ObstaculoRompeJugador(300,400));
 	 	obstaculos.add(new ObstaculoRompeJugador(400,400));
 	 	obstaculos.add(new ObstaculoBasico(500,400));
-
-
-	 	
-	 	
 	}
 }

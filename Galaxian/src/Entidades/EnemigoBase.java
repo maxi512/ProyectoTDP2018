@@ -12,10 +12,12 @@ public class EnemigoBase extends Enemigo{
 	
 	public EnemigoBase(int velocidad,int x, int y) {
 		super(velocidad,x,y);
+		
 		this.vida= 100;
+		this.puntaje=50;
 		
 		inicializarArregloImg();
-		this.setPuntaje(7);
+		
 		this.setInteligencia(new InteligenciaEnemigoConArma(this));
 		this.arma = new ArmaEnemigo();
 	}

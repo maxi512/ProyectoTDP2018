@@ -12,6 +12,7 @@ public class ObstaculoBasico extends Obstaculo{
 		inicializarArregloImg();
 		
 		this.vida=400;
+		this.puntaje=50;
 		this.vidaInicial=vida;
 	}
 	

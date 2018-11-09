@@ -18,6 +18,4 @@ public class ColisionadorObstaculo extends Colision {
 	public void afectarDisparo(Disparo d) {
 		d.golpearObstaculoEnemigoYJugador(obstaculo);
 	}
-	
-
 }

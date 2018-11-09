@@ -40,7 +40,7 @@ public class MapaNivel2 extends Mapa {
 		obstaculos.add(new ObstaculoBasico(200,350));
 		obstaculos.add(new ObstaculoBasico(400,350));
 		
-		GeneradorPowerUp generador = new GeneradorPowerUp(j);
+		GeneradorPowerUp generador = new GeneradorPowerUp(j,5);
 		for(Enemigo e: enemigos) {
 			e.setPowerUpAlDestruir(generador.getPowerUpAleatorio());
 		}

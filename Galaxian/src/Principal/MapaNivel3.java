@@ -1,17 +1,7 @@
 package Principal;
 
 import java.util.LinkedList;
-
-import Entidades.Enemigo;
-import Entidades.EnemigoBase;
-import Entidades.EnemigoKamikaze;
-import Entidades.EnemigoMareado;
-import Entidades.EnemigoPierdeArma;
-import Entidades.EnemigoPierdeArmaKamikaze;
-import Entidades.Entidad;
-import Entidades.GeneradorPowerUp;
-import Entidades.ObstaculoBasico;
-import Entidades.ObstaculoRompeJugador;
+import Entidades.*;
 
 public class MapaNivel3 extends Mapa {
 	
@@ -72,7 +62,7 @@ public class MapaNivel3 extends Mapa {
 	 	
 	 	
 	 	
-		GeneradorPowerUp generador = new GeneradorPowerUp(j);
+		GeneradorPowerUp generador = new GeneradorPowerUp(j,6);
 		for(Enemigo e: enemigos) {
 			e.setPowerUpAlDestruir(generador.getPowerUpAleatorio());
 		}

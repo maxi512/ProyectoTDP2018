@@ -12,7 +12,9 @@ import Inteligencias.InteligenciaDisparoJugador;
 public class DisparoMisil extends Disparo {
 	public DisparoMisil(int velocidad,int x,int y) {
 		super(velocidad,x,y);
+		
 		this.damage= 100;
+		
 		this.setInteligencia(new InteligenciaDisparoJugador(this));
 		inicializarArregloImg();
 	}
