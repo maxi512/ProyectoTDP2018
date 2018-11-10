@@ -15,7 +15,7 @@ public class InteligenciaNormalCambiaKamikaze extends InteligenciaEnemigo {
 	
 	public void mover() {
 		super.mover();
-		if(r.nextInt(60)==5) {
+		if(r.nextInt(60)==10) {
 			this.enemigo.setInteligencia(new InteligenciaKamikaze(this.enemigo, this.enemigo.getJuego()));
 		}
 	}

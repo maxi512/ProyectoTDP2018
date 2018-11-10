@@ -33,8 +33,8 @@ public class Juego {
  	private int maxNivel;
  	
  	private boolean moverDerecha,cambioDireccion;
- 	private boolean pasoBoss;
  	private boolean terminarJuego=false;
+ 	private boolean pasoBoss;
  	
  	//CONSTRUCTOR
 	public Juego(GUI gui) {	
@@ -60,7 +60,7 @@ public class Juego {
 				
 		cambioDireccion= false;
 		moverDerecha=true;
-		pasoBoss=false;
+		pasoBoss= false;
 	}
 	
 	private void armarNivel(int nivel) {
@@ -229,7 +229,6 @@ public class Juego {
 			}
 		}
 	}
-	//METODOS PROVISORIOS
 	
 	public void moverDisparo() {
 		synchronized(disparos) {
@@ -273,14 +272,13 @@ public class Juego {
 	}
 	
 	public void manage() {
-		if(entidades.size()== 1&& jugador.getVida()>0) {
+		if(nivelActual==maxNivel && entidades.size()==1 && jugador.getVida()>0) {
 			PrimerBoss boss=null;
 			boss = PrimerBoss.getPrimerBoss(10,200,200);
 			if(boss!=null) {
 				boss.setJuego(this);
-				entidades.add(boss);
-				miGui.add(boss.getGrafico());
-				pasoBoss= true;
+				addEntidad(boss);
+				pasoBoss=true;
 			}
 		}
 	}
@@ -331,11 +329,6 @@ public class Juego {
 		if(entidades.size()>1) {
 			toReturn=true;
 		}
-		/*else {
-			if(!pasoBoss) {
-				return true;
-			}
-		}*/
 		return toReturn;
 	}
 	
@@ -353,7 +346,7 @@ public class Juego {
 			armarNivel(nivelActual);
 		}
 		else {
-			terminarJuego=true;
+			terminarJuego=true;			
 		}
 	}
 
@@ -361,29 +354,7 @@ public class Juego {
 		return (jugador.getVida()>0 && !terminarJuego); 
 	}
 	
-	public void terminarJuego() {
-			/*Font fuente= new Font("Arial",Font.BOLD,40);
-			JLabel partidaTerminada= new JLabel("LA PARTIDA TERMINO",JLabel.CENTER);
-			partidaTerminada.setFont(fuente);
-			partidaTerminada.setForeground(Color.WHITE);
-			
-			JPanel panel= new JPanel(new BorderLayout());
-			panel.setBounds(0, 0, miGui.getWidth(), miGui.getHeight());
-			
-			panel.setBackground(Color.BLACK);  
-			panel.add(partidaTerminada,BorderLayout.CENTER);
-			*/
-			
-			/*miGui.destruir();
-			if(jugador.getVida()>0) {
-				partidaTerminada.setText("GANASTE");
-			}
-			else {
-				partidaTerminada.setText("PERDISTE");
-			}
-			miGui.setContentPane(panel);
-			miGui.agregarBoton();*/
-		
+	public void terminarJuego() {		
 		if(jugador.getVida()>0) {
 			miGui.terminar(0);
 		}
@@ -392,16 +363,7 @@ public class Juego {
 		}
 	}
 	
-	
-	
-	///METODOS QUE HAY QUE BORRAAAR!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-	
-	public LinkedList<Entidad>getListaEntidades(){
+	public LinkedList<Entidad> getListaEntidades(){
 		return entidades;
-	}
-	
-	public LinkedList<Disparo> getListaDisparos(){
-		return disparos;
-	}
-	
+	}	
 }

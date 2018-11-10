@@ -4,9 +4,8 @@ import javax.swing.ImageIcon;
 
 import Inteligencias.*;
 import Colisionadores.*;
-import Entidades.Entidad;
-import Entidades.Jugador;
-import Entidades.Obstaculo;
+import Entidades.*;
+
 
 public class DisparoEnemigo extends Disparo {
 	
@@ -30,7 +29,6 @@ public class DisparoEnemigo extends Disparo {
 		}
 	}
 	
-	//METODOS PROVISORIOS
 	public void colisionar(Entidad e) {
 		Colision col= new ColisionadorDisparo(this);
 		e.serColisionado(col);

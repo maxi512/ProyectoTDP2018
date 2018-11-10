@@ -2,11 +2,8 @@ package Disparos;
 
 import javax.swing.ImageIcon;
 
-import Colisionadores.Colision;
-import Colisionadores.ColisionadorDisparo;
-import Entidades.Enemigo;
-import Entidades.Entidad;
-import Entidades.Obstaculo;
+import Colisionadores.*;
+import Entidades.*;
 import Inteligencias.InteligenciaDisparoJugador;
 
 public class DisparoJugador extends Disparo{

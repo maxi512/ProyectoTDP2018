@@ -33,7 +33,7 @@ public class GeneradorPowerUp {
 	
 	private PowerUp getPowerUpRandom() {
 		int num=r.nextInt(6);
-		PowerUp p=new PowerUpEscudo(12,0,0);
+		PowerUp p=new PowerUpVida(12,0,0);
 		switch(num) {
 		case 0:
 			p=new PowerUpEscudo(12,0,0);

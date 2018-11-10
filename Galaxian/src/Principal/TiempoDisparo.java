@@ -23,6 +23,5 @@ public class TiempoDisparo extends Thread  {
 			elJuego.agregarEntidades();
 			seguir= elJuego.continuarJuego();
 		}
-		elJuego.terminarJuego();
 	}
 }

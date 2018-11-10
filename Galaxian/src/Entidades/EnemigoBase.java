@@ -34,7 +34,6 @@ public class EnemigoBase extends Enemigo{
 		this.inteligencia.disparar();
 	}
 	
-	//METODOS PROVISORIOS
 	public void serColisionado(Colision col) {
 		col.afectarEnemigo(this);
 	}

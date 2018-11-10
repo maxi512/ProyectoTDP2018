@@ -29,7 +29,4 @@ public abstract class Colision {
 	public void afectarObstaculoRompeJugador(Obstaculo o) {
 		
 	}
-
-	
-	
 }

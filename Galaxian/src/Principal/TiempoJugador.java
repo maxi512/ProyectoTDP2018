@@ -21,7 +21,6 @@ public class TiempoJugador extends Thread {
 				elJuego.Actualizar();
 				
 				seguir= elJuego.continuarJuego();
-			}			
-			elJuego.terminarJuego();
+			}
 		}
 }

@@ -20,7 +20,6 @@ public class ObstaculoBasico extends Obstaculo{
 		this.imagen[0]= new ImageIcon(this.getClass().getResource("/img/obstaculo.png"));
 	}
 	
-	//METODOS PROVISORIOS
 	public void serColisionado(Colision col) {
 		col.afectarObstaculo(this);
 }

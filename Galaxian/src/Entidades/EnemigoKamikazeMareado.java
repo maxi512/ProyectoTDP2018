@@ -32,7 +32,6 @@ public class EnemigoKamikazeMareado extends Enemigo{
 		
 	}
 	
-	//METODOS PROVISORIOS
 	public void serColisionado(Colision col) {
 		col.afectarEnemigo(this);
 	}

@@ -30,7 +30,6 @@ public class EnemigoKamikaze extends Enemigo{
 		this.inteligencia.mover();
 	}
 	
-	//METODOS PROVISORIOS
 	public void serColisionado(Colision col) {
 		col.afectarEnemigo(this);
 	}

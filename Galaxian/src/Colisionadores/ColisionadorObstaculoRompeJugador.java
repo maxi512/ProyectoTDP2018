@@ -16,7 +16,6 @@ public class ColisionadorObstaculoRompeJugador extends Colision {
 	}
 	
 	public void afectarDisparo(Disparo d) {
-		
 		d.golpearObstaculoJugador(obstaculo);
 	}
 }

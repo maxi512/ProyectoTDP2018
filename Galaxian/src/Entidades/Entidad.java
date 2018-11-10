@@ -114,7 +114,7 @@ public abstract class Entidad {
 	public int getVelocidad() {
 		return velocidad;
 	}
-	//METODOS PROVISORIOS
+
 	public int getVida() {
 		return vida;
 	}
@@ -123,9 +123,9 @@ public abstract class Entidad {
 		vida-= v;
 	}
 	
-	public abstract void serColisionado(Colision col); //Deben ser abstractas
+	public abstract void serColisionado(Colision col); 
 	
-	public abstract void colisionar(Entidad e);// Deben ser abstractas 
+	public abstract void colisionar(Entidad e);
 
 	public void disparar() {
 		

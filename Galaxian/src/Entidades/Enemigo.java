@@ -16,7 +16,6 @@ public abstract class Enemigo extends Entidad {
 		
 		vidaInicial=100;
 	}
-	//METODOS PROVISORIOS
 	
 	public Juego getJuego() {
 		return juego;
