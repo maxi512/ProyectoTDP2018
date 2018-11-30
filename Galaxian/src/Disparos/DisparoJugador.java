@@ -28,12 +28,12 @@ public class DisparoJugador extends Disparo{
 	}
 	
 	public void colisionar(Entidad e) {
-		ColisionadorDisparo col= new ColisionadorDisparo(this);
+		Colision col= new ColisionadorDisparoJugador(this);
 		e.serColisionado(col);
 	}
 	
 	public void serColisionado(Colision col) {
-		col.afectarDisparo(this);
+		col.afectarDisparoJugador(this);
 	}
 	
 	public void golpearEnemigo(Enemigo e) {
@@ -42,12 +42,18 @@ public class DisparoJugador extends Disparo{
 	}
 	
 	public void golpearObstaculoEnemigoYJugador(Obstaculo o) {
-		vida=0; 
 		o.quitarVida(damage);
+		vida=-1; 
 	}
+	
 	public void golpearObstaculoJugador(Obstaculo o) {
-		vida=0;
 		o.quitarVida(damage);
+		vida=-1;
+	}
+
+	public void golpearJugador(Jugador j) {
+		// TODO Auto-generated method stub
+		
 	}
 	
 }

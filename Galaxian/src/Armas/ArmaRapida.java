@@ -13,10 +13,10 @@ public class ArmaRapida extends Arma {
 		this.cantBalas=80;
 	}
 	
-	public Disparo generarDisparo() {
+	public Disparo generarDisparo(int x,int y) {
 		DisparoRapido disp=null;
 		if(tiempoHastaProximoDisparoDisponible<=0) {
-			disp= new DisparoRapido(5,0,0);
+			disp= new DisparoRapido(5,x,y);
 			tiempoHastaProximoDisparoDisponible= tiempoParaDisparar;
 			cantBalas--;
 		}

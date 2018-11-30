@@ -16,7 +16,7 @@ public abstract class Arma {
 		
 	}
 	
-	public abstract Disparo generarDisparo();
+	public abstract Disparo generarDisparo(int x,int y);
 	
 	public void actualizar() {
 		

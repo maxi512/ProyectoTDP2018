@@ -5,6 +5,7 @@ import java.awt.*;
 
 import Colisionadores.*;
 import Inteligencias.*;
+import Principal.VisitorDetieneTiempo;
 
 public abstract class Entidad {
 	
@@ -19,6 +20,7 @@ public abstract class Entidad {
 	protected Point pos;
 	protected int puntaje;
 	protected int imagenActual;
+	
 	
 	//CONSTRUCTOR
 	protected Entidad(int velocidad,int x,int y) {
@@ -71,14 +73,12 @@ public abstract class Entidad {
 	
 	public Rectangle getRectangle() {
 		
-		
 		int posX = (int)pos.getX();
 		int posY = (int)pos.getY();
 		
 		int width = grafico.getWidth();
 		int height = grafico.getHeight();
-		
-		
+	
 		Rectangle toReturn = new Rectangle(posX,posY,width,height);
 		return toReturn;
 	}
@@ -134,8 +134,10 @@ public abstract class Entidad {
 	public void destruir() {
 	}
 	
-	public void serDetenido(Inteligencia i){
+	public void serDetenido(VisitorDetieneTiempo v){
 		
 	}
 	
 }
+
+

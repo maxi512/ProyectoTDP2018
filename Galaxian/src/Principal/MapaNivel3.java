@@ -8,12 +8,13 @@ public class MapaNivel3 extends Mapa {
 	public MapaNivel3(Juego j) {
 		this.enemigos= new LinkedList<Enemigo>();
 		this.obstaculos= new LinkedList<Entidad>();
+		this.juego= j;
 		int x= 50;
 		int y= 50;
 		
 		for (int i=0;i<5;i++) {
 			EnemigoBase enem= new EnemigoBase(7,x,y);
-			enem.setJuego(j);
+			enem.setJuego(juego);
 			enemigos.add(enem);
 			x+= 70;
 		}
@@ -22,7 +23,7 @@ public class MapaNivel3 extends Mapa {
 		
 		for (int i=0;i<5;i++) {
 			EnemigoBase enem= new EnemigoBase(7,x,y);
-			enem.setJuego(j);
+			enem.setJuego(juego);
 			enemigos.add(enem);
 			x+= 70;
 		}
@@ -40,7 +41,7 @@ public class MapaNivel3 extends Mapa {
 	 	y=250;
 	 	for (int i=0;i<3;i++) {
 			EnemigoPierdeArmaKamikaze enem= new EnemigoPierdeArmaKamikaze(7,x,y);
-			enem.setJuego(j);
+			enem.setJuego(juego);
 			enemigos.add(enem);
 			x+= 70;
 		}
@@ -51,7 +52,7 @@ public class MapaNivel3 extends Mapa {
 	 	
 	 	for (int i=0;i<3;i++) {
 			EnemigoMareado enem= new EnemigoMareado(7,x,y);
-			enem.setJuego(j);
+			enem.setJuego(juego);
 			enemigos.add(enem);
 			x+= 70;
 		}
@@ -62,9 +63,13 @@ public class MapaNivel3 extends Mapa {
 	 	
 	 	
 	 	
-		GeneradorPowerUp generador = new GeneradorPowerUp(j,6);
+		GeneradorPowerUp generador = new GeneradorPowerUp(juego,6);
 		for(Enemigo e: enemigos) {
 			e.setPowerUpAlDestruir(generador.getPowerUpAleatorio());
 		}
+	}
+	
+	public Mapa getSiguienteNivel() {
+		return new MapaNivel4(juego);
 	}
 }

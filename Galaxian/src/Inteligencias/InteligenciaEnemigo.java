@@ -28,6 +28,8 @@ public abstract class InteligenciaEnemigo extends Inteligencia{
 		}
 		
 	}
+	
+	
 
 }
 

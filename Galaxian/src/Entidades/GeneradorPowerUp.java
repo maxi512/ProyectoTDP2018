@@ -9,14 +9,13 @@ public class GeneradorPowerUp {
 	
 	private Random r;
 	private Juego juego;
-	private int cantidadPowerUpTiempo;
 	private int probabilidad;
 	
 	public GeneradorPowerUp(Juego j,int p) {
 		r= new Random();
 		this.juego=j;
-		cantidadPowerUpTiempo=0;
 		probabilidad= p;
+		PowerUpTiempo.setInstanciaNull();
 	}
 	
 	public PowerUp getPowerUpAleatorio() {
@@ -33,7 +32,7 @@ public class GeneradorPowerUp {
 	
 	private PowerUp getPowerUpRandom() {
 		int num=r.nextInt(6);
-		PowerUp p=new PowerUpVida(12,0,0);
+		PowerUp p=null;
 		switch(num) {
 		case 0:
 			p=new PowerUpEscudo(12,0,0);
@@ -48,9 +47,9 @@ public class GeneradorPowerUp {
 			p= new PowerUpMisil(12,0,0);
 			break;
 		case 4:
-			if(cantidadPowerUpTiempo==0) {
-				p=new PowerUpTiempo(12,0,0);
-				cantidadPowerUpTiempo=1;
+			p=PowerUpTiempo.getInstancia(12,0,0);
+			if(p==null) {
+				p=new PowerUpVida(12,0,0);	
 			}
 			break;
 		case 5:

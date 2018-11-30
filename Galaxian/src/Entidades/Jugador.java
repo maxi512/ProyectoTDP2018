@@ -31,11 +31,7 @@ public class Jugador extends Entidad {
 	
 	public Disparo crearDisparo() {
 		Disparo disp;
-		disp = arma.generarDisparo();
-		if(disp!=null) {
-			disp.getPos().setLocation((int)pos.getX()+(this.getGrafico().getWidth()/2 -1), (int)pos.getY()-12);
-		}
-		
+		disp = arma.generarDisparo((int)pos.getX()+(this.getGrafico().getWidth()/2 -1), (int)pos.getY()-12);	
 		return disp;
 	}
 	

@@ -13,10 +13,10 @@ public class ArmaBasicaJugador extends Arma {
 		this.tiempoParaDisparar=10;
 	}
 	
-	public Disparo generarDisparo() {
+	public Disparo generarDisparo(int x,int y) {
 		DisparoJugador disp=null;
 		if(tiempoHastaProximoDisparoDisponible<=0) {
-			disp= new DisparoJugador(5,0,0);
+			disp= new DisparoJugador(5,x,y);
 			tiempoHastaProximoDisparoDisponible= tiempoParaDisparar;
 		}
 		return disp;

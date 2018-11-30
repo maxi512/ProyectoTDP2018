@@ -1,10 +1,9 @@
 package Entidades;
 
 import Armas.Arma;
-import Colisionadores.ColisionadorEnemigo;
-import Inteligencias.Inteligencia;
 import PowerUps.*;
 import Principal.Juego;
+import Principal.VisitorDetieneTiempo;
 
 public abstract class Enemigo extends Entidad {
 	protected Juego juego;
@@ -37,13 +36,18 @@ public abstract class Enemigo extends Entidad {
 	
 	}
 	
-	public void serDetenido(Inteligencia i) {
-		ColisionadorEnemigo col= new ColisionadorEnemigo(this);
-		col.cambiarInteligencia(i);
+	public void serDetenido(VisitorDetieneTiempo v) {
+		v.detenerEnemigo(this);
 	}
 	
 	public Arma getArma() {
 		return null;
+	}
+	
+	public void quitarVida(int v) {
+		super.quitarVida(v);
+		// ACA VA VERIFICAR CAMBIO
+		inteligencia.verificarCambio();
 	}
 	
 	public void destruir() {

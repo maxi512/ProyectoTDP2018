@@ -7,6 +7,7 @@ import java.util.Map;
 import Entidades.Entidad;
 import Inteligencias.Inteligencia;
 import Inteligencias.InteligenciaObstaculo;
+import PowerUps.PowerUpTiempo;
 
 public class HiloDetieneTiempo extends Thread {
 	
@@ -23,7 +24,7 @@ public class HiloDetieneTiempo extends Thread {
 		
 		for(Entidad e: listaEntidades) {
 			mapeo.put(e, e.getInteligencia());
-			e.serDetenido(new InteligenciaObstaculo());
+			e.serDetenido(new VisitorDetieneTiempo());
 		}
 		try {
 			Thread.sleep(5000);
@@ -33,7 +34,8 @@ public class HiloDetieneTiempo extends Thread {
 		}
 		
 		for(Entidad e: listaEntidades) {
-			e.serDetenido(mapeo.get(e));
-		}		
+			e.setInteligencia(mapeo.get(e));
+		}
+		
 	}
 }

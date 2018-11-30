@@ -28,7 +28,6 @@ public class EnemigoPierdeArmaKamikaze extends Enemigo {
 	private void inicializarArregloImg() {
 		this.imagen[0]= new ImageIcon(this.getClass().getResource("/img/Webp.net-gifmaker (2).gif"));
 		this.imagen[1]= new ImageIcon(this.getClass().getResource("/img/enemigoPierdeArma.gif"));
-
 		
 	}
 	

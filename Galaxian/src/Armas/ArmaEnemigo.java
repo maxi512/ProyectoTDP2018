@@ -8,7 +8,7 @@ public class ArmaEnemigo extends Arma {
 		super();	
 	}
 	
-	public Disparo generarDisparo() {
-		return new DisparoEnemigo(5,0,0);
+	public Disparo generarDisparo(int x,int y) {
+		return new DisparoEnemigo(5,x,y);
 	}
 }

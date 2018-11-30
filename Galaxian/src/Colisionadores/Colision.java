@@ -1,32 +1,21 @@
 package Colisionadores;
 
-import Disparos.Disparo;
+import Disparos.*;
 import Entidades.*;
 import PowerUps.PowerUp;
 
-
 public abstract class Colision {
-	public void afectarEnemigo(Enemigo e) {
+	public abstract void afectarEnemigo(Enemigo e);
 	
-	}
+	public abstract void afectarDisparoEnemigo(Disparo d);
 	
-	public void afectarDisparo(Disparo d) {
-		
-	}
+	public abstract void afectarDisparoJugador(Disparo d);
 	
-	public void afectarJugador(Jugador j) {
-		
-	}
+	public abstract void afectarJugador(Jugador j);
 	
-	public void afectarObstaculo(Obstaculo o) {
-		
-	}
+	public abstract void afectarObstaculo(Obstaculo o);
 	
-	public void afectarPowerUp(PowerUp p) {
-		
-	}
+	public abstract void afectarPowerUp(PowerUp p);
 	
-	public void afectarObstaculoRompeJugador(Obstaculo o) {
-		
-	}
+	public abstract void afectarObstaculoRompeJugador(Obstaculo o);
 }

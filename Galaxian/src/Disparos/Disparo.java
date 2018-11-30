@@ -20,17 +20,11 @@ public abstract class Disparo extends Entidad{
 		}
 	}
 	
-	public void golpearJugador(Jugador j) {
-		
-	}
+	public abstract void golpearJugador(Jugador j) ;
 	
-	public void golpearEnemigo(Enemigo enem) {
+	public abstract void golpearEnemigo(Enemigo enem) ;
 		
-	}
-	public void golpearObstaculoEnemigoYJugador(Obstaculo o) {
+	public abstract void golpearObstaculoEnemigoYJugador(Obstaculo o) ;
 		
-	}
-	public void golpearObstaculoJugador(Obstaculo o) {
-		
-	}	
+	public abstract void golpearObstaculoJugador(Obstaculo o);
 }

@@ -1,7 +1,8 @@
 package Colisionadores;
 
-import Disparos.Disparo;
+import Disparos.*;
 import Entidades.*;
+import PowerUps.*;
 
 public class ColisionadorObstaculo extends Colision {
 	
@@ -12,10 +13,31 @@ public class ColisionadorObstaculo extends Colision {
 	}
 	
 	public void afectarEnemigo(Enemigo e) {
-		e.quitarVida(100);
+		e.golpearObstaculo(obstaculo);
 	}
 	
-	public void afectarDisparo(Disparo d) {
+	public void afectarDisparoEnemigo(Disparo d) {
 		d.golpearObstaculoEnemigoYJugador(obstaculo);
 	}
+	
+	public void afectarDisparoJugador(Disparo d){
+		d.golpearObstaculoEnemigoYJugador(obstaculo);
+	}
+	
+	public void afectarJugador(Jugador j) {
+		
+	}
+	
+	public void afectarObstaculo(Obstaculo o) {
+		
+	}
+	
+	public void afectarPowerUp(PowerUp p) {
+		
+	}
+	
+	public void afectarObstaculoRompeJugador(Obstaculo o) {
+		
+	}
+
 }

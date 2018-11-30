@@ -17,7 +17,7 @@ import java.awt.*;
 public class Juego {
 	//ATRIBUTOS
 	private GUI miGui;
-	private Mapa  [] mapa;
+	private Mapa mapa;
 	
 	
 	private Jugador jugador;
@@ -29,21 +29,14 @@ public class Juego {
  	private LinkedList<Disparo> disparosParaAgregar;
  	
  	private int puntajeTotal;
- 	private int nivelActual;
- 	private int maxNivel;
  	
  	private boolean moverDerecha,cambioDireccion;
  	private boolean terminarJuego=false;
- 	private boolean pasoBoss;
  	
  	//CONSTRUCTOR
 	public Juego(GUI gui) {	
-		this.mapa=new Mapa[4];
-		mapa[0]= new MapaNivel1(this);
-		mapa[1]= new MapaNivel2(this);
-		mapa[2]= new MapaNivel3(this);
-		mapa[3]= new MapaNivel4(this);
-	
+		mapa = new MapaNivel1(this);
+		
 		miGui = gui;
 		
 		entidadesAEliminar = new LinkedList<Entidad>();
@@ -54,25 +47,21 @@ public class Juego {
 		this.jugador=new Jugador(265,610);
 		miGui.add(jugador.getGrafico());
 		
-		armarNivel(1);
-		nivelActual=1;
-		maxNivel=4;
-				
+		armarNivel();
+
 		cambioDireccion= false;
 		moverDerecha=true;
-		pasoBoss= false;
 	}
 	
-	private void armarNivel(int nivel) {
-		nivel--;
+	private void armarNivel() {
 		LinkedList<Entidad> aux= new LinkedList<Entidad>();
 		aux.addLast(jugador);
-		for(Enemigo e: mapa[nivel].getEnemigos()) {
+		for(Enemigo e: mapa.getEnemigos()) {
 			aux.addLast(e);
 			miGui.add(e.getGrafico());
 		}
 		
-		for(Entidad o: mapa[nivel].getObstaculos()) {
+		for(Entidad o: mapa.getObstaculos()) {
 			aux.addLast(o);
 			miGui.add(o.getGrafico());
 		}
@@ -270,19 +259,7 @@ public class Juego {
 	public void Actualizar() {
 		jugador.actualizar();
 	}
-	
-	public void manage() {
-		if(nivelActual==maxNivel && entidades.size()==1 && jugador.getVida()>0) {
-			PrimerBoss boss=null;
-			boss = PrimerBoss.getPrimerBoss(10,200,200);
-			if(boss!=null) {
-				boss.setJuego(this);
-				addEntidad(boss);
-				pasoBoss=true;
-			}
-		}
-	}
-	
+		
 	public void setCambiarDireccion(boolean dir) {
 		cambioDireccion= dir;
 	}
@@ -331,19 +308,11 @@ public class Juego {
 		}
 		return toReturn;
 	}
-	
-	public int maxNiveles() {
-		return maxNivel;
-	}
-	
-	public int nivelActual() {
-		return nivelActual;
-	}
-	
+		
 	public void cambiarNivel() {
-		if(nivelActual<maxNivel) {
-			nivelActual++;
-			armarNivel(nivelActual);
+		if(mapa.getSiguienteNivel()!=null) {
+			mapa= mapa.getSiguienteNivel();
+			armarNivel();
 		}
 		else {
 			terminarJuego=true;			
@@ -366,4 +335,5 @@ public class Juego {
 	public LinkedList<Entidad> getListaEntidades(){
 		return entidades;
 	}	
+
 }

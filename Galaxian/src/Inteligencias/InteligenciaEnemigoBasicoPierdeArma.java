@@ -17,20 +17,20 @@ public class InteligenciaEnemigoBasicoPierdeArma extends InteligenciaEnemigoConA
 	}
 	
 	public void disparar() {
-		if (enemigo.getVida()>enemigo.getVidaInicial()*0.2) {
-			if(r.nextInt(10)==5) {
-				Arma arma= enemigo.getArma();
-				if(arma!=null) {
-					Disparo d= arma.generarDisparo();
-					d.getPos().setLocation((int)enemigo.getPos().getX()+(enemigo.getGrafico().getWidth()/2 -1), (int)enemigo.getPos().getY()+30);
-					enemigo.getJuego().addDisparo(d);
-				}
+		if(r.nextInt(10)==5) {
+			Arma arma= enemigo.getArma();
+			if(arma!=null) {
+			Disparo d= arma.generarDisparo((int)enemigo.getPos().getX()+(enemigo.getGrafico().getWidth()/2 -1), (int)enemigo.getPos().getY()+30);
+			enemigo.getJuego().addDisparo(d);
 			}
 		}
-		else {
+	}
+		
+	
+	public void verificarCambio() {
+		if (enemigo.getVida()<=enemigo.getVidaInicial()*0.2) {
 			enemigo.setInteligencia(new InteligenciaEnemigoSinArma(this.enemigo));
 			this.enemigo.setImagenActual(1);
 		}
-		
 	}
 }

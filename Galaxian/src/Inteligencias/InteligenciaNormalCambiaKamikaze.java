@@ -20,4 +20,5 @@ public class InteligenciaNormalCambiaKamikaze extends InteligenciaEnemigo {
 		}
 	}
 	
+		
 }

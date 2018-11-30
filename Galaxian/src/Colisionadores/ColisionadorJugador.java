@@ -1,7 +1,8 @@
 package Colisionadores;
-import Disparos.Disparo;
+
+import Disparos.*;
 import Entidades.*;
-import PowerUps.PowerUp;
+import PowerUps.*;
 
 public class ColisionadorJugador extends Colision{
 	public Jugador jug;
@@ -10,15 +11,31 @@ public class ColisionadorJugador extends Colision{
 		jug= j;
 	}
 	
-	public void afectarDisparo(Disparo d) {
+	public void afectarEnemigo(Enemigo e) {
+		e.golpearJugador(jug);
+	}
+	
+	public void afectarDisparoEnemigo(Disparo d) {
 		d.golpearJugador(jug);
 	}
 	
-	public void afectarEnemigo(Enemigo enem) {
-		enem.golpearJugador(jug);
+	public void afectarDisparoJugador(Disparo d){
+	
+	}
+	
+	public void afectarJugador(Jugador j) {
+		
+	}
+	
+	public void afectarObstaculo(Obstaculo o) {
+		
 	}
 	
 	public void afectarPowerUp(PowerUp p) {
 		p.afectar();
+	}
+	
+	public void afectarObstaculoRompeJugador(Obstaculo o) {
+		
 	}
 }

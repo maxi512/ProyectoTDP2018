@@ -10,7 +10,7 @@ public abstract class PowerUp extends Entidad {
 	public PowerUp(int velocidad, int x, int y) {
 		super(velocidad, x, y);
 		
-		this.vida=10;
+		this.vida=100;
 	}
 	
 	public void mover() {

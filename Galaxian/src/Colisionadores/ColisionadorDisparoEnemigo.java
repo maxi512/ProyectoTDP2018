@@ -4,14 +4,12 @@ import Disparos.*;
 import Entidades.*;
 import PowerUps.*;
 
-public class ColisionadorObstaculoRompeJugador extends Colision {
+public class ColisionadorDisparoEnemigo extends Colision{
+	Disparo disp;
 	
-	private Obstaculo obstaculo;
-	
-	public ColisionadorObstaculoRompeJugador(Obstaculo o) {
-		this.obstaculo=o;
+	public ColisionadorDisparoEnemigo(Disparo d) {
+		disp=d;
 	}
-	
 	
 	public void afectarEnemigo(Enemigo e) {
 		
@@ -22,15 +20,16 @@ public class ColisionadorObstaculoRompeJugador extends Colision {
 	}
 	
 	public void afectarDisparoJugador(Disparo d){
-		d.golpearObstaculoJugador(obstaculo);
+	
 	}
 	
+	
 	public void afectarJugador(Jugador j) {
-		
+		disp.golpearJugador(j);
 	}
 	
 	public void afectarObstaculo(Obstaculo o) {
-		
+		disp.golpearObstaculoEnemigoYJugador(o);
 	}
 	
 	public void afectarPowerUp(PowerUp p) {
@@ -40,5 +39,4 @@ public class ColisionadorObstaculoRompeJugador extends Colision {
 	public void afectarObstaculoRompeJugador(Obstaculo o) {
 		
 	}
-
 }

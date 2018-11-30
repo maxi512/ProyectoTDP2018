@@ -18,8 +18,7 @@ public class InteligenciaEnemigoConArma extends InteligenciaEnemigo{
 		if(r.nextInt(40)==5) {
 			Arma arma= enemigo.getArma();
 			if(arma!=null) {
-				Disparo d= arma.generarDisparo();
-				d.getPos().setLocation((int)enemigo.getPos().getX()+(enemigo.getGrafico().getWidth()/2 -1), (int)enemigo.getPos().getY()+30);
+				Disparo d= arma.generarDisparo((int)enemigo.getPos().getX()+(enemigo.getGrafico().getWidth()/2 -1), (int)enemigo.getPos().getY()+30);
 				enemigo.getJuego().addDisparo(d);
 			}
 		}

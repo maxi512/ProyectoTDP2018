@@ -19,5 +19,5 @@ public class InteligenciaNormalCambiaMareado extends InteligenciaEnemigoSinArma 
 			this.enemigo.setInteligencia(new InteligenciaMareado(this.enemigo));
 		}
 	}
-
+	
 }
