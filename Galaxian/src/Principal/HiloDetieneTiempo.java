@@ -22,9 +22,10 @@ public class HiloDetieneTiempo extends Thread {
 
 		Map<Entidad,Inteligencia>mapeo= new HashMap<Entidad ,Inteligencia>();
 		
+		VisitorDetieneTiempo v = new VisitorDetieneTiempo();
 		for(Entidad e: listaEntidades) {
 			mapeo.put(e, e.getInteligencia());
-			e.serDetenido(new VisitorDetieneTiempo());
+			e.serDetenido(v);
 		}
 		try {
 			Thread.sleep(5000);
